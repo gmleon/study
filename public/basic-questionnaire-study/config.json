@@ -51,10 +51,22 @@
             "path": "basic-questionnaire-study/assets/world-choropleth.json",
             "response": [
             {
-                "id": "simple-vega",
+                "id": "puzzle-1",
                 "type": "radio",
                 "prompt": "Is the life expectancy of Mexico higher than the life expectancy of Brazil?",
                 "options": ["True", "False", "I don't know"]
+            }
+            ]         
+        },
+        "vegaPuzzle2": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/animalWelfareExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-2",
+                "type": "radio",
+                "prompt": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
             }
             ]         
         },
@@ -102,6 +114,7 @@
             "introduction",
             "consent",
             "vegaPuzzle1",
+            "vegaPuzzle2",
             "vegaPath",
             "first-question-set",
             "second-question-set"
