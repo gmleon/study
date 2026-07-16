@@ -70,6 +70,78 @@
             }
             ]         
         },
+        "tuberculosisPuzzle": {
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/tuberculosisExplorer.html",
+            "response": [
+            {
+                "id": "puzzle-3",
+                "type": "radio",
+                "prompt": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
+                "options": [
+                    "The cases decreased each year",
+                    "The cases decreased once and then increased",
+                    "The cases increased each year",
+                    "The cases increased once and then decreased",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
+        "marineProtectedAreasPuzzle": {
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
+            "response": [
+            {
+                "id": "puzzle-4",
+                "type": "radio",
+                "prompt": "Which of these countries protects the highest percentage of its national waters?",
+                "options": [
+                    "Greenland",
+                    "Brazil",
+                    "Singapore",
+                    "Jordan",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
+        "movieRatingsPuzzle": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/movieRatingsExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-5",
+                "type": "radio",
+                "prompt": "How do the movie ratings and the movie year relate?",
+                "options": [
+                    "Old movies have high ratings",
+                    "New movies have high ratings",
+                    "Old movies have low Rotten Tomatoes ratings",
+                    "There is no relation between year and moving ratings",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
+        "gapminderPuzzle": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/gapminderExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-6",
+                "type": "radio",
+                "prompt": "How does the orange cluster change over time?",
+                "options": [
+                    "Its life expectancy increases",
+                    "Its life expectancy decreases",
+                    "Its life expectancy remains the same",
+                    "Its fertility increases",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
         "first-question-set": {
             "type": "questionnaire",
             "response": [
@@ -115,9 +187,10 @@
             "consent",
             "vegaPuzzle1",
             "vegaPuzzle2",
-            "vegaPath",
-            "first-question-set",
-            "second-question-set"
+            "tuberculosisPuzzle",
+            "marineProtectedAreasPuzzle",
+            "movieRatingsPuzzle",
+            "gapminderPuzzle"
         ]
     }
 }
