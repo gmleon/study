@@ -51,12 +51,96 @@
             "path": "basic-questionnaire-study/assets/world-choropleth.json",
             "response": [
             {
-                "id": "simple-vega",
+                "id": "puzzle-1",
                 "type": "radio",
                 "prompt": "Is the life expectancy of Mexico higher than the life expectancy of Brazil?",
                 "options": ["True", "False", "I don't know"]
             }
             ]         
+        },
+        "vegaPuzzle2": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/animalWelfareExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-2",
+                "type": "radio",
+                "prompt": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
+            }
+            ]         
+        },
+        "tuberculosisPuzzle": {
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/tuberculosisExplorer.html",
+            "response": [
+            {
+                "id": "puzzle-3",
+                "type": "radio",
+                "prompt": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
+                "options": [
+                    "The cases decreased each year",
+                    "The cases decreased once and then increased",
+                    "The cases increased each year",
+                    "The cases increased once and then decreased",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
+        "marineProtectedAreasPuzzle": {
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
+            "response": [
+            {
+                "id": "puzzle-4",
+                "type": "radio",
+                "prompt": "Which of these countries protects the highest percentage of its national waters?",
+                "options": [
+                    "Greenland",
+                    "Brazil",
+                    "Singapore",
+                    "Jordan",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
+        "movieRatingsPuzzle": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/movieRatingsExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-5",
+                "type": "radio",
+                "prompt": "How do the movie ratings and the movie year relate?",
+                "options": [
+                    "Old movies have high ratings",
+                    "New movies have high ratings",
+                    "Old movies have low Rotten Tomatoes ratings",
+                    "There is no relation between year and moving ratings",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
+        "gapminderPuzzle": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/gapminderExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-6",
+                "type": "radio",
+                "prompt": "How does the orange cluster change over time?",
+                "options": [
+                    "Its life expectancy increases",
+                    "Its life expectancy decreases",
+                    "Its life expectancy remains the same",
+                    "Its fertility increases",
+                    "I don't know"
+                ]
+            }
+            ]
         },
         "first-question-set": {
             "type": "questionnaire",
@@ -102,9 +186,11 @@
             "introduction",
             "consent",
             "vegaPuzzle1",
-            "vegaPath",
-            "first-question-set",
-            "second-question-set"
+            "vegaPuzzle2",
+            "tuberculosisPuzzle",
+            "marineProtectedAreasPuzzle",
+            "movieRatingsPuzzle",
+            "gapminderPuzzle"
         ]
     }
 }
