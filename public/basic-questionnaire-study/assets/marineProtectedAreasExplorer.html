@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Marine protected areas explorer</title>
+    <script src="https://d3js.org/d3.v7.js"></script>
+    <!-- Load revisit-communicate to be able to send data to reVISit -->
+    <script src="../../revisitUtilities/revisit-communicate.js"></script>
+    <style>
+      body { font-family: sans-serif; }
+      #search-bar { margin-bottom: 8px; }
+      #search-bar input {
+        font-size: 14px;
+        padding: 5px 8px;
+        width: 260px;
+        border: 1px solid #999;
+        border-radius: 4px;
+      }
+      #search-bar label { font-weight: bold; margin-right: 6px; }
+      .dot { cursor: pointer; }
+      .dot-outline { pointer-events: none; fill: none; stroke: black; stroke-width: 2; }
+      .country-label { pointer-events: none; font-size: 11px; font-weight: bold; }
+      #mpa-tooltip {
+        position: fixed;
+        pointer-events: none;
+        background: white;
+        border: 1px solid #999;
+        border-radius: 4px;
+        padding: 6px 10px;
+        font-size: 12px;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="search-bar">
+      <label for="countrySearch">Search for a country:</label>
+      <input type="text" id="countrySearch" list="countryList" placeholder="Search for a country" autocomplete="off" />
+      <datalist id="countryList"></datalist>
+    </div>
+    <svg id="scatter"></svg>
+    <div id="mpa-tooltip"></div>
+  </body>
+
+  <script>
+    // Marine protected areas per country, 2023 (World Bank indicator ER.MRN.PTMR.ZS for % protected;
+    // total marine area / EEZ size in km2 from Wikipedia's "Exclusive economic zone" rankings-by-area table;
+    // region from World Bank country metadata). ABNJ = areas beyond national jurisdiction (high seas).
+    const DATA = [{"iso3c":"ABNJ","country":"Areas beyond national jurisdiction","region":null,"totalmarinearea":219000000,"PAmarinecover":1.4,"year":2023},{"iso3c":"FRA","country":"France","region":"Europe & Central Asia","totalmarinearea":11691000,"PAmarinecover":49.8,"year":2023},{"iso3c":"USA","country":"United States","region":"North America","totalmarinearea":11351000,"PAmarinecover":19.1,"year":2023},{"iso3c":"AUS","country":"Australia","region":"East Asia & Pacific","totalmarinearea":8505348,"PAmarinecover":44.3,"year":2023},{"iso3c":"RUS","country":"Russian Federation","region":"Europe & Central Asia","totalmarinearea":7566673,"PAmarinecover":2.2,"year":2023},{"iso3c":"GBR","country":"United Kingdom","region":"Europe & Central Asia","totalmarinearea":6805586,"PAmarinecover":44.1,"year":2023},{"iso3c":"IDN","country":"Indonesia","region":"East Asia & Pacific","totalmarinearea":6159032,"PAmarinecover":3.1,"year":2023},{"iso3c":"CAN","country":"Canada","region":"North America","totalmarinearea":5599077,"PAmarinecover":9.1,"year":2023},{"iso3c":"JPN","country":"Japan","region":"East Asia & Pacific","totalmarinearea":4479388,"PAmarinecover":13.9,"year":2023},{"iso3c":"NZL","country":"New Zealand","region":"East Asia & Pacific","totalmarinearea":4420565,"PAmarinecover":30.4,"year":2023},{"iso3c":"BRA","country":"Brazil","region":"Latin America & Caribbean","totalmarinearea":3830955,"PAmarinecover":26.8,"year":2023},{"iso3c":"CHL","country":"Chile","region":"Latin America & Caribbean","totalmarinearea":3681989,"PAmarinecover":41.4,"year":2023},{"iso3c":"KIR","country":"Kiribati","region":"East Asia & Pacific","totalmarinearea":3441810,"PAmarinecover":11.8,"year":2023},{"iso3c":"MEX","country":"Mexico","region":"Latin America & Caribbean","totalmarinearea":3269386,"PAmarinecover":21.6,"year":2023},{"iso3c":"FSM","country":"Micronesia, Fed. Sts.","region":"East Asia & Pacific","totalmarinearea":2996419,"PAmarinecover":0,"year":2023},{"iso3c":"DNK","country":"Denmark","region":"Europe & Central Asia","totalmarinearea":2551238,"PAmarinecover":18.3,"year":2023},{"iso3c":"PNG","country":"Papua New Guinea","region":"East Asia & Pacific","totalmarinearea":2402288,"PAmarinecover":0.1,"year":2023},{"iso3c":"NOR","country":"Norway","region":"Europe & Central Asia","totalmarinearea":2385178,"PAmarinecover":1.4,"year":2023},{"iso3c":"IND","country":"India","region":"South Asia","totalmarinearea":2305143,"PAmarinecover":0.2,"year":2023},{"iso3c":"GRL","country":"Greenland","region":"Europe & Central Asia","totalmarinearea":2184254,"PAmarinecover":4.5,"year":2023},{"iso3c":"MHL","country":"Marshall Islands","region":"East Asia & Pacific","totalmarinearea":1990530,"PAmarinecover":0.3,"year":2023},{"iso3c":"PRT","country":"Portugal","region":"Europe & Central Asia","totalmarinearea":1727408,"PAmarinecover":16.9,"year":2023},{"iso3c":"PHL","country":"Philippines","region":"East Asia & Pacific","totalmarinearea":1590780,"PAmarinecover":1.7,"year":2023},{"iso3c":"SLB","country":"Solomon Islands","region":"East Asia & Pacific","totalmarinearea":1589477,"PAmarinecover":0.1,"year":2023},{"iso3c":"ZAF","country":"South Africa","region":"Sub-Saharan Africa","totalmarinearea":1535538,"PAmarinecover":15.5,"year":2023},{"iso3c":"SYC","country":"Seychelles","region":"Sub-Saharan Africa","totalmarinearea":1336559,"PAmarinecover":32.8,"year":2023},{"iso3c":"MUS","country":"Mauritius","region":"Sub-Saharan Africa","totalmarinearea":1284997,"PAmarinecover":0,"year":2023},{"iso3c":"FJI","country":"Fiji","region":"East Asia & Pacific","totalmarinearea":1282978,"PAmarinecover":0.9,"year":2023},{"iso3c":"MDG","country":"Madagascar","region":"Sub-Saharan Africa","totalmarinearea":1225259,"PAmarinecover":0.9,"year":2023},{"iso3c":"ARG","country":"Argentina","region":"Latin America & Caribbean","totalmarinearea":1159063,"PAmarinecover":11.8,"year":2023},{"iso3c":"ECU","country":"Ecuador","region":"Latin America & Caribbean","totalmarinearea":1077231,"PAmarinecover":19.1,"year":2023},{"iso3c":"ESP","country":"Spain","region":"Europe & Central Asia","totalmarinearea":1039233,"PAmarinecover":12.8,"year":2023},{"iso3c":"MDV","country":"Maldives","region":"South Asia","totalmarinearea":923322,"PAmarinecover":0.1,"year":2023},{"iso3c":"PER","country":"Peru","region":"Latin America & Caribbean","totalmarinearea":906454,"PAmarinecover":8,"year":2023},{"iso3c":"CHN","country":"China","region":"East Asia & Pacific","totalmarinearea":877019,"PAmarinecover":5.5,"year":2023},{"iso3c":"SOM","country":"Somalia, Fed. Rep.","region":"Sub-Saharan Africa","totalmarinearea":825052,"PAmarinecover":0,"year":2023},{"iso3c":"COL","country":"Colombia","region":"Latin America & Caribbean","totalmarinearea":808158,"PAmarinecover":17.1,"year":2023},{"iso3c":"CPV","country":"Cabo Verde","region":"Sub-Saharan Africa","totalmarinearea":800561,"PAmarinecover":0,"year":2023},{"iso3c":"ISL","country":"Iceland","region":"Europe & Central Asia","totalmarinearea":751345,"PAmarinecover":0.4,"year":2023},{"iso3c":"TUV","country":"Tuvalu","region":"East Asia & Pacific","totalmarinearea":749790,"PAmarinecover":0,"year":2023},{"iso3c":"VUT","country":"Vanuatu","region":"East Asia & Pacific","totalmarinearea":663251,"PAmarinecover":0,"year":2023},{"iso3c":"TON","country":"Tonga","region":"East Asia & Pacific","totalmarinearea":659558,"PAmarinecover":0.1,"year":2023},{"iso3c":"BHS","country":"Bahamas, The","region":"Latin America & Caribbean","totalmarinearea":654715,"PAmarinecover":7.9,"year":2023},{"iso3c":"PLW","country":"Palau","region":"East Asia & Pacific","totalmarinearea":603978,"PAmarinecover":100,"year":2023},{"iso3c":"MOZ","country":"Mozambique","region":"Sub-Saharan Africa","totalmarinearea":578986,"PAmarinecover":2.1,"year":2023},{"iso3c":"MAR","country":"Morocco","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":575230,"PAmarinecover":0.7,"year":2023},{"iso3c":"CRI","country":"Costa Rica","region":"Latin America & Caribbean","totalmarinearea":574725,"PAmarinecover":29,"year":2023},{"iso3c":"NAM","country":"Namibia","region":"Sub-Saharan Africa","totalmarinearea":564748,"PAmarinecover":1.7,"year":2023},{"iso3c":"YEM","country":"Yemen, Rep.","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":552669,"PAmarinecover":0.5,"year":2023},{"iso3c":"ITA","country":"Italy","region":"Europe & Central Asia","totalmarinearea":541915,"PAmarinecover":10.6,"year":2023},{"iso3c":"OMN","country":"Oman","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":533180,"PAmarinecover":0.4,"year":2023},{"iso3c":"MMR","country":"Myanmar","region":"East Asia & Pacific","totalmarinearea":532775,"PAmarinecover":0.5,"year":2023},{"iso3c":"LKA","country":"Sri Lanka","region":"South Asia","totalmarinearea":532619,"PAmarinecover":0.1,"year":2023},{"iso3c":"AGO","country":"Angola","region":"Sub-Saharan Africa","totalmarinearea":518433,"PAmarinecover":0,"year":2023},{"iso3c":"GRC","country":"Greece","region":"Europe & Central Asia","totalmarinearea":505572,"PAmarinecover":4.5,"year":2023},{"iso3c":"KOR","country":"Korea, Rep.","region":"East Asia & Pacific","totalmarinearea":475469,"PAmarinecover":2.5,"year":2023},{"iso3c":"VEN","country":"Venezuela, RB","region":"Latin America & Caribbean","totalmarinearea":471507,"PAmarinecover":4.3,"year":2023},{"iso3c":"VNM","country":"Viet Nam","region":"East Asia & Pacific","totalmarinearea":417663,"PAmarinecover":0.6,"year":2023},{"iso3c":"IRL","country":"Ireland","region":"Europe & Central Asia","totalmarinearea":410310,"PAmarinecover":2.3,"year":2023},{"iso3c":"LBY","country":"Libya","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":351589,"PAmarinecover":0.6,"year":2023},{"iso3c":"CUB","country":"Cuba","region":"Latin America & Caribbean","totalmarinearea":350751,"PAmarinecover":3.9,"year":2023},{"iso3c":"PAN","country":"Panama","region":"Latin America & Caribbean","totalmarinearea":335646,"PAmarinecover":26.8,"year":2023},{"iso3c":"MYS","country":"Malaysia","region":"East Asia & Pacific","totalmarinearea":334671,"PAmarinecover":5.6,"year":2023},{"iso3c":"GNQ","country":"Equatorial Guinea","region":"Sub-Saharan Africa","totalmarinearea":303509,"PAmarinecover":0.2,"year":2023},{"iso3c":"THA","country":"Thailand","region":"East Asia & Pacific","totalmarinearea":299397,"PAmarinecover":4.8,"year":2023},{"iso3c":"PAK","country":"Pakistan","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":290000,"PAmarinecover":0.8,"year":2023},{"iso3c":"EGY","country":"Egypt, Arab Rep.","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":263451,"PAmarinecover":5,"year":2023},{"iso3c":"TUR","country":"Turkiye","region":"Europe & Central Asia","totalmarinearea":261654,"PAmarinecover":1.8,"year":2023},{"iso3c":"JAM","country":"Jamaica","region":"Latin America & Caribbean","totalmarinearea":258137,"PAmarinecover":0.8,"year":2023},{"iso3c":"DOM","country":"Dominican Republic","region":"Latin America & Caribbean","totalmarinearea":255898,"PAmarinecover":17.3,"year":2023},{"iso3c":"LBR","country":"Liberia","region":"Sub-Saharan Africa","totalmarinearea":249734,"PAmarinecover":0.1,"year":2023},{"iso3c":"HND","country":"Honduras","region":"Latin America & Caribbean","totalmarinearea":249542,"PAmarinecover":4.6,"year":2023},{"iso3c":"TZA","country":"Tanzania","region":"Sub-Saharan Africa","totalmarinearea":241888,"PAmarinecover":3,"year":2023},{"iso3c":"GHA","country":"Ghana","region":"Sub-Saharan Africa","totalmarinearea":235349,"PAmarinecover":0.1,"year":2023},{"iso3c":"SAU","country":"Saudi Arabia","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":228633,"PAmarinecover":2.5,"year":2023},{"iso3c":"NGA","country":"Nigeria","region":"Sub-Saharan Africa","totalmarinearea":217313,"PAmarinecover":0,"year":2023},{"iso3c":"SLE","country":"Sierra Leone","region":"Sub-Saharan Africa","totalmarinearea":215611,"PAmarinecover":1.6,"year":2023},{"iso3c":"GAB","country":"Gabon","region":"Sub-Saharan Africa","totalmarinearea":202790,"PAmarinecover":28.8,"year":2023},{"iso3c":"BRB","country":"Barbados","region":"Latin America & Caribbean","totalmarinearea":186898,"PAmarinecover":0,"year":2023},{"iso3c":"CIV","country":"Cote d'Ivoire","region":"Sub-Saharan Africa","totalmarinearea":176254,"PAmarinecover":0.1,"year":2023},{"iso3c":"IRN","country":"Iran, Islamic Rep.","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":168718,"PAmarinecover":0.8,"year":2023},{"iso3c":"MRT","country":"Mauritania","region":"Sub-Saharan Africa","totalmarinearea":165338,"PAmarinecover":4.2,"year":2023},{"iso3c":"COM","country":"Comoros","region":"Sub-Saharan Africa","totalmarinearea":163752,"PAmarinecover":0.4,"year":2023},{"iso3c":"SWE","country":"Sweden","region":"Europe & Central Asia","totalmarinearea":160885,"PAmarinecover":15.8,"year":2023},{"iso3c":"SEN","country":"Senegal","region":"Sub-Saharan Africa","totalmarinearea":158861,"PAmarinecover":1.9,"year":2023},{"iso3c":"NLD","country":"Netherlands","region":"Europe & Central Asia","totalmarinearea":154011,"PAmarinecover":26.9,"year":2023},{"iso3c":"UKR","country":"Ukraine","region":"Europe & Central Asia","totalmarinearea":147318,"PAmarinecover":9.2,"year":2023},{"iso3c":"URY","country":"Uruguay","region":"Latin America & Caribbean","totalmarinearea":142166,"PAmarinecover":0.8,"year":2023},{"iso3c":"GUY","country":"Guyana","region":"Latin America & Caribbean","totalmarinearea":137765,"PAmarinecover":0,"year":2023},{"iso3c":"STP","country":"Sao Tome and Principe","region":"Sub-Saharan Africa","totalmarinearea":131397,"PAmarinecover":0,"year":2023},{"iso3c":"WSM","country":"Samoa","region":"East Asia & Pacific","totalmarinearea":127950,"PAmarinecover":0.1,"year":2023},{"iso3c":"SUR","country":"Suriname","region":"Latin America & Caribbean","totalmarinearea":127772,"PAmarinecover":1.5,"year":2023},{"iso3c":"HTI","country":"Haiti","region":"Latin America & Caribbean","totalmarinearea":126760,"PAmarinecover":1.5,"year":2023},{"iso3c":"DZA","country":"Algeria","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":126353,"PAmarinecover":0.1,"year":2023},{"iso3c":"NIC","country":"Nicaragua","region":"Latin America & Caribbean","totalmarinearea":123881,"PAmarinecover":3.4,"year":2023},{"iso3c":"GNB","country":"Guinea-Bissau","region":"Sub-Saharan Africa","totalmarinearea":123725,"PAmarinecover":9,"year":2023},{"iso3c":"BGD","country":"Bangladesh","region":"South Asia","totalmarinearea":118813,"PAmarinecover":8,"year":2023},{"iso3c":"KEN","country":"Kenya","region":"Sub-Saharan Africa","totalmarinearea":116942,"PAmarinecover":0.7,"year":2023},{"iso3c":"GTM","country":"Guatemala","region":"Latin America & Caribbean","totalmarinearea":114170,"PAmarinecover":0.8,"year":2023},{"iso3c":"PRK","country":"Korea, Dem. People's Rep.","region":"East Asia & Pacific","totalmarinearea":113888,"PAmarinecover":0,"year":2023},{"iso3c":"ATG","country":"Antigua and Barbuda","region":"Latin America & Caribbean","totalmarinearea":110089,"PAmarinecover":0.3,"year":2023},{"iso3c":"TUN","country":"Tunisia","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":101857,"PAmarinecover":1,"year":2023},{"iso3c":"CYP","country":"Cyprus","region":"Europe & Central Asia","totalmarinearea":98707,"PAmarinecover":8.6,"year":2023},{"iso3c":"SLV","country":"El Salvador","region":"Latin America & Caribbean","totalmarinearea":90962,"PAmarinecover":0.7,"year":2023},{"iso3c":"FIN","country":"Finland","region":"Europe & Central Asia","totalmarinearea":87171,"PAmarinecover":12,"year":2023},{"iso3c":"ERI","country":"Eritrea","region":"Sub-Saharan Africa","totalmarinearea":77728,"PAmarinecover":0,"year":2023},{"iso3c":"TTO","country":"Trinidad and Tobago","region":"Latin America & Caribbean","totalmarinearea":74199,"PAmarinecover":0,"year":2023},{"iso3c":"TLS","country":"Timor-Leste","region":"East Asia & Pacific","totalmarinearea":70326,"PAmarinecover":1.4,"year":2023},{"iso3c":"SDN","country":"Sudan","region":"Sub-Saharan Africa","totalmarinearea":68148,"PAmarinecover":16,"year":2023},{"iso3c":"KHM","country":"Cambodia","region":"East Asia & Pacific","totalmarinearea":62515,"PAmarinecover":1.4,"year":2023},{"iso3c":"GIN","country":"Guinea","region":"Sub-Saharan Africa","totalmarinearea":59426,"PAmarinecover":0.5,"year":2023},{"iso3c":"HRV","country":"Croatia","region":"Europe & Central Asia","totalmarinearea":59032,"PAmarinecover":9,"year":2023},{"iso3c":"ARE","country":"United Arab Emirates","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":58218,"PAmarinecover":11.5,"year":2023},{"iso3c":"DEU","country":"Germany","region":"Europe & Central Asia","totalmarinearea":57485,"PAmarinecover":45.5,"year":2023},{"iso3c":"MLT","country":"Malta","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":54823,"PAmarinecover":7.4,"year":2023},{"iso3c":"EST","country":"Estonia","region":"Europe & Central Asia","totalmarinearea":36992,"PAmarinecover":18.8,"year":2023},{"iso3c":"VCT","country":"St. Vincent and the Grenadines","region":"Latin America & Caribbean","totalmarinearea":36302,"PAmarinecover":0.2,"year":2023},{"iso3c":"BLZ","country":"Belize","region":"Latin America & Caribbean","totalmarinearea":35351,"PAmarinecover":11,"year":2023},{"iso3c":"BGR","country":"Bulgaria","region":"Europe & Central Asia","totalmarinearea":34307,"PAmarinecover":8.1,"year":2023},{"iso3c":"BEN","country":"Benin","region":"Sub-Saharan Africa","totalmarinearea":33221,"PAmarinecover":0,"year":2023},{"iso3c":"QAT","country":"Qatar","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":31590,"PAmarinecover":2.3,"year":2023},{"iso3c":"COG","country":"Congo, Rep.","region":"Sub-Saharan Africa","totalmarinearea":31017,"PAmarinecover":3,"year":2023},{"iso3c":"POL","country":"Poland","region":"Europe & Central Asia","totalmarinearea":29797,"PAmarinecover":22.6,"year":2023},{"iso3c":"DMA","country":"Dominica","region":"Latin America & Caribbean","totalmarinearea":28985,"PAmarinecover":0,"year":2023},{"iso3c":"LVA","country":"Latvia","region":"Europe & Central Asia","totalmarinearea":28452,"PAmarinecover":16,"year":2023},{"iso3c":"GRD","country":"Grenada","region":"Latin America & Caribbean","totalmarinearea":27426,"PAmarinecover":0.1,"year":2023},{"iso3c":"ISR","country":"Israel","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":26352,"PAmarinecover":0,"year":2023},{"iso3c":"ROU","country":"Romania","region":"Europe & Central Asia","totalmarinearea":23627,"PAmarinecover":23.1,"year":2023},{"iso3c":"GMB","country":"Gambia, The","region":"Sub-Saharan Africa","totalmarinearea":23112,"PAmarinecover":0.6,"year":2023},{"iso3c":"GEO","country":"Georgia","region":"Europe & Central Asia","totalmarinearea":21946,"PAmarinecover":0.7,"year":2023},{"iso3c":"LBN","country":"Lebanon","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":19516,"PAmarinecover":0.2,"year":2023},{"iso3c":"CMR","country":"Cameroon","region":"Sub-Saharan Africa","totalmarinearea":16547,"PAmarinecover":10.9,"year":2023},{"iso3c":"LCA","country":"St. Lucia","region":"Latin America & Caribbean","totalmarinearea":15617,"PAmarinecover":0.2,"year":2023},{"iso3c":"ALB","country":"Albania","region":"Europe & Central Asia","totalmarinearea":13691,"PAmarinecover":2.8,"year":2023},{"iso3c":"TGO","country":"Togo","region":"Sub-Saharan Africa","totalmarinearea":12045,"PAmarinecover":0.2,"year":2023},{"iso3c":"KWT","country":"Kuwait","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":11026,"PAmarinecover":3.2,"year":2023},{"iso3c":"SYR","country":"Syrian Arab Republic","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":10503,"PAmarinecover":0.2,"year":2023},{"iso3c":"BHR","country":"Bahrain","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":10225,"PAmarinecover":21.1,"year":2023},{"iso3c":"BRN","country":"Brunei Darussalam","region":"East Asia & Pacific","totalmarinearea":10090,"PAmarinecover":0.2,"year":2023},{"iso3c":"KNA","country":"St. Kitts and Nevis","region":"Latin America & Caribbean","totalmarinearea":9974,"PAmarinecover":4,"year":2023},{"iso3c":"MNE","country":"Montenegro","region":"Europe & Central Asia","totalmarinearea":7745,"PAmarinecover":0.6,"year":2023},{"iso3c":"DJI","country":"Djibouti","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":7459,"PAmarinecover":0.2,"year":2023},{"iso3c":"LTU","country":"Lithuania","region":"Europe & Central Asia","totalmarinearea":7031,"PAmarinecover":25.6,"year":2023},{"iso3c":"BEL","country":"Belgium","region":"Europe & Central Asia","totalmarinearea":3447,"PAmarinecover":38.1,"year":2023},{"iso3c":"COD","country":"Congo, Dem. Rep.","region":"Sub-Saharan Africa","totalmarinearea":1606,"PAmarinecover":0.2,"year":2023},{"iso3c":"SGP","country":"Singapore","region":"East Asia & Pacific","totalmarinearea":1067,"PAmarinecover":0,"year":2023},{"iso3c":"IRQ","country":"Iraq","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":771,"PAmarinecover":0,"year":2023},{"iso3c":"MCO","country":"Monaco","region":"Europe & Central Asia","totalmarinearea":288,"PAmarinecover":99.7,"year":2023},{"iso3c":"PSE","country":"West Bank and Gaza","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":256,"PAmarinecover":0,"year":2023},{"iso3c":"SVN","country":"Slovenia","region":"Europe & Central Asia","totalmarinearea":220,"PAmarinecover":2.3,"year":2023},{"iso3c":"JOR","country":"Jordan","region":"Middle East, North Africa, Afghanistan & Pakistan","totalmarinearea":166,"PAmarinecover":1,"year":2023},{"iso3c":"BIH","country":"Bosnia and Herzegovina","region":"Europe & Central Asia","totalmarinearea":50,"PAmarinecover":0,"year":2023}];
+
+    Revisit.onDataReceive(() => {
+      const countries = DATA.filter((d) => d.iso3c !== "ABNJ");
+      const abnj = DATA.find((d) => d.iso3c === "ABNJ");
+
+      const width = 820, height = 460;
+      const margins = { top: 30, right: 50, bottom: 50, left: 60 };
+      const innerW = width - margins.left - margins.right;
+      const innerH = height - margins.top - margins.bottom;
+
+      const xScale = d3.scaleLog().domain([10, 100000000]).range([0, innerW]);
+      const xTicks = [10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000];
+      const yScale = d3.scaleLinear().domain([0, 100]).range([innerH, 0]);
+      const yTicks = [0, 10, 25, 50, 75, 100];
+
+      const regions = [
+        "Sub-Saharan Africa", "East Asia & Pacific", "Europe & Central Asia",
+        "Middle East, North Africa, Afghanistan & Pakistan", "Latin America & Caribbean",
+        "South Asia", "North America",
+      ];
+      const colorScale = d3.scaleOrdinal(regions, d3.schemeTableau10);
+
+      const svg = d3.select("#scatter").attr("width", width).attr("height", height);
+
+      svg.append("text")
+        .attr("x", margins.left).attr("y", 18)
+        .style("font-size", "15px").style("font-weight", "bold")
+        .text("Marine protected areas by country");
+
+      // ── Legend ──────────────────────────────────────────────────────
+      const legend = svg.append("g").attr("transform", `translate(${margins.left}, 26)`);
+      let legendX = 0, legendRow = 0;
+      regions.forEach((r) => {
+        const itemW = r.length * 6.2 + 26;
+        if (legendX + itemW > innerW && legendX > 0) { legendX = 0; legendRow += 1; }
+        const g = legend.append("g").attr("transform", `translate(${legendX}, ${legendRow * 16})`);
+        g.append("rect").attr("width", 10).attr("height", 10).attr("rx", 2).attr("fill", colorScale(r));
+        g.append("text").attr("x", 14).attr("y", 9).style("font-size", "10px").text(r);
+        legendX += itemW;
+      });
+      const legendRows = 2;
+
+      const chartTop = margins.top + 26 + legendRows * 16;
+      const g = svg.append("g").attr("transform", `translate(${margins.left},${chartTop})`);
+      const chartInnerH = height - chartTop - margins.bottom;
+      yScale.range([chartInnerH, 0]);
+
+      // Axes
+      g.append("g")
+        .attr("transform", `translate(0,${chartInnerH})`)
+        .call(d3.axisBottom(xScale).tickValues(xTicks).tickFormat(d3.format("~s")));
+      g.append("g").call(d3.axisLeft(yScale).tickValues(yTicks).tickFormat((d) => d + "%"));
+
+      g.append("text")
+        .attr("x", innerW / 2).attr("y", chartInnerH + 38)
+        .attr("text-anchor", "middle").style("font-size", "11px")
+        .text("Total marine area (logarithmic scale)");
+      g.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -chartInnerH / 2).attr("y", -45)
+        .attr("text-anchor", "middle").style("font-size", "11px")
+        .text("Percentage of total marine area covered by MPAs");
+
+      // Reference line at 0% (baseline)
+      g.append("line")
+        .attr("x1", 0).attr("x2", innerW)
+        .attr("y1", yScale(0)).attr("y2", yScale(0))
+        .attr("stroke", "black").attr("stroke-width", 1.5);
+
+      const radius = 5;
+      const tooltip = d3.select("#mpa-tooltip");
+
+      function showTooltip(evt, d) {
+        tooltip
+          .style("display", "block")
+          .style("left", evt.clientX + 14 + "px")
+          .style("top", evt.clientY + 10 + "px")
+          .html(
+            "<strong>" + d.country + "</strong><br>" +
+            d3.format(",.0f")(d.totalmarinearea) + " km² total marine area<br>" +
+            d3.format(",.1f")(d.PAmarinecover) + "% protected"
+          );
+      }
+      function hideTooltip() {
+        tooltip.style("display", "none");
+      }
+
+      g.selectAll("circle.dot")
+        .data(countries)
+        .join("circle")
+        .attr("class", "dot")
+        .attr("cx", (d) => xScale(d.totalmarinearea))
+        .attr("cy", (d) => yScale(d.PAmarinecover))
+        .attr("r", radius)
+        .attr("fill", (d) => colorScale(d.region))
+        .on("mouseover", (evt, d) => { showTooltip(evt, d); highlightHover(d); })
+        .on("mousemove", (evt, d) => showTooltip(evt, d))
+        .on("mouseout", (evt, d) => { hideTooltip(); highlightHover(null); });
+
+      // ABNJ special point + label
+      if (abnj) {
+        g.append("circle")
+          .attr("class", "dot")
+          .attr("cx", xScale(abnj.totalmarinearea))
+          .attr("cy", yScale(abnj.PAmarinecover))
+          .attr("r", radius)
+          .attr("fill", "#888")
+          .on("mouseover", (evt) => { showTooltip(evt, abnj); })
+          .on("mousemove", (evt) => showTooltip(evt, abnj))
+          .on("mouseout", hideTooltip);
+        g.append("text")
+          .attr("x", xScale(abnj.totalmarinearea) - 8)
+          .attr("y", yScale(abnj.PAmarinecover) + 4)
+          .attr("text-anchor", "end")
+          .style("font-size", "10px").style("font-style", "italic")
+          .text("Areas beyond national jurisdiction");
+      }
+
+      const hoverRing = g.append("circle").attr("class", "dot-outline").attr("r", radius + 3).style("display", "none");
+      function highlightHover(d) {
+        if (!d) { hoverRing.style("display", "none"); return; }
+        hoverRing
+          .attr("cx", xScale(d.totalmarinearea)).attr("cy", yScale(d.PAmarinecover))
+          .style("display", null);
+      }
+
+      // ── Search bar / country picker ────────────────────────────────
+      const datalist = document.getElementById("countryList");
+      countries
+        .slice()
+        .sort((a, b) => a.country.localeCompare(b.country))
+        .forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d.country;
+          datalist.appendChild(opt);
+        });
+
+      const searchRing = g.append("circle").attr("class", "dot-outline").style("display", "none");
+      const searchLabel = g.append("text").attr("class", "country-label").style("display", "none");
+
+      function selectCountry(name) {
+        const match = countries.find((d) => d.country.toLowerCase() === name.toLowerCase());
+        if (!match) {
+          searchRing.style("display", "none");
+          searchLabel.style("display", "none");
+          return;
+        }
+        const cx = xScale(match.totalmarinearea), cy = yScale(match.PAmarinecover);
+        searchRing.attr("cx", cx).attr("cy", cy).attr("r", radius + 3).style("display", null);
+        searchLabel.attr("x", cx + 10).attr("y", cy + 4).text(match.country).style("display", null);
+      }
+
+      document.getElementById("countrySearch").addEventListener("input", (evt) => {
+        selectCountry(evt.target.value);
+      });
+    });
+  </script>
+</html>
