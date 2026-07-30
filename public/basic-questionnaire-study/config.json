@@ -142,6 +142,24 @@
             }
             ]
         },
+        "gapminderFertilityPuzzle": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.json",
+            "response": [
+            {
+                "id": "puzzle-8",
+                "type": "radio",
+                "prompt": "Which country had the highest fertility in 1995?",
+                "options": [
+                    "Nigeria",
+                    "Japan",
+                    "Afghanistan",
+                    "Rwanda",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
         "first-question-set": {
             "type": "questionnaire",
             "response": [
@@ -190,7 +208,8 @@
             "tuberculosisPuzzle",
             "marineProtectedAreasPuzzle",
             "movieRatingsPuzzle",
-            "gapminderPuzzle"
+            "gapminderPuzzle",
+            "gapminderFertilityPuzzle"
         ]
     }
 }
