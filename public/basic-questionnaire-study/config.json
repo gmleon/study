@@ -160,6 +160,24 @@
             }
             ]
         },
+        "unemploymentPuzzle": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/unemploymentByCountry.json",
+            "response": [
+            {
+                "id": "puzzle-21",
+                "type": "radio",
+                "prompt": "In which country is the unemployment rate the highest?",
+                "options": [
+                    "Romania",
+                    "Slovak Republic",
+                    "Hungary",
+                    "Spain",
+                    "I don't know"
+                ]
+            }
+            ]
+        },
         "first-question-set": {
             "type": "questionnaire",
             "response": [
@@ -208,7 +226,8 @@
             "marineProtectedAreasPuzzle",
             "movieRatingsPuzzle",
             "gapminderPuzzle",
-            "gapminderFertilityPuzzle"
+            "gapminderFertilityPuzzle",
+            "unemploymentPuzzle"
         ]
     }
 }
