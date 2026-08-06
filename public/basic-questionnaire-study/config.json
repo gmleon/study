@@ -1,17 +1,18 @@
 {
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
-        "title": "Basic Questionnaire Study",
-        "version": "pilot",
+        "title": "Interactive Data Visualizations",
+        "version": "1.0.1",
         "authors": [
-            "The reVISit Team",
-            "You :)"
+            "The IVL Team"
         ],
-        "date": "2026-02-23",
+        "date": "2026-08-12",
         "description": "A simple questionnaire study",
         "organizations": [
-            "University of Utah",
-            "WPI"
+            "Aarhus University",
+            "Inria Bordeaux",
+            "University of Bremen",
+            "TU Dresden"
         ]
     },
     "uiConfig": {
@@ -20,7 +21,7 @@
         "logoPath": "revisitAssets/revisitLogoSquare.svg",
         "withProgressBar": true,
         "autoDownloadStudy": false,
-        "withSidebar": false
+        "withSidebar": true
     },
     "components": {
         "introduction": {
@@ -54,25 +55,28 @@
                 "id": "puzzle-1",
                 "type": "radio",
                 "prompt": "Is the life expectancy of Mexico higher than the life expectancy of Brazil?",
-                "options": ["True", "False", "I don't know"]
+                "options": ["True", "False", "Skip"]
             }
             ]         
         },
-        "lineComparison": {
+        "line-comparison": {
             "description": "Interacting with a line chart",
-            "instruction": "Interact with the visualization(s) to answer the question.",
+            "instruction": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
+            "instructionLocation": "sidebar",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/animalWelfareExplorer.json",
             "enumerateQuestions": true,
             "response": [
             {
-                "id": "puzzle-2",
+                "id": "res-line-comparison",
                 "type": "radio",
-                "prompt": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
-                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "Skip"]
             },
             {
-                "id": "ilLC",
+                "id": "il-line-comparison",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
@@ -85,6 +89,107 @@
                 ]
             }
             ]         
+        },
+        "bar-extremum": {
+            "instruction": "In which country is the unemployment rate the highest?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/unemploymentByCountry.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-bar-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Romania",
+                    "Slovak Republic",
+                    "Hungary",
+                    "Spain",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "il-bar-extremum",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "bar-comparison": {
+            "instruction": "Which statement is true?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/lifeExpectancyBarChart.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-bar-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The life expectancy of Egypt is higher than the life expectancy of Mexico",
+                    "The life expectancy of Mexico is higher than the life expectancy of Brazil", 
+                    "The life expectancy of China is lower than the life expectancy of Mexico",
+                    "The life expectancy of Norway and the life expectancy of Brazil have the same value",
+                    "Skip"]
+            },
+            {
+                "id": "il-bar-comparison",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedbar-value": {
+            "instruction": "How many female olympians are there in the weight category 68-70?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/olympiansWeightExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedbar-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["102", "259", "282", "306", "Skip"]
+            },
+            {
+                "id": "il-stackedbar-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
         },
         "tuberculosisPuzzle": {
             "type": "website",
@@ -100,7 +205,7 @@
                     "The cases decreased once and then increased",
                     "The cases increased each year",
                     "The cases increased once and then decreased",
-                    "I don't know"
+                    "Skip"
                 ]
             },
             {
@@ -132,7 +237,7 @@
                     "Brazil",
                     "Singapore",
                     "Jordan",
-                    "I don't know"
+                    "Skip"
                 ]
             },
             {
@@ -164,7 +269,7 @@
                     "New movies have high ratings",
                     "Old movies have low Rotten Tomatoes ratings",
                     "There is no relation between year and moving ratings",
-                    "I don't know"
+                    "Skip"
                 ]
             },
             {
@@ -196,7 +301,7 @@
                     "Its life expectancy decreases",
                     "Its life expectancy remains the same",
                     "Its fertility increases",
-                    "I don't know"
+                    "Skip"
                 ]
             },
             {
@@ -228,74 +333,11 @@
                     "Japan",
                     "Afghanistan",
                     "Rwanda",
-                    "I don't know"
+                    "Skip"
                 ]
             },
             {
                 "id": "ilSE",
-                "prompt": "You think this puzzle encourages someone to...",
-                "type": "matrix-radio",
-                "answerOptions": "likely5",
-                "withDontKnow": true,
-                "questionOptions": [
-                    "...know about the interaction techniques required to solve the task",
-                    "...interact with the visualization",
-                    "...combine the appropriate interaction techniques",
-                    "...use the interaction techniques in a purposeful way"
-                ]
-            }
-            ]
-        },
-        "barExtremum": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/unemploymentByCountry.json",
-            "enumerateQuestions": true,
-            "response": [
-            {
-                "id": "puzzle-21",
-                "type": "radio",
-                "prompt": "In which country is the unemployment rate the highest?",
-                "options": [
-                    "Romania",
-                    "Slovak Republic",
-                    "Hungary",
-                    "Spain",
-                    "I don't know"
-                ]
-            },
-            {
-                "id": "ilBE",
-                "prompt": "You think this puzzle encourages someone to...",
-                "type": "matrix-radio",
-                "answerOptions": "likely5",
-                "withDontKnow": true,
-                "questionOptions": [
-                    "...know about the interaction techniques required to solve the task",
-                    "...interact with the visualization",
-                    "...combine the appropriate interaction techniques",
-                    "...use the interaction techniques in a purposeful way"
-                ]
-            }
-            ]
-        },
-        "barComparison": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/lifeExpectancyBarChart.json",
-            "enumerateQuestions": true,
-            "response": [
-            {
-                "id": "puzzle-22",
-                "type": "radio",
-                "prompt": "Which statement is true?",
-                "options": [
-                    "The life expectancy of Egypt is higher than the life expectancy of Mexico",
-                    "The life expectancy of Mexico is higher than the life expectancy of Brazil", 
-                    "The life expectancy of China is lower than the life expectancy of Mexico",
-                    "The life expectancy of Norway and the life expectancy of Brazil have the same value",
-                "I don't know"]
-            },
-            {
-                "id": "ilBC",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
@@ -323,7 +365,7 @@
                     "The IMDB critics liked Beauty and the Beast but the Rotten Tomatoes critics did not like it",  
                     "The Rotten Tomatoes critics and the IMDB critics liked Beauty and the Beast", 
                     "The Rotten Tomatoes critics and the IMDB critics disliked Beauty and the Beast", 
-                    "I don't know"]
+                    "Skip"]
             },
             {
                 "id": "ilSV",
@@ -349,7 +391,7 @@
                 "id": "puzzle-24",
                 "type": "radio",
                 "prompt": "What was the ratio of electricity produced by Oil to electricity produced by Wind in 2024 in Africa?",
-                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "Skip"]
             },
             {
                 "id": "ilSAC",
@@ -375,36 +417,10 @@
                 "id": "puzzle-25",
                 "type": "radio",
                 "prompt": "What was the number of Terawatt-hours produced by solar energy in 2020 in South America?",
-                "options": ["21.5", "24.1", "58.5", "79.5", "I don't know"]
+                "options": ["21.5", "24.1", "58.5", "79.5", "Skip"]
             },
             {
                 "id": "ilSAV",
-                "prompt": "You think this puzzle encourages someone to...",
-                "type": "matrix-radio",
-                "answerOptions": "likely5",
-                "withDontKnow": true,
-                "questionOptions": [
-                    "...know about the interaction techniques required to solve the task",
-                    "...interact with the visualization",
-                    "...combine the appropriate interaction techniques",
-                    "...use the interaction techniques in a purposeful way"
-                ]
-            }
-            ]
-        },
-        "stackedbarValue": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/olympiansWeightExplorer.json",
-            "enumerateQuestions": true,
-            "response": [
-            {
-                "id": "puzzle-26",
-                "type": "radio",
-                "prompt": "How many female olympians are there in the weight category 68-70?",
-                "options": ["102", "259", "282", "306", "I don't know"]
-            },
-            {
-                "id": "ilSBV",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
@@ -461,9 +477,9 @@
         "components": [
             "introduction",
             "consent",
-            "lineComparison",
-            "barExtremum",
-            "barComparison",
+            "line-comparison",
+            "bar-extremum",
+            "bar-comparison",
             "stackedbarValue",
             "scatterplotValue",
             "scatterplotExtremum",
