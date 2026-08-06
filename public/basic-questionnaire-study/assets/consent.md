@@ -26,7 +26,7 @@ Your participation in this study is voluntary. You may choose to stop participat
 
 ## Contact Information
 
-If you have any questions about this study, please contact the researchers at ...
+If you have any questions about this study, please contact the researchers at leon@cs.au.dk
 
 ---
 
