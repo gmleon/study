@@ -20,7 +20,7 @@
         "logoPath": "revisitAssets/revisitLogoSquare.svg",
         "withProgressBar": true,
         "autoDownloadStudy": false,
-        "withSidebar": true
+        "withSidebar": false
     },
     "components": {
         "introduction": {
@@ -30,7 +30,7 @@
         },
         "consent": {
             "type": "markdown",
-            "path": "tutorial/assets/consent.md",
+            "path": "basic-questionnaire-study/assets/consent.md",
             "nextButtonText": "I agree",
             "response": []
         },
@@ -58,21 +58,38 @@
             }
             ]         
         },
-        "vegaPuzzle2": {
+        "lineComparison": {
+            "description": "Interacting with a line chart",
+            "instruction": "Interact with the visualization(s) to answer the question.",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/animalWelfareExplorer.json",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-2",
                 "type": "radio",
                 "prompt": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
                 "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
+            },
+            {
+                "id": "ilLC",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]         
         },
         "tuberculosisPuzzle": {
             "type": "website",
             "path": "basic-questionnaire-study/assets/tuberculosisExplorer.html",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-3",
@@ -85,12 +102,26 @@
                     "The cases increased once and then decreased",
                     "I don't know"
                 ]
+            },
+            {
+                "id": "ilTP",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]
         },
-        "marineProtectedAreasPuzzle": {
+        "scatterplotComparison": {
             "type": "website",
             "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-4",
@@ -103,12 +134,26 @@
                     "Jordan",
                     "I don't know"
                 ]
+            },
+            {
+                "id": "ilSC",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]
         },
         "movieRatingsPuzzle": {
             "type": "vega",
             "path": "basic-questionnaire-study/assets/movieRatingsExplorer.json",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-5",
@@ -121,12 +166,26 @@
                     "There is no relation between year and moving ratings",
                     "I don't know"
                 ]
+            },
+            {
+                "id": "ilMovies",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]
         },
-        "gapminderPuzzle": {
+        "scatterplotTrend": {
             "type": "vega",
             "path": "basic-questionnaire-study/assets/gapminderExplorer.json",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-6",
@@ -139,12 +198,26 @@
                     "Its fertility increases",
                     "I don't know"
                 ]
+            },
+            {
+                "id": "ilST",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]
         },
-        "gapminderFertilityPuzzle": {
+        "scatterplotExtremum": {
             "type": "vega",
             "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.json",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-8",
@@ -157,12 +230,26 @@
                     "Rwanda",
                     "I don't know"
                 ]
+            },
+            {
+                "id": "ilSE",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]
         },
-        "unemploymentPuzzle": {
+        "barExtremum": {
             "type": "vega",
             "path": "basic-questionnaire-study/assets/unemploymentByCountry.json",
+            "enumerateQuestions": true,
             "response": [
             {
                 "id": "puzzle-21",
@@ -174,6 +261,159 @@
                     "Hungary",
                     "Spain",
                     "I don't know"
+                ]
+            },
+            {
+                "id": "ilBE",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "barComparison": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/lifeExpectancyBarChart.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "puzzle-22",
+                "type": "radio",
+                "prompt": "Which statement is true?",
+                "options": [
+                    "The life expectancy of Egypt is higher than the life expectancy of Mexico",
+                    "The life expectancy of Mexico is higher than the life expectancy of Brazil", 
+                    "The life expectancy of China is lower than the life expectancy of Mexico",
+                    "The life expectancy of Norway and the life expectancy of Brazil have the same value",
+                "I don't know"]
+            },
+            {
+                "id": "ilBC",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "scatterplotValue": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/movieOutliersExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "puzzle-23",
+                "type": "radio",
+                "prompt": "Which statement is true?",
+                "options": [
+                    "The Rotten Tomatoes critics liked Beauty and the Beast but the IMDB critics did not like it",
+                    "The IMDB critics liked Beauty and the Beast but the Rotten Tomatoes critics did not like it",  
+                    "The Rotten Tomatoes critics and the IMDB critics liked Beauty and the Beast", 
+                    "The Rotten Tomatoes critics and the IMDB critics disliked Beauty and the Beast", 
+                    "I don't know"]
+            },
+            {
+                "id": "ilSV",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedareaComparison": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/electricityBySourceExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "puzzle-24",
+                "type": "radio",
+                "prompt": "What was the ratio of electricity produced by Oil to electricity produced by Wind in 2024 in Africa?",
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
+            },
+            {
+                "id": "ilSAC",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedareaValue": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/electricityBySource2014Explorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "puzzle-25",
+                "type": "radio",
+                "prompt": "What was the number of Terawatt-hours produced by solar energy in 2020 in South America?",
+                "options": ["21.5", "24.1", "58.5", "79.5", "I don't know"]
+            },
+            {
+                "id": "ilSAV",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedbarValue": {
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/olympiansWeightExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "puzzle-26",
+                "type": "radio",
+                "prompt": "How many female olympians are there in the weight category 68-70?",
+                "options": ["102", "259", "282", "306", "I don't know"]
+            },
+            {
+                "id": "ilSBV",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
                 ]
             }
             ]
@@ -221,13 +461,17 @@
         "components": [
             "introduction",
             "consent",
-            "vegaPuzzle2",
-            "tuberculosisPuzzle",
-            "marineProtectedAreasPuzzle",
-            "movieRatingsPuzzle",
-            "gapminderPuzzle",
-            "gapminderFertilityPuzzle",
-            "unemploymentPuzzle"
+            "lineComparison",
+            "barExtremum",
+            "barComparison",
+            "stackedbarValue",
+            "scatterplotValue",
+            "scatterplotExtremum",
+            "scatterplotTrend",
+            "scatterplotComparison",
+            "stackedareaValue",
+            "stackedareaComparison",
+            "movieRatingsPuzzle"
         ]
     }
 }
