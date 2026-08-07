@@ -1,17 +1,18 @@
 {
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
-        "title": "Basic Questionnaire Study",
-        "version": "pilot",
+        "title": "Interactive Data Visualizations",
+        "version": "1.0.1",
         "authors": [
-            "The reVISit Team",
-            "You :)"
+            "The IVL Team"
         ],
-        "date": "2026-02-23",
+        "date": "2026-08-12",
         "description": "A simple questionnaire study",
         "organizations": [
-            "University of Utah",
-            "WPI"
+            "Aarhus University",
+            "Inria Bordeaux",
+            "University of Bremen",
+            "TU Dresden"
         ]
     },
     "uiConfig": {
@@ -30,7 +31,7 @@
         },
         "consent": {
             "type": "markdown",
-            "path": "tutorial/assets/consent.md",
+            "path": "basic-questionnaire-study/assets/consent.md",
             "nextButtonText": "I agree",
             "response": []
         },
@@ -54,126 +55,461 @@
                 "id": "puzzle-1",
                 "type": "radio",
                 "prompt": "Is the life expectancy of Mexico higher than the life expectancy of Brazil?",
-                "options": ["True", "False", "I don't know"]
+                "options": ["True", "False", "Skip"]
             }
             ]         
         },
-        "vegaPuzzle2": {
+        "line-comparison": {
+            "description": "Interacting with a line chart",
+            "instruction": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
+            "instructionLocation": "sidebar",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/animalWelfareExplorer.json",
+            "enumerateQuestions": true,
             "response": [
             {
-                "id": "puzzle-2",
+                "id": "res-line-comparison",
                 "type": "radio",
-                "prompt": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
-                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "I don't know"]
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "Skip"]
+            },
+            {
+                "id": "divider-line-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "il-line-comparison",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
             }
             ]         
         },
-        "tuberculosisPuzzle": {
-            "type": "website",
-            "path": "basic-questionnaire-study/assets/tuberculosisExplorer.html",
-            "response": [
-            {
-                "id": "puzzle-3",
-                "type": "radio",
-                "prompt": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
-                "options": [
-                    "The cases decreased each year",
-                    "The cases decreased once and then increased",
-                    "The cases increased each year",
-                    "The cases increased once and then decreased",
-                    "I don't know"
-                ]
-            }
-            ]
-        },
-        "marineProtectedAreasPuzzle": {
-            "type": "website",
-            "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
-            "response": [
-            {
-                "id": "puzzle-4",
-                "type": "radio",
-                "prompt": "Which of these countries protects the highest percentage of its national waters?",
-                "options": [
-                    "Greenland",
-                    "Brazil",
-                    "Singapore",
-                    "Jordan",
-                    "I don't know"
-                ]
-            }
-            ]
-        },
-        "movieRatingsPuzzle": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/movieRatingsExplorer.json",
-            "response": [
-            {
-                "id": "puzzle-5",
-                "type": "radio",
-                "prompt": "How do the movie ratings and the movie year relate?",
-                "options": [
-                    "Old movies have high ratings",
-                    "New movies have high ratings",
-                    "Old movies have low Rotten Tomatoes ratings",
-                    "There is no relation between year and moving ratings",
-                    "I don't know"
-                ]
-            }
-            ]
-        },
-        "gapminderPuzzle": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/gapminderExplorer.json",
-            "response": [
-            {
-                "id": "puzzle-6",
-                "type": "radio",
-                "prompt": "How does the orange cluster change over time?",
-                "options": [
-                    "Its life expectancy increases",
-                    "Its life expectancy decreases",
-                    "Its life expectancy remains the same",
-                    "Its fertility increases",
-                    "I don't know"
-                ]
-            }
-            ]
-        },
-        "gapminderFertilityPuzzle": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.json",
-            "response": [
-            {
-                "id": "puzzle-8",
-                "type": "radio",
-                "prompt": "Which country had the highest fertility in 1995?",
-                "options": [
-                    "Nigeria",
-                    "Japan",
-                    "Afghanistan",
-                    "Rwanda",
-                    "I don't know"
-                ]
-            }
-            ]
-        },
-        "unemploymentPuzzle": {
+        "bar-extremum": {
+            "instruction": "In which country is the unemployment rate the highest?",
+            "instructionLocation": "sidebar",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/unemploymentByCountry.json",
+            "enumerateQuestions": true,
             "response": [
             {
-                "id": "puzzle-21",
+                "id": "res-bar-extremum",
                 "type": "radio",
-                "prompt": "In which country is the unemployment rate the highest?",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
                 "options": [
                     "Romania",
                     "Slovak Republic",
                     "Hungary",
                     "Spain",
-                    "I don't know"
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-bar-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "il-bar-extremum",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "bar-comparison": {
+            "instruction": "Which statement is true?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/lifeExpectancyBarChart.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-bar-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The life expectancy of Egypt is higher than the life expectancy of Mexico",
+                    "The life expectancy of Mexico is higher than the life expectancy of Brazil", 
+                    "The life expectancy of China is lower than the life expectancy of Mexico",
+                    "The life expectancy of Norway and the life expectancy of Brazil have the same value",
+                    "Skip"]
+            },
+            {
+                "id": "divider-bar-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "il-bar-comparison",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedbar-value": {
+            "instruction": "How many female olympians are there in the weight category 68-70?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/olympiansWeightExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedbar-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["102", "259", "282", "306", "Skip"]
+            },
+            {
+                "id": "divider-stackedbar-value",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedbar-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "scatterplot-value": {
+            "instruction": "Which statement is true?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/movieOutliersExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-scatterplot-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The Rotten Tomatoes critics liked Beauty and the Beast but the IMDB critics did not like it",
+                    "The IMDB critics liked Beauty and the Beast but the Rotten Tomatoes critics did not like it",  
+                    "The Rotten Tomatoes critics and the IMDB critics liked Beauty and the Beast", 
+                    "The Rotten Tomatoes critics and the IMDB critics disliked Beauty and the Beast", 
+                    "Skip"]
+            },
+            {
+                "id": "divider-scatterplot-value",
+                "type": "divider"
+            },
+            {
+                "id": "il-scatterplot-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "scatterplot-extremum": {
+            "instruction": "Which country had the highest fertility in 1995?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-scatterplot-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Nigeria",
+                    "Japan",
+                    "Afghanistan",
+                    "Rwanda",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-scatterplot-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "il-scatterplot-extremum",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "scatterplot-trend": {
+            "instruction": "How does the orange cluster change over time?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/gapminderExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-scatterplot-trend",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Its life expectancy increases",
+                    "Its life expectancy decreases",
+                    "Its life expectancy remains the same",
+                    "Its fertility increases",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-scatterplot-trend",
+                "type": "divider"
+            },
+            {
+                "id": "il-scatterplot-trend",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "scatterplot-comparison": {
+            "instruction": "Which of these countries protects the highest percentage of its national waters?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-scatterplot-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Greenland",
+                    "Brazil",
+                    "Singapore",
+                    "Jordan",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-scatterplot-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "il-scatterplot-comparison",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedarea-value": {
+            "instruction": "What was the number of Terawatt-hours produced by solar energy in 2020 in South America?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/electricityBySource2014Explorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedarea-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["21.5", "24.1", "58.5", "79.5", "Skip"]
+            },
+            {
+                "id": "divider-stackedarea-value",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedarea-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedarea-comparison": {
+            "instruction": "What was the ratio of electricity produced by Oil to electricity produced by Wind in 2024 in Africa?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/electricityBySourceExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedarea-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "Skip"]
+            },
+            {
+                "id": "divider-stackedarea-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedarea-comparison",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "movieRatingsPuzzle": {
+            "instruction": "How do the movie ratings and the movie year relate?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/movieRatingsExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-movieRatingsPuzzle",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Old movies have high ratings",
+                    "New movies have high ratings",
+                    "Old movies have low Rotten Tomatoes ratings",
+                    "There is no relation between year and moving ratings",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-movieRatingsPuzzle",
+                "type": "divider"
+            },
+            {
+                "id": "il-movieRatingsPuzzle",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "tuberculosisPuzzle": {
+            "instruction": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/tuberculosisExplorer.html",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-tuberculosisPuzzle",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The cases decreased each year",
+                    "The cases decreased once and then increased",
+                    "The cases increased each year",
+                    "The cases increased once and then decreased",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-tuberculosisPuzzle",
+                "type": "divider"
+            },
+            {
+                "id": "il-tuberculosisPuzzle",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
                 ]
             }
             ]
@@ -221,13 +557,17 @@
         "components": [
             "introduction",
             "consent",
-            "vegaPuzzle2",
-            "tuberculosisPuzzle",
-            "marineProtectedAreasPuzzle",
-            "movieRatingsPuzzle",
-            "gapminderPuzzle",
-            "gapminderFertilityPuzzle",
-            "unemploymentPuzzle"
+            "line-comparison",
+            "bar-extremum",
+            "bar-comparison",
+            "stackedbar-value",
+            "scatterplot-value",
+            "scatterplot-extremum",
+            "scatterplot-trend",
+            "scatterplot-comparison",
+            "stackedarea-value",
+            "stackedarea-comparison",
+            "movieRatingsPuzzle"
         ]
     }
 }
