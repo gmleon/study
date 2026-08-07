@@ -401,7 +401,7 @@
             ]
         },
         "stackedarea-value": {
-            "instruction": "What was the number of Terawatt-hours produced by solar energy in 2020 in South America?",
+            "instruction": "What was the number of Terawatt-hours produced by solar energy in 2020?",
             "instructionLocation": "sidebar",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/electricityBySource2014Explorer.json",
@@ -468,7 +468,7 @@
             }
             ]
         },
-        "movieRatingsPuzzle": {
+        "scatterplot-trend-2": {
             "instruction": "How do the movie ratings and the movie year relate?",
             "instructionLocation": "sidebar",
             "type": "vega",
@@ -476,7 +476,7 @@
             "enumerateQuestions": true,
             "response": [
             {
-                "id": "res-movieRatingsPuzzle",
+                "id": "res-scatterplot-trend-2",
                 "type": "radio",
                 "prompt": "Your answer",
                 "required": true,
@@ -490,11 +490,11 @@
                 ]
             },
             {
-                "id": "divider-movieRatingsPuzzle",
+                "id": "divider-scatterplot-trend-2",
                 "type": "divider"
             },
             {
-                "id": "il-movieRatingsPuzzle",
+                "id": "il-scatterplot-trend-2",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
@@ -535,6 +535,46 @@
             },
             {
                 "id": "il-tuberculosisPuzzle",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "line-extremum": {
+            "instruction": "On what day was the lowest temperature?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/temperatureRecordExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-line-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "January 1, 1575",
+                    "January 1, 1579",
+                    "January 1, 1580",
+                    "January 1, 1590",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-line-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "il-line-extremum",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
@@ -592,6 +632,7 @@
             "introduction",
             "consent",
             "line-value",
+            "line-extremum",
             "line-comparison",
             "bar-extremum",
             "bar-comparison",
@@ -599,13 +640,10 @@
             "scatterplot-value",
             "scatterplot-extremum",
             "scatterplot-trend",
+            "scatterplot-trend-2",
             "scatterplot-comparison",
             "stackedarea-value",
-            "stackedarea-comparison",
-            "movieRatingsPuzzle",
-            "tuberculosisPuzzle",
-            "first-question-set",
-            "second-question-set"
+            "stackedarea-comparison"
         ]
     }
 }
