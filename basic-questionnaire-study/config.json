@@ -59,6 +59,40 @@
             }
             ]         
         },
+        "line-value": {
+            "instruction": "What was the tuberculosis case detection rate in South Asia in 2018?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/tuberculosisDetectionExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-line-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["55%", "63%", "74%", "78%", "Skip"]
+            },
+            {
+                "id": "divider-line-value",
+                "type": "divider"
+            },
+            {
+                "id": "il-line-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
         "line-comparison": {
             "description": "Interacting with a line chart",
             "instruction": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
@@ -557,6 +591,7 @@
         "components": [
             "introduction",
             "consent",
+            "line-value",
             "line-comparison",
             "bar-extremum",
             "bar-comparison",
@@ -567,7 +602,10 @@
             "scatterplot-comparison",
             "stackedarea-value",
             "stackedarea-comparison",
-            "movieRatingsPuzzle"
+            "movieRatingsPuzzle",
+            "tuberculosisPuzzle",
+            "first-question-set",
+            "second-question-set"
         ]
     }
 }
