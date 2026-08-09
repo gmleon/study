@@ -400,6 +400,46 @@
             }
             ]
         },
+        "area-trend": {
+            "instruction": "What is the trend of the stock price in the first 2 months of 2008?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/stockFocusContextExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-area-trend",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Increasing",
+                    "Decreasing",
+                    "Constant",
+                    "Increasing, then decreasing",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-area-trend",
+                "type": "divider"
+            },
+            {
+                "id": "il-area-trend",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
         "stackedarea-value": {
             "instruction": "What was the number of Terawatt-hours produced by solar energy in 2020?",
             "instructionLocation": "sidebar",
@@ -421,6 +461,46 @@
             },
             {
                 "id": "il-stackedarea-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
+        "stackedarea-trend": {
+            "instruction": "What is the trend of chemical exports to Africa from 2013 to 2020?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/franceExportsExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedarea-trend",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "Increasing",
+                    "Decreasing",
+                    "Constant",
+                    "Decreasing, then increasing",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-stackedarea-trend",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedarea-trend",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
@@ -642,7 +722,9 @@
             "scatterplot-trend",
             "scatterplot-trend-2",
             "scatterplot-comparison",
+            "area-trend",
             "stackedarea-value",
+            "stackedarea-trend",
             "stackedarea-comparison"
         ]
     }
