@@ -819,58 +819,61 @@
             }
             ]
         },
-        "first-question-set": {
+        "demographics": {
             "type": "questionnaire",
             "response": [
                 {
-                    "id": "q2-gender",
-                    "prompt": "What is your gender?",
+                    "id": "q1-gender",
+                    "prompt": "Which gender do you identify with?",
                     "required": true,
                     "location": "aboveStimulus",
-                    "type": "dropdown",
-                    "placeholder": "Please choose your favorite color",
-                    "options": ["Red", "Blue", "My favorite color is not shown here."]
+                    "type": "radio",
+                    "withOther": true,
+                    "options": [
+                        "Woman / Female (Cis or Trans)",
+                        "Man / Male (Cis or Trans)",
+                        "Non-binary",
+                        "Prefer not to answer"
+                    ]
                 },
                 {
-                    "id": "q3-age",
-                    "prompt": "What is your age?",
+                    "id": "q2-age",
+                    "prompt": "What is your age group?",
                     "required": true,
                     "location": "aboveStimulus",
-                    "type": "dropdown",
-                    "placeholder": "Please choose your favorite color",
-                    "options": ["Red", "Blue", "My favorite color is not shown here."]
+                    "type": "radio",
+                    "options": [
+                        "Under 18 years",
+                        "18-24 years",
+                        "25-34 years",
+                        "35-44 years",
+                        "45-54 years",
+                        "55-64 years",
+                        "65 years or older"
+                    ]
                 },
                 {
-                    "id": "q4-degree",
-                    "prompt": "What is your highest level of education?",
+                    "id": "q3-degree",
+                    "prompt": "What is the highest degree or level of education you have completed?",
                     "required": true,
                     "location": "aboveStimulus",
-                    "type": "dropdown",
-                    "placeholder": "Please choose your favorite color",
-                    "options": ["Red", "Blue", "My favorite color is not shown here."]
+                    "type": "radio",
+                    "withOther": true,
+                    "options": [
+                        "None",
+                        "High school diploma or equivalent",
+                        "Bachelor's degree or equivalent",
+                        "Master's degree or equivalent",
+                        "Doctoral degree or equivalent"
+                    ]
                 },
                 {
-                    "id": "q5-comment",
-                    "prompt": "Do you have any additional comments or suggestions that you would like to share?",
+                    "id": "q4-comment",
+                    "prompt": "Please share any comments or suggestions you would like to share:",
                     "required": true,
                     "location": "aboveStimulus",
                     "type": "longText",
-                    "placeholder": "Please enter your first name"
-                }
-            ]
-        },
-        "second-question-set": {
-            "type": "questionnaire",
-            "response": [
-                {
-                    "id": "q3-satisfaction",
-                    "prompt": "Rate your satisfaction with this survey from 1 (not enjoyable) to 5 (very enjoyable).",
-                    "required": true,
-                    "location": "aboveStimulus",
-                    "type": "likert",
-                    "leftLabel": "Not Enjoyable",
-                    "rightLabel": "Very Enjoyable",
-                    "numItems": 5
+                    "placeholder": "Please enter your comments or suggestions"
                 }
             ]
         }
@@ -898,7 +901,7 @@
             "area-trend",
             "stackedarea-value",
             "stackedarea-trend",
-            "first-question-set"
+            "demographics"
         ]
     }
 }
