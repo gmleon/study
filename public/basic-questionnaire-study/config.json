@@ -631,7 +631,7 @@
             ]
         },
         "stackedarea-comparison": {
-            "instruction": "What was the ratio of electricity produced by Oil to electricity produced by Wind in 2024 in Africa?",
+            "instruction": "What was the ratio of hydropower generated in Africa to the hydropower generated in South America in 2020?",
             "instructionLocation": "sidebar",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/electricityBySourceExplorer.json",
@@ -650,16 +650,16 @@
                 "type": "divider"
             },
             {
-                "id": "il-stackedarea-comparison",
+                "id": "wl-stackedarea-comparison",
                 "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
-                    "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...execute and coordinate a multiple-step analysis?",
+                    "...manage interactions across multiple visualizations in a purposeful way?",
+                    "...adapt analytical approaches based on progressive discoveries?",
+                    "...maintain analytical coherence and structure?"
                 ]
             }
             ]
@@ -901,6 +901,7 @@
             "area-trend",
             "stackedarea-value",
             "stackedarea-trend",
+            "stackedarea-comparison",
             "demographics"
         ]
     }
