@@ -80,9 +80,9 @@
             },
             {
                 "id": "wl-line-value",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis",
@@ -120,9 +120,9 @@
             },
             {
                 "id": "wl-line-trend",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis",
@@ -155,9 +155,9 @@
             },
             {
                 "id": "il-line-comparison",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -195,9 +195,9 @@
             },
             {
                 "id": "il-bar-extremum",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -234,9 +234,9 @@
             },
             {
                 "id": "il-bar-comparison",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -268,9 +268,9 @@
             },
             {
                 "id": "il-stackedbar-value",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -307,9 +307,9 @@
             },
             {
                 "id": "il-scatterplot-value",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -347,9 +347,9 @@
             },
             {
                 "id": "il-scatterplot-extremum",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -387,9 +387,9 @@
             },
             {
                 "id": "il-scatterplot-trend",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -428,9 +428,9 @@
             },
             {
                 "id": "il-scatterplot-comparison",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -468,9 +468,9 @@
             },
             {
                 "id": "wl-area-trend",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis",
@@ -502,9 +502,9 @@
             },
             {
                 "id": "il-stackedarea-value",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -542,9 +542,9 @@
             },
             {
                 "id": "il-stackedarea-trend",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -576,9 +576,9 @@
             },
             {
                 "id": "il-stackedarea-comparison",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -611,9 +611,9 @@
             },
             {
                 "id": "il-bar-value",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -651,9 +651,9 @@
             },
             {
                 "id": "wl-scatterplot-trend-2",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis",
@@ -691,9 +691,9 @@
             },
             {
                 "id": "il-tuberculosisPuzzle",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
@@ -731,9 +731,9 @@
             },
             {
                 "id": "il-line-extremum",
-                "prompt": "You think this puzzle encourages someone to...",
+                "prompt": "How relevant is this task to assess someone's ability to...",
                 "type": "matrix-radio",
-                "answerOptions": "likely5",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task",
