@@ -664,6 +664,41 @@
             }
             ]
         },
+        "stackedarea-extremum": {
+            "instruction": "What year had the highest proportion of people living in electoral democracies?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/democraciesExplorer.html",
+            "style": { "minHeight": "600px" },
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedarea-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["2001", "2012", "2015", "2025", "Skip"]
+            },
+            {
+                "id": "divider-stackedarea-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedarea-extremum",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task?",
+                    "...interact with the visualization?",
+                    "...combine the appropriate interaction techniques?",
+                    "...use the interaction techniques in a purposeful way?"
+                ]
+            }
+            ]
+        },
         "bar-value": {
             "instruction": "What was the country with the seventh largest population in 1965?",
             "instructionLocation": "sidebar",
@@ -881,8 +916,8 @@
     "sequence": {
         "order": "fixed",
         "components": [
-            "introduction",
             "consent",
+            "introduction",
             "line-value",
             "line-extremum",
             "line-trend",
@@ -900,6 +935,7 @@
             "scatterplot-comparison",
             "area-trend",
             "stackedarea-value",
+            "stackedarea-extremum",
             "stackedarea-trend",
             "stackedarea-comparison",
             "demographics"
