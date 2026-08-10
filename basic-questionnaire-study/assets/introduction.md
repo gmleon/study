@@ -1,3 +1,9 @@
 # Introduction
 
-Welcome to our study. This is a basic questionnaire study. We will only ask you a few questions and then we will be done.
+Welcome to our study. 
+
+We will ask you to solve tasks using interactive visualizations. (Explain this is a puzzle.)
+
+There is no time limit.
+
+Please do not use mobile devices for this task. 
