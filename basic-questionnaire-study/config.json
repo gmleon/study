@@ -802,8 +802,7 @@
             "scatterplot-comparison",
             "area-trend",
             "stackedarea-value",
-            "stackedarea-trend",
-            "stackedarea-comparison"
+            "stackedarea-trend"
         ]
     }
 }
