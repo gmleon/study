@@ -405,6 +405,7 @@
             "instructionLocation": "sidebar",
             "type": "website",
             "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
+            "style": { "minHeight": "600px" },
             "enumerateQuestions": true,
             "response": [
             {
@@ -588,6 +589,41 @@
             }
             ]
         },
+        "bar-value": {
+            "instruction": "What was the country with the seventh largest population in 1965?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/populationBarRankExplorer.html",
+            "style": { "minHeight": "600px" },
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-bar-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["Nigeria", "India", "Brazil", "Indonesia", "Skip"]
+            },
+            {
+                "id": "divider-bar-value",
+                "type": "divider"
+            },
+            {
+                "id": "il-bar-value",
+                "prompt": "You think this puzzle encourages someone to...",
+                "type": "matrix-radio",
+                "answerOptions": "likely5",
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task",
+                    "...interact with the visualization",
+                    "...combine the appropriate interaction techniques",
+                    "...use the interaction techniques in a purposeful way"
+                ]
+            }
+            ]
+        },
         "scatterplot-trend-2": {
             "instruction": "How do the movie ratings and the movie year relate?",
             "instructionLocation": "sidebar",
@@ -755,6 +791,7 @@
             "line-extremum",
             "line-trend",
             "line-comparison",
+            "bar-value",
             "bar-extremum",
             "bar-comparison",
             "stackedbar-value",
