@@ -315,6 +315,47 @@
             }
             ]
         },
+        "stackedbar-comparison": {
+            "instruction": "How does the percentage of primary schools change between urban and rural areas?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/schoolLevelsExplorer.html",
+            "style": { "minHeight": "600px" },
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedbar-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The percentage of primary schools is higher in the urban areas of all provinces",
+                    "The percentage of primary schools is higher in the urban areas of most provinces",
+                    "The percentage of primary schools is higher in the rural areas of all provinces",
+                    "The percentage of primary schools is higher in the rural areas of most provinces",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-stackedbar-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedbar-comparison",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task?",
+                    "...interact with the visualization?",
+                    "...combine the appropriate interaction techniques?",
+                    "...use the interaction techniques in a purposeful way?"
+                ]
+            }
+            ]
+        },
         "scatterplot-value": {
             "instruction": "Which statement is true?",
             "instructionLocation": "sidebar",
@@ -782,21 +823,39 @@
             "type": "questionnaire",
             "response": [
                 {
-                    "id": "q1-name",
-                    "prompt": "What is your first name?",
-                    "required": true,
-                    "location": "aboveStimulus",
-                    "type": "longText",
-                    "placeholder": "Please enter your first name"
-                },
-                {
-                    "id": "q2-color",
-                    "prompt": "What is your favorite color?",
+                    "id": "q2-gender",
+                    "prompt": "What is your gender?",
                     "required": true,
                     "location": "aboveStimulus",
                     "type": "dropdown",
                     "placeholder": "Please choose your favorite color",
                     "options": ["Red", "Blue", "My favorite color is not shown here."]
+                },
+                {
+                    "id": "q3-age",
+                    "prompt": "What is your age?",
+                    "required": true,
+                    "location": "aboveStimulus",
+                    "type": "dropdown",
+                    "placeholder": "Please choose your favorite color",
+                    "options": ["Red", "Blue", "My favorite color is not shown here."]
+                },
+                {
+                    "id": "q4-degree",
+                    "prompt": "What is your highest level of education?",
+                    "required": true,
+                    "location": "aboveStimulus",
+                    "type": "dropdown",
+                    "placeholder": "Please choose your favorite color",
+                    "options": ["Red", "Blue", "My favorite color is not shown here."]
+                },
+                {
+                    "id": "q5-comment",
+                    "prompt": "Do you have any additional comments or suggestions that you would like to share?",
+                    "required": true,
+                    "location": "aboveStimulus",
+                    "type": "longText",
+                    "placeholder": "Please enter your first name"
                 }
             ]
         },
@@ -830,6 +889,7 @@
             "bar-comparison",
             "stackedbar-value",
             "stackedbar-extremum",
+            "stackedbar-comparison",
             "scatterplot-value",
             "scatterplot-extremum",
             "scatterplot-trend",
@@ -837,7 +897,8 @@
             "scatterplot-comparison",
             "area-trend",
             "stackedarea-value",
-            "stackedarea-trend"
+            "stackedarea-trend",
+            "first-question-set"
         ]
     }
 }

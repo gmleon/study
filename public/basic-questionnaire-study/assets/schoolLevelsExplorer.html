@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>School levels by province explorer</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- Load revisit-communicate to be able to send data to reVISit -->
+    <script src="../../revisitUtilities/revisit-communicate.js"></script>
+    <style>
+      body { font-family: sans-serif; }
+      #wrapper { display: inline-block; }
+      #chart-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 10px;
+      }
+      #toggle-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        font-size: 15px;
+        font-weight: normal;
+      }
+      .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .switch .track {
+        position: absolute; inset: 0; cursor: pointer;
+        background-color: #fff; border: 1.5px solid #333;
+        border-radius: 24px; transition: background-color 0.2s;
+      }
+      .switch .track:before {
+        position: absolute; content: "";
+        height: 16px; width: 16px; left: 3px; top: 3px;
+        background-color: #333; border-radius: 50%;
+        transition: transform 0.2s;
+      }
+      .switch input:checked + .track:before { transform: translateX(22px); }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <h2 id="chart-title"></h2>
+      <div id="toggle-row">
+        <span>Rural</span>
+        <label class="switch">
+          <input type="checkbox" id="areaToggle" />
+          <span class="track"></span>
+        </label>
+        <span>Urban</span>
+      </div>
+      <div id="vis"></div>
+    </div>
+  </body>
+
+  <script>
+    const SPEC = {"$schema":"https://vega.github.io/schema/vega-lite/v5.json","description":"Simplified recreation of the 'Most schools in Pakistan are primary schools' stacked bar chart from the World Bank's 'Five major challenges to girls' education in Pakistan' data story (https://datatopics.worldbank.org/dataviz/girls-education-pakistan/). Data: datatopics.worldbank.org/dataviz/girls-education-pakistan/data/schools.tsv. The Rural/Urban switch above the chart is a real HTML sliding toggle (page JS), not a Vega-Lite bind, so it can be centered above the chart and styled like the original.","width":500,"height":400,"data":{"values":[{"province":"Balochistan","area":"Urban","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":67.7},{"province":"Balochistan","area":"Urban","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":14.6},{"province":"Balochistan","area":"Urban","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":17.7},{"province":"KP","area":"Urban","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":36.3},{"province":"KP","area":"Urban","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":23.8},{"province":"KP","area":"Urban","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":39.9},{"province":"Punjab","area":"Urban","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":57.2},{"province":"Punjab","area":"Urban","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":22.5},{"province":"Punjab","area":"Urban","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":20.3},{"province":"Sindh","area":"Urban","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":40.3},{"province":"Sindh","area":"Urban","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":26.6},{"province":"Sindh","area":"Urban","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":33.1},{"province":"Balochistan","area":"Rural","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":82.5},{"province":"Balochistan","area":"Rural","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":10.4},{"province":"Balochistan","area":"Rural","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":7.1},{"province":"KP","area":"Rural","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":70.4},{"province":"KP","area":"Rural","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":14.5},{"province":"KP","area":"Rural","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":15.1},{"province":"Punjab","area":"Rural","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":31.5},{"province":"Punjab","area":"Rural","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":44.4},{"province":"Punjab","area":"Rural","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":24.1},{"province":"Sindh","area":"Rural","level":"Primary (Ages 5-10)","levelOrder":1,"percentage":89.5},{"province":"Sindh","area":"Rural","level":"Middle (Ages 11-14)","levelOrder":2,"percentage":6.7},{"province":"Sindh","area":"Rural","level":"Secondary (Ages 15-16)","levelOrder":3,"percentage":3.8}]},"params":[{"name":"selectedArea","value":"Rural"}],"transform":[{"filter":"datum.area === selectedArea"}],"mark":{"type":"bar"},"encoding":{"x":{"field":"province","type":"nominal","sort":["Balochistan","KP","Sindh","Punjab"],"title":null,"axis":{"labelAngle":0}},"y":{"field":"percentage","type":"quantitative","title":"Percentage of school level (%)","stack":"zero","scale":{"domain":[0,100]},"axis":{"grid":false}},"color":{"field":"level","type":"nominal","title":"School level","scale":{"domain":["Primary (Ages 5-10)","Middle (Ages 11-14)","Secondary (Ages 15-16)"],"range":["#E69F00","#009E73","#0072B2"]}},"order":{"field":"levelOrder"},"tooltip":[{"field":"province","type":"nominal","title":"Province"},{"field":"level","type":"nominal","title":"School level"},{"field":"percentage","type":"quantitative","title":"Percentage (%)","format":".1f"}]},"config":{"view":{"stroke":null},"axis":{"domainColor":"#888","tickColor":"#888"}}};
+
+    function setTitle(area) {
+      document.getElementById("chart-title").textContent =
+        "Percentage of school level by province (" + area + ")";
+    }
+
+    Revisit.onDataReceive(() => {
+      setTitle("Rural");
+      vegaEmbed("#vis", SPEC, { renderer: "svg", actions: false }).then((res) => {
+        const view = res.view;
+        const toggle = document.getElementById("areaToggle");
+        toggle.addEventListener("change", () => {
+          const area = toggle.checked ? "Urban" : "Rural";
+          setTitle(area);
+          view.signal("selectedArea", area).runAsync();
+        });
+        Revisit.postReady();
+      });
+    });
+  </script>
+</html>
