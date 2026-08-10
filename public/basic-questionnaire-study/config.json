@@ -467,16 +467,16 @@
                 "type": "divider"
             },
             {
-                "id": "il-area-trend",
+                "id": "wl-area-trend",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task",
-                    "...interact with the visualization",
-                    "...combine the appropriate interaction techniques",
-                    "...use the interaction techniques in a purposeful way"
+                    "...execute and coordinate a multiple-step analysis",
+                    "...manage interactions across multiple visualizations in a purposeful way",
+                    "...adapt analytical approaches based on progressive discoveries",
+                    "...maintain analytical coherence and structure"
                 ]
             }
             ]
@@ -650,16 +650,16 @@
                 "type": "divider"
             },
             {
-                "id": "il-scatterplot-trend-2",
+                "id": "wl-scatterplot-trend-2",
                 "prompt": "You think this puzzle encourages someone to...",
                 "type": "matrix-radio",
                 "answerOptions": "likely5",
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task",
-                    "...interact with the visualization",
-                    "...combine the appropriate interaction techniques",
-                    "...use the interaction techniques in a purposeful way"
+                    "...execute and coordinate a multiple-step analysis",
+                    "...manage interactions across multiple visualizations in a purposeful way",
+                    "...adapt analytical approaches based on progressive discoveries",
+                    "...maintain analytical coherence and structure"
                 ]
             }
             ]
