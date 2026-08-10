@@ -281,6 +281,40 @@
             }
             ]
         },
+        "stackedbar-extremum": {
+            "instruction": "In what year did the European Union import the highest amount of gas from Algeria?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/lngSupplyRoutesExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-stackedbar-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["2021", "2023", "2024", "2025", "Skip"]
+            },
+            {
+                "id": "divider-stackedbar-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "il-stackedbar-extremum",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...know about the interaction techniques required to solve the task?",
+                    "...interact with the visualization?",
+                    "...combine the appropriate interaction techniques?",
+                    "...use the interaction techniques in a purposeful way?"
+                ]
+            }
+            ]
+        },
         "scatterplot-value": {
             "instruction": "Which statement is true?",
             "instructionLocation": "sidebar",
@@ -795,6 +829,7 @@
             "bar-extremum",
             "bar-comparison",
             "stackedbar-value",
+            "stackedbar-extremum",
             "scatterplot-value",
             "scatterplot-extremum",
             "scatterplot-trend",
