@@ -297,6 +297,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedbar-value",
+                "answer": "306"
+                }
             ]
         },
         "stackedbar-extremum": {
@@ -331,6 +337,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedbar-extremum",
+                "answer": "2023"
+                }
             ]
         },
         "stackedbar-comparison": {
@@ -372,6 +384,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedbar-comparison",
+                "answer": "The percentage of primary schools is higher in the rural areas of most provinces"
+                }
             ]
         },
         "scatterplot-value": {
