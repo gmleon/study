@@ -614,6 +614,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-trend",
+                "answer": "Decreasing"
+                }
             ]
         },
         "stackedarea-value": {
@@ -648,6 +654,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-value",
+                "answer": "21.5"
+                }
             ]
         },
         "stackedarea-trend": {
@@ -688,6 +700,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-trend",
+                "answer": "Decreasing"
+                }
             ]
         },
         "stackedarea-comparison": {
@@ -722,6 +740,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-comparison",
+                "answer": "1 to 4"
+                }
             ]
         },
         "stackedarea-extremum": {
@@ -757,6 +781,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-extremum",
+                "answer": "2015"
+                }
             ]
         },
         "bar-value": {
