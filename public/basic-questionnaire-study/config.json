@@ -79,6 +79,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-value",
+                "answer": "63%"
+                }
             ]
         },
         "line-trend": {
@@ -119,6 +125,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-trend",
+                "answer": "One stock was rising, while the other one was constant"
+                }
             ]
         },
         "line-comparison": {
@@ -154,7 +166,13 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
-            ]         
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-comparison",
+                "answer": "1 to 6"
+                }
+            ]     
         },
         "bar-extremum": {
             "instruction": "In which country is the unemployment rate the highest?",
@@ -194,7 +212,13 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
-            ]
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-bar-extremum",
+                "answer": "Slovak Republic"
+                }
+            ]   
         },
         "bar-comparison": {
             "instruction": "Which statement is true?",
@@ -233,6 +257,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-bar-comparison",
+                "answer": "The life expectancy of Mexico is higher than the life expectancy of Brazil"
+                }
             ]
         },
         "stackedbar-value": {
@@ -720,7 +750,13 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
-            ]
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-bar-value",
+                "answer": "Brazil"
+                }
+            ]   
         },
         "scatterplot-trend-2": {
             "instruction": "How do the movie ratings and the movie year relate?",
@@ -840,6 +876,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-extremum",
+                "answer": "January 1, 1579"
+                }
             ]
         },
         "demographics": {
