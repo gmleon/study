@@ -35,18 +35,6 @@
             "nextButtonText": "I agree",
             "response": []
         },
-        "vegaPath": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/simpleChart.json",
-            "response": [
-            {
-                "id": "simple-vega",
-                "type": "radio",
-                "prompt": "What is the value of bar A?",
-                "options": ["10", "28", "50"]
-            }
-            ]            
-        },
         "vegaPuzzle1": {
             "type": "vega",
             "path": "basic-questionnaire-study/assets/world-choropleth.json",
