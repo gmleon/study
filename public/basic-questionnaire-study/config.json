@@ -429,6 +429,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-value",
+                "answer": "The Rotten Tomatoes critics liked Beauty and the Beast but the IMDB critics did not like it"
+                }
             ]
         },
         "scatterplot-extremum": {
@@ -469,6 +475,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-extremum",
+                "answer": "Afghanistan"
+                }
             ]
         },
         "scatterplot-trend": {
@@ -509,6 +521,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-trend",
+                "answer": "Its life expectancy increases"
+                }
             ]
         },
         "scatterplot-comparison": {
@@ -550,6 +568,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-comparison",
+                "answer": "Brazil"
+                }
             ]
         },
         "area-trend": {
@@ -814,7 +838,13 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
-            ]
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-trend-2",
+                "answer": "Old movies have high ratings"
+                }
+            ]   
         },
         "tuberculosisPuzzle": {
             "instruction": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
