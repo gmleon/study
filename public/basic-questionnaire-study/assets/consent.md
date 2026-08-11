@@ -6,7 +6,7 @@ Participants must be over 18 years old and have expertise on interactive data vi
 
 This survey is conducted by Gabriela Molina León (Aarhus University), Benjamin Bach (Inria), Helen Seitzer (University of Bremen), Yvonne Jansen (Inria), Raimund Dachselt (TU Dresden), and Niklas Elmqvist (Aarhus University). 
 
-Aarhus University will be the institution prcessing the collected data.
+Aarhus University will be the institution processing the collected data.
 
 Estimated duration: 15–20 minutes.
 

@@ -1013,7 +1013,7 @@
                 {
                     "id": "q4-comment",
                     "prompt": "Please share any comments or suggestions you would like to share:",
-                    "required": true,
+                    "required": false,
                     "location": "aboveStimulus",
                     "type": "longText",
                     "placeholder": "Please enter your comments or suggestions"
