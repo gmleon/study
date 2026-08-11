@@ -162,7 +162,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -202,7 +202,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -241,7 +241,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -275,7 +275,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -309,7 +309,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -350,7 +350,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -389,7 +389,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -429,7 +429,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -469,14 +469,14 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
             ]
         },
         "scatterplot-comparison": {
-            "instruction": "Which of these countries protects the highest percentage of its national waters?",
+            "instruction": "Which of these countries protects the highest percentage of its marine areas?",
             "instructionLocation": "sidebar",
             "type": "website",
             "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
@@ -510,7 +510,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -584,7 +584,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -624,7 +624,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -693,7 +693,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -728,7 +728,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -808,7 +808,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
@@ -848,7 +848,7 @@
                 "questionOptions": [
                     "...know about the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques?",
+                    "...combine the appropriate interaction techniques (if multiple)?",
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
