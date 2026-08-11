@@ -43,7 +43,7 @@
           "axis": {
             "grid": false,
             "labelAngle": 0,
-            "labelOverlap": false,
+            "labelOverlap": true,
             "minExtent": 25,
             "maxExtent": 25
           }
