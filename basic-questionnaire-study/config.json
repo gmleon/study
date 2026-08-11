@@ -79,6 +79,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-value",
+                "answer": "63%"
+                }
             ]
         },
         "line-trend": {
@@ -119,6 +125,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-trend",
+                "answer": "One stock was rising, while the other one was constant"
+                }
             ]
         },
         "line-comparison": {
@@ -154,7 +166,13 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
-            ]         
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-comparison",
+                "answer": "1 to 6"
+                }
+            ]     
         },
         "bar-extremum": {
             "instruction": "In which country is the unemployment rate the highest?",
@@ -194,7 +212,13 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
-            ]
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-bar-extremum",
+                "answer": "Slovak Republic"
+                }
+            ]   
         },
         "bar-comparison": {
             "instruction": "Which statement is true?",
@@ -233,6 +257,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-bar-comparison",
+                "answer": "The life expectancy of Mexico is higher than the life expectancy of Brazil"
+                }
             ]
         },
         "stackedbar-value": {
@@ -267,6 +297,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedbar-value",
+                "answer": "306"
+                }
             ]
         },
         "stackedbar-extremum": {
@@ -301,6 +337,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedbar-extremum",
+                "answer": "2023"
+                }
             ]
         },
         "stackedbar-comparison": {
@@ -342,6 +384,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedbar-comparison",
+                "answer": "The percentage of primary schools is higher in the rural areas of most provinces"
+                }
             ]
         },
         "scatterplot-value": {
@@ -381,6 +429,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-value",
+                "answer": "The Rotten Tomatoes critics liked Beauty and the Beast but the IMDB critics did not like it"
+                }
             ]
         },
         "scatterplot-extremum": {
@@ -421,6 +475,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-extremum",
+                "answer": "Afghanistan"
+                }
             ]
         },
         "scatterplot-trend": {
@@ -461,6 +521,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-trend",
+                "answer": "Its life expectancy increases"
+                }
             ]
         },
         "scatterplot-comparison": {
@@ -502,6 +568,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-comparison",
+                "answer": "Brazil"
+                }
             ]
         },
         "area-trend": {
@@ -542,6 +614,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-trend",
+                "answer": "Decreasing"
+                }
             ]
         },
         "stackedarea-value": {
@@ -576,6 +654,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-value",
+                "answer": "21.5"
+                }
             ]
         },
         "stackedarea-trend": {
@@ -616,6 +700,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-trend",
+                "answer": "Decreasing"
+                }
             ]
         },
         "stackedarea-comparison": {
@@ -650,6 +740,12 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-comparison",
+                "answer": "1 to 4"
+                }
             ]
         },
         "stackedarea-extremum": {
@@ -685,6 +781,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-stackedarea-extremum",
+                "answer": "2015"
+                }
             ]
         },
         "bar-value": {
@@ -720,7 +822,13 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
-            ]
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-bar-value",
+                "answer": "Brazil"
+                }
+            ]   
         },
         "scatterplot-trend-2": {
             "instruction": "How do the movie ratings and the movie year relate?",
@@ -760,7 +868,13 @@
                     "...maintain analytical coherence and structure?"
                 ]
             }
-            ]
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-scatterplot-trend-2",
+                "answer": "Old movies have high ratings"
+                }
+            ]   
         },
         "tuberculosisPuzzle": {
             "instruction": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
@@ -840,6 +954,12 @@
                     "...use the interaction techniques in a purposeful way?"
                 ]
             }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-line-extremum",
+                "answer": "January 1, 1579"
+                }
             ]
         },
         "demographics": {
@@ -893,7 +1013,7 @@
                 {
                     "id": "q4-comment",
                     "prompt": "Please share any comments or suggestions you would like to share:",
-                    "required": true,
+                    "required": false,
                     "location": "aboveStimulus",
                     "type": "longText",
                     "placeholder": "Please enter your comments or suggestions"
