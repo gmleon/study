@@ -23,6 +23,35 @@
         "autoDownloadStudy": false,
         "withSidebar": true
     },
+    "studyRules": {
+        "display": {
+        "minHeight": 400,
+        "minWidth": 800
+        },
+        "browsers": {
+        "allowed": [
+            {
+            "name": "chrome",
+            "minVersion": 100
+            },
+            {
+            "name": "firefox",
+            "minVersion": 100
+            },
+            {
+            "name": "safari",
+            "minVersion": 10
+            }
+        ],
+        "blockedMessage": "You must be on a relatively modern browser, Chrome > 100, Firefox > 100, Safari > 10."
+        },
+        "devices": {
+        "allowed": ["desktop"]
+        },
+        "inputs": {
+        "allowed": ["mouse"]
+        }
+    },
     "components": {
         "introduction": {
             "type": "markdown",
@@ -844,9 +873,9 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
-                    "Old movies have high ratings",
-                    "New movies have high ratings",
-                    "Old movies have low Rotten Tomatoes ratings",
+                    "Older movies have high ratings",
+                    "Newer movies have high ratings",
+                    "Older movies have low Rotten Tomatoes ratings",
                     "There is no relation between year and moving ratings",
                     "Skip"
                 ]
