@@ -28,7 +28,7 @@
           "field": "Release_Date",
           "type": "temporal",
           "timeUnit": "year",
-          "title": "Films by Release Year"
+          "title": "Films by Year"
         },
         "y": {
           "aggregate": "count",
@@ -43,11 +43,13 @@
       "encoding": {
         "x": {
           "field": "Rotten_Tomatoes_Rating",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "Rotten Tomatoes Rating"
         },
         "y": {
           "field": "IMDB_Rating",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "IMDB Rating"
         },
         "tooltip": {
           "field": "Title",

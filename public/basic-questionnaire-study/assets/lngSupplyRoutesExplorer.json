@@ -229,7 +229,7 @@
     "x": {
       "field": "year",
       "type": "ordinal",
-      "title": null,
+      "title": "Year",
       "axis": {
         "labelAngle": 0
       }

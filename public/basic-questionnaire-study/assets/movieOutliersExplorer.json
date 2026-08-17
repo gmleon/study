@@ -9,11 +9,13 @@
   "encoding": {
     "x": {
       "field": "Rotten_Tomatoes_Rating",
-      "type": "quantitative"
+      "type": "quantitative",
+      "title": "Rotten Tomatoes Rating"
     },
     "y": {
       "field": "IMDB_Rating",
-      "type": "quantitative"
+      "type": "quantitative",
+      "title": "IMDB Rating"
     }
   },
   "layer": [
