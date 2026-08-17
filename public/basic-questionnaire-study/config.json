@@ -681,10 +681,13 @@
             ]
         },
         "stackedarea-trend": {
-            "instruction": "What is the trend of chemical exports from France to Africa from 2013 to 2020?",
+            "instruction": "What is the trend of chemical exports to Africa from 2013 to 2020?",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/franceExportsExplorer.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/franceExportsExplorer.html",
+            "style": {
+                "minHeight": "600px"
+            },
             "enumerateQuestions": true,
             "response": [
             {
