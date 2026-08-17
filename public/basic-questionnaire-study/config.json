@@ -1005,8 +1005,8 @@
     "sequence": {
         "order": "fixed",
         "components": [
-            "consent",
             "introduction",
+            "consent",
             "line-value",
             "line-extremum",
             "line-trend",

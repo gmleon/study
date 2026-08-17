@@ -2,28 +2,19 @@
 
 This is a consent form. Please read it carefully and click the "I agree" button to continue.
 
-Participants must be over 18 years old and have expertise on interactive data visualizations.
-
-This survey is conducted by Gabriela Molina León (Aarhus University), Benjamin Bach (Inria), Helen Seitzer (University of Bremen), Yvonne Jansen (Inria), Raimund Dachselt (TU Dresden), and Niklas Elmqvist (Aarhus University). 
-
-Aarhus University will be the institution processing the collected data.
-
-Estimated duration: 20-25 minutes.
 
 
----
+## Requirements
 
-## Purpose of the Study
+Anyone who is a fluent speaker of English, 18 years or older, and has normal or corrected-to-normal vision, can participate in this study.
 
-The goal of this project is to design and evaluate interactive visualization puzzles for assessing the ability of people to use interactive data visualizations.
+## Procedure
 
-## Procedures
-
-You will be presented with a series of tasks. For each task, you will be asked to use interactive visualizations. You will also be asked to provide an answer to a question.
+You will be presented with 20 tasks. In each task, you will be asked to provide an answer to a question. You can find the answer by using the interactive data visualizations presented. Then you will answer 4 demographic questions. The study will require around 25 minutes to complete.
 
 ## Risks and Benefits
 
-There are no known risks associated with participating in this study. The benefits of participating in this study include ...
+There are no known risks associated with participating in this study. The results of this study will contribute to research on understanding the ability to explore data through interactive visualizations.
 
 ## Confidentiality
 
@@ -37,10 +28,11 @@ Your participation in this study is voluntary. You may choose to stop participat
 
 If you have any questions about this study, please contact the researchers at leon@cs.au.dk
 
----
 
-# GDPR Information Section
-What you need to know about Aarhus University's processing of your personal data. Here you will find information about why and how Aarhus University processes your personal data.
+
+## GDPR Information Section
+
+Aarhus University will be the institution processing the collected data. Here you will find information about why and how Aarhus University processes your personal data.
 
 **1. Who is the data controller?**
 
@@ -81,7 +73,7 @@ When assessing how long it is necessary to process your personal data, we take i
 
 **7. Who do we share your information with?**
 
-We must provide you with information about who we share your personal data with. Personal data from this survey is not shared beyond the data controller. All data is stored on EU servers; no transfers outside the EEA occur. 
+We must provide you with information about who we share your personal data with. Personal data from this survey is not shared beyond the data controller.
 
 **8. What are your rights?**
 
@@ -111,21 +103,25 @@ Giving your consent is entirely voluntary. It is your choice, and you should the
 
 If you withdraw your consent, we will stop processing your personal data. However, you should know that the processing we have carried out up to the time when you withdraw your consent is lawful. You should also be aware that in rare cases your personal data will continue to be processed, even if you withdraw your consent. This applies, for example, to published material.
 
-_______________________________________________________
+
+
+## Collection of Informed Consent
 
 - I am 18 years of age or older.
-- I understand that I will complete an online study lasting approx. 20-25 minutes.
+- I am a fluent English speaker.
+- I do not have low vision or impaired vision, including any form of color deficiency.
+- I understand that I will complete an online study lasting approx. 25 minutes.
 - I understand that my participation is voluntary; I may skip any question or withdraw at any time without penalty.
 - I understand that the survey collects general demographics, task answers, and relevance ratings, as well as my free-text reflections.
 - I understand that identifiable data will be kept for up to 10 years after final publication, stored on encrypted devices and EU servers; fully anonymised data may be kept indefinitely for research transparency.
 - I hereby consent to Aarhus University registering and processing my personal data in the research project referred to above. Furthermore, I consent to processing taking place in the following ways:
 - I consent to my personal data being stored in a database for use in other research projects within Computer Science after the end of the project.
 - I consent to my personal data being used for teaching/educational purposes within Computer Science Studies at Aarhus University.
-- I understand that only the named researchers at Aarhus University will access the raw data. Results will be reported only in aggregate; I will not be identifiable in any publication or presentation. I understand that the data will be analysed statistically for research purposes and that no automated decision-making or profiling of me will take place.
+- I understand that only the named researchers will access the raw data. Results will be reported only in aggregate; I will not be identifiable in any publication or presentation. I understand that the data will be analysed statistically for research purposes and that no automated decision-making or profiling of me will take place.
 - I understand that my data are processed for scientific research in the public interest (GDPR Art 6 (1)(e) and § 10 of the Danish Data Protection Act). If I provide any special-category information in free-text answers, it will be processed under Art 9 (2)(a) on the basis of my explicit consent.
 - I have been informed of my data-subject rights (access, rectification, objection, restriction, portability where feasible, erasure) and how to exercise them.
 - I know whom to contact for questions about the study (Gabriela Molina León, leon@cs.au.dk), for data-protection issues (AU DPO dpo@au.dk), and to lodge a complaint (Datatilsynet, dt@datatilsynet.dk). 
 
----
+
 
 By clicking the "I agree" button below, you are indicating that you have read the consent form and agree to participate in this study.
