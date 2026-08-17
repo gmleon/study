@@ -681,10 +681,13 @@
             ]
         },
         "stackedarea-trend": {
-            "instruction": "What is the trend of chemical exports from France to Africa from 2013 to 2020?",
+            "instruction": "What is the trend of chemical exports to Africa from 2013 to 2020?",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/franceExportsExplorer.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/franceExportsExplorer.html",
+            "style": {
+                "minHeight": "600px"
+            },
             "enumerateQuestions": true,
             "response": [
             {
@@ -989,6 +992,18 @@
                     ]
                 },
                 {
+                    "id": "q5-vision",
+                    "prompt": "Do you have color vision deficiency?",
+                    "infoText": "Having color vision deficiency means you cannot see certain colors the way most people do — or you may not see color at all.",
+                    "required": true,
+                    "location": "aboveStimulus",
+                    "type": "radio",
+                    "options": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                {
                     "id": "q4-comment",
                     "prompt": "Please share any comments or suggestions you would like to share:",
                     "required": false,
@@ -1002,8 +1017,8 @@
     "sequence": {
         "order": "fixed",
         "components": [
-            "consent",
             "introduction",
+            "consent",
             "line-value",
             "line-extremum",
             "line-trend",
