@@ -11,7 +11,12 @@
     "x": {
       "field": "id",
       "type": "ordinal",
-      "axis": null
+      "title": "Country",
+      "axis": {
+        "labels": false,
+        "ticks": false,
+        "domain": false
+      }
     },
     "y": {
       "field": "value",
