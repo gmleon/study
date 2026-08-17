@@ -992,6 +992,18 @@
                     ]
                 },
                 {
+                    "id": "q5-vision",
+                    "prompt": "Do you have color vision deficiency?",
+                    "infoText": "Having color vision deficiency means you cannot see certain colors the way most people do — or you may not see color at all.",
+                    "required": true,
+                    "location": "aboveStimulus",
+                    "type": "radio",
+                    "options": [
+                        "Yes",
+                        "No"
+                    ]
+                },
+                {
                     "id": "q4-comment",
                     "prompt": "Please share any comments or suggestions you would like to share:",
                     "required": false,
