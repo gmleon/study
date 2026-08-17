@@ -54,7 +54,7 @@
       const countries = DATA.filter((d) => d.iso3c !== "ABNJ");
       const abnj = DATA.find((d) => d.iso3c === "ABNJ");
 
-      const width = 820, height = 460;
+      const width = 600, height = 400;
       const margins = { top: 30, right: 50, bottom: 50, left: 60 };
       const innerW = width - margins.left - margins.right;
       const innerH = height - margins.top - margins.bottom;
@@ -89,7 +89,7 @@
         g.append("text").attr("x", 14).attr("y", 9).style("font-size", "10px").text(r);
         legendX += itemW;
       });
-      const legendRows = 2;
+      const legendRows = legendRow + 1;
 
       const chartTop = margins.top + 26 + legendRows * 16;
       const g = svg.append("g").attr("transform", `translate(${margins.left},${chartTop})`);
