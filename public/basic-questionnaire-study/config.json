@@ -2,12 +2,12 @@
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
         "title": "Interactive Data Visualizations",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "authors": [
-            "The IVL Team"
+            "The Interactive Visualization Literacy Team"
         ],
         "date": "2026-08-12",
-        "description": "A simple questionnaire study",
+        "description": "A study on the ability to use interactive data visualizations",
         "organizations": [
             "Aarhus University",
             "Inria Bordeaux",
@@ -63,18 +63,6 @@
             "path": "basic-questionnaire-study/assets/consent.md",
             "nextButtonText": "I agree",
             "response": []
-        },
-        "vegaPuzzle1": {
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/world-choropleth.json",
-            "response": [
-            {
-                "id": "puzzle-1",
-                "type": "radio",
-                "prompt": "Is the life expectancy of Mexico higher than the life expectancy of Brazil?",
-                "options": ["True", "False", "Skip"]
-            }
-            ]         
         },
         "line-value": {
             "instruction": "What was the tuberculosis case detection rate in South Asia in 2018?",
@@ -166,8 +154,9 @@
             "description": "Interacting with a line chart",
             "instruction": "What was the ratio of goats slaughtered in Pakistan to those slaughtered in China in 2005?",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/animalWelfareExplorer.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/animalWelfareExplorer.html",
+            "style": { "minHeight": "600px" },
             "enumerateQuestions": true,
             "response": [
             {
@@ -692,7 +681,7 @@
             ]
         },
         "stackedarea-trend": {
-            "instruction": "What is the trend of chemical exports to Africa from 2013 to 2020?",
+            "instruction": "What is the trend of chemical exports from France to Africa from 2013 to 2020?",
             "instructionLocation": "sidebar",
             "type": "vega",
             "path": "basic-questionnaire-study/assets/franceExportsExplorer.json",
@@ -904,46 +893,6 @@
                 "answer": "Old movies have high ratings"
                 }
             ]   
-        },
-        "tuberculosisPuzzle": {
-            "instruction": "How did tuberculosis cases evolve in the Philippines from 2010 to 2012?",
-            "instructionLocation": "sidebar",
-            "type": "website",
-            "path": "basic-questionnaire-study/assets/tuberculosisExplorer.html",
-            "enumerateQuestions": true,
-            "response": [
-            {
-                "id": "res-tuberculosisPuzzle",
-                "type": "radio",
-                "prompt": "Your answer",
-                "required": true,
-                "location": "sidebar",
-                "options": [
-                    "The cases decreased each year",
-                    "The cases decreased once and then increased",
-                    "The cases increased each year",
-                    "The cases increased once and then decreased",
-                    "Skip"
-                ]
-            },
-            {
-                "id": "divider-tuberculosisPuzzle",
-                "type": "divider"
-            },
-            {
-                "id": "il-tuberculosisPuzzle",
-                "prompt": "How relevant is this task to assess someone's ability to...",
-                "type": "matrix-radio",
-                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
-                "withDontKnow": true,
-                "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
-                    "...interact with the visualization?",
-                    "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
-                ]
-            }
-            ]
         },
         "line-extremum": {
             "instruction": "On what day was the lowest temperature?",
