@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Life expectancy explorer</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- Load revisit-communicate to be able to send data to reVISit -->
+    <script src="../../revisitUtilities/revisit-communicate.js"></script>
+    <style>
+      body { font-family: sans-serif; }
+
+      #wrapper { display: inline-block; }
+
+      #main-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      #country-panel {
+        flex: 0 0 140px;
+        width: 140px;
+        padding: 0;
+        max-height: 400px;
+        overflow-y: auto;
+        box-sizing: border-box;
+      }
+      .panel-title {
+        font-family: sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 8px;
+      }
+      .country-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 0;
+        font-size: 13px;
+        color: #222;
+        cursor: pointer;
+      }
+      .country-row input { cursor: pointer; margin: 0; }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="main-row">
+        <div id="country-panel">
+          <div class="panel-title">Countries</div>
+        <label class="country-row">
+          <input type="checkbox" data-country="Australia" checked />
+          Australia
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="Brazil" />
+          Brazil
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="China" />
+          China
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="Egypt" />
+          Egypt
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="Germany" checked />
+          Germany
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="India" checked />
+          India
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="Mexico" checked />
+          Mexico
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="Norway" />
+          Norway
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="Russia" checked />
+          Russia
+        </label>
+        <label class="country-row">
+          <input type="checkbox" data-country="SouthAfrica" checked />
+          South Africa
+        </label>
+        </div>
+        <div id="vis"></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const SPEC = {"$schema":"https://vega.github.io/schema/vega-lite/v5.json","description":"Health-adjusted life expectancy (HALE, years, 2016) for a 14-country subset of the vegaPuzzle1 world choropleth dataset, with checkboxes to control which countries are shown (10 shown by default, including Mexico but not Brazil). Same underlying data and comprehension question as vegaPuzzle1 (basic-questionnaire-study/assets/world-choropleth.json), shown as a bar chart instead of a map.","width":500,"height":350,"data":{"values":[{"name":"Mexico","hale":67.7},{"name":"Brazil","hale":66},{"name":"Norway","hale":73},{"name":"China","hale":68.7},{"name":"India","hale":59.3},{"name":"Egypt","hale":61.1},{"name":"South Africa","hale":55.7},{"name":"Russia","hale":63.5},{"name":"Australia","hale":73},{"name":"Germany","hale":71.6}]},"params":[{"name":"country_Australia","value":true},{"name":"country_Brazil","value":false},{"name":"country_China","value":false},{"name":"country_Egypt","value":false},{"name":"country_Germany","value":true},{"name":"country_India","value":true},{"name":"country_Mexico","value":true},{"name":"country_Norway","value":false},{"name":"country_Russia","value":true},{"name":"country_SouthAfrica","value":true}],"transform":[{"filter":"(datum.name === \"Mexico\" && country_Mexico) || (datum.name === \"Brazil\" && country_Brazil) || (datum.name === \"Norway\" && country_Norway) || (datum.name === \"China\" && country_China) || (datum.name === \"India\" && country_India) || (datum.name === \"Egypt\" && country_Egypt) || (datum.name === \"South Africa\" && country_SouthAfrica) || (datum.name === \"Russia\" && country_Russia) || (datum.name === \"Australia\" && country_Australia) || (datum.name === \"Germany\" && country_Germany)"}],"mark":"bar","encoding":{"x":{"field":"name","type":"nominal","sort":"-y","title":"Country","axis":{"labelAngle":-40}},"y":{"field":"hale","type":"quantitative","title":"Life expectancy","scale":{"domain":[0,80]}},"tooltip":[{"field":"name","type":"nominal","title":"Country"},{"field":"hale","type":"quantitative","title":"Life expectancy"}]}};
+
+    Revisit.onDataReceive(() => {
+      vegaEmbed("#vis", SPEC, { renderer: "svg", actions: false }).then((res) => {
+        const view = res.view;
+
+        document.querySelectorAll("#country-panel input[type=checkbox]").forEach((cb) => {
+          cb.addEventListener("change", () => {
+            view.signal("country_" + cb.dataset.country, cb.checked).runAsync();
+          });
+        });
+
+        Revisit.postReady();
+      });
+    });
+  </script>
+</html>

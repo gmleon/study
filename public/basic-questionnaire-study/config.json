@@ -241,8 +241,11 @@
         "bar-comparison": {
             "instruction": "Which statement is true?",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/lifeExpectancyBarChart.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/lifeExpectancyBarChart.html",
+            "style": {
+                "minHeight": "600px"
+            },
             "enumerateQuestions": true,
             "response": [
             {
@@ -458,8 +461,11 @@
         "scatterplot-extremum": {
             "instruction": "Which country had the highest fertility in 1995?",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.html",
+            "style": {
+                "minHeight": "600px"
+            },
             "enumerateQuestions": true,
             "response": [
             {
@@ -504,8 +510,11 @@
         "scatterplot-trend": {
             "instruction": "How does the orange cluster change over time?",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/gapminderExplorer.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/gapminderExplorer.html",
+            "style": {
+                "minHeight": "600px"
+            },
             "enumerateQuestions": true,
             "response": [
             {
