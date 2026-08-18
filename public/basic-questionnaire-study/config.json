@@ -649,6 +649,46 @@
                 }
             ]
         },
+        "area-extremum": {
+            "instruction": "Which brand reached its own all-time interest peak in September 2019?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/waterBottlesTrendsExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-area-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["Nalgene", "Klean Kanteen", "Hydro Flask", "Klean Kanteen and Hydro Flask", "Skip"]
+            },
+            {
+                "id": "divider-area-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "wl-area-extremum",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...execute and coordinate a multiple-step analysis?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
+                    "...adapt analytical approaches based on progressive discoveries?",
+                    "...maintain analytical coherence during their investigation of the data?"
+                ]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-extremum",
+                "answer": "Hydro Flask"
+                }
+            ]
+        },
         "area-comparison": {
             "instruction": "Which statement about the 1980 income distributions is true?",
             "instructionLocation": "sidebar",
@@ -1125,6 +1165,7 @@
             "stackedbar-comparison",
             "scatterplot-trend",
             "stackedarea-value",
+            "area-extremum",
             "bar-comparison",
             "line-extremum",
             "stackedbar-value",
