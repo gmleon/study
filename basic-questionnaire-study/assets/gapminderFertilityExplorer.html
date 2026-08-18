@@ -16,8 +16,6 @@
       #controls {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 100%;
         gap: 10px;
         margin-top: 16px;
         padding-bottom: 32px;
@@ -41,7 +39,7 @@
         font-weight: normal;
         color: #000;
       }
-      #slider-wrap { position: relative; flex: 1 1 auto; min-width: 0; display: flex; align-items: center; max-width: 360px; }
+      #slider-wrap { position: relative; flex: 1 1 auto; min-width: 0; display: flex; align-items: center; }
       #yearSlider { width: 100%; min-width: 0; cursor: pointer; accent-color: #757575; }
       #currentYearLabel {
         position: absolute;
@@ -104,7 +102,19 @@
         const btn = document.getElementById("playBtn");
         const slider = document.getElementById("yearSlider");
         const currentLabel = document.getElementById("currentYearLabel");
+        const controls = document.getElementById("controls");
         let timer = null;
+
+        // Align the controls row with the horizontal span of the x-axis.
+        const visEl = document.getElementById("vis");
+        const visRect = visEl.getBoundingClientRect();
+        const domains = Array.from(visEl.querySelectorAll("svg .role-axis-domain"))
+          .map((d) => d.getBoundingClientRect());
+        const xAxisRect = domains.find((r) => r.width > r.height);
+        if (xAxisRect) {
+          controls.style.marginLeft = (xAxisRect.left - visRect.left) + "px";
+          controls.style.width = xAxisRect.width + "px";
+        }
 
         function updateCurrentLabel(year) {
           currentLabel.textContent = year;
