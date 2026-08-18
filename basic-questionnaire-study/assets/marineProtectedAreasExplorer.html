@@ -75,7 +75,7 @@
 
       svg.append("text")
         .attr("x", margins.left).attr("y", 18)
-        .style("font-size", "15px").style("font-weight", "bold")
+        .style("font-family", "sans-serif").style("font-size", "13px").style("font-weight", "bold").style("fill", "#000")
         .text("Marine protected areas by country");
 
       // ── Legend ──────────────────────────────────────────────────────
@@ -104,12 +104,14 @@
 
       g.append("text")
         .attr("x", innerW / 2).attr("y", chartInnerH + 38)
-        .attr("text-anchor", "middle").style("font-size", "11px")
+        .attr("text-anchor", "middle")
+        .style("font-family", "sans-serif").style("font-size", "11px").style("font-weight", "bold").style("fill", "#000")
         .text("Total marine area (logarithmic scale)");
       g.append("text")
         .attr("transform", "rotate(-90)")
         .attr("x", -chartInnerH / 2).attr("y", -45)
-        .attr("text-anchor", "middle").style("font-size", "11px")
+        .attr("text-anchor", "middle")
+        .style("font-family", "sans-serif").style("font-size", "11px").style("font-weight", "bold").style("fill", "#000")
         .text("Percentage of total marine area protected");
 
       // Reference line at 0% (baseline)
@@ -144,11 +146,12 @@
         .attr("cy", (d) => yScale(d.PAmarinecover))
         .attr("r", radius)
         .attr("fill", (d) => colorScale(d.region))
+        .attr("opacity", 0.7)
         .on("mouseover", (evt, d) => { showTooltip(evt, d); highlightHover(d); })
         .on("mousemove", (evt, d) => showTooltip(evt, d))
         .on("mouseout", (evt, d) => { hideTooltip(); highlightHover(null); });
 
-      // ABNJ special point + label
+      // ABNJ special point
       if (abnj) {
         g.append("circle")
           .attr("class", "dot")
@@ -156,15 +159,10 @@
           .attr("cy", yScale(abnj.PAmarinecover))
           .attr("r", radius)
           .attr("fill", "#888")
+          .attr("opacity", 0.7)
           .on("mouseover", (evt) => { showTooltip(evt, abnj); })
           .on("mousemove", (evt) => showTooltip(evt, abnj))
           .on("mouseout", hideTooltip);
-        g.append("text")
-          .attr("x", xScale(abnj.totalmarinearea) - 8)
-          .attr("y", yScale(abnj.PAmarinecover) + 4)
-          .attr("text-anchor", "end")
-          .style("font-size", "10px").style("font-style", "italic")
-          .text("Areas beyond national jurisdiction");
       }
 
       const hoverRing = g.append("circle").attr("class", "dot-outline").attr("r", radius + 3).style("display", "none");
