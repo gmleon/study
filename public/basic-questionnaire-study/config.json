@@ -649,6 +649,55 @@
                 }
             ]
         },
+        "area-comparison": {
+            "instruction": "Which statement about the 1980 income distributions is true?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/incomeMountainsExplorer.html",
+            "style": {
+                "minHeight": "600px"
+            },
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-area-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The Americas' population living on less than $8 a day is larger than Africa's",
+                    "Africa's population living on less than $8 a day is larger than Asia's",
+                    "Asia's population living on less than $8 a day is larger than Africa's",
+                    "Asia and Africa have about the same population living on less than $8 a day",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-area-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "wl-area-comparison",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...execute and coordinate a multiple-step analysis?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
+                    "...adapt analytical approaches based on progressive discoveries?",
+                    "...maintain analytical coherence during their investigation of the data?"
+                ]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-comparison",
+                "answer": "Asia's population living on less than $8 a day is larger than Africa's"
+                }
+            ]
+        },
         "stackedarea-value": {
             "instruction": "What was the number of Terawatt-hours produced by solar energy in 2020?",
             "instructionLocation": "sidebar",
@@ -1048,6 +1097,7 @@
             "scatterplot-value",
             "stackedarea-comparison",
             "scatterplot-extremum",
+            "area-comparison",
             "demographics"
         ]
     }
