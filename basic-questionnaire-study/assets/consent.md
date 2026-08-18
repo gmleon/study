@@ -10,7 +10,7 @@ Anyone who is a fluent speaker of English, 18 years or older, and has normal or 
 
 ## Procedure
 
-You will be presented with 20 tasks. In each task, you will be asked to provide an answer to a question. You can find the answer by using the interactive data visualizations presented. Then you will be presented with 4 demographic questions, plus one question for optional comments. The study will require around 25 minutes to complete.
+You will be presented with 23 tasks. In each task, you will be asked to provide an answer to a question. You can find the answer by using the interactive data visualizations presented. Then you will be presented with 4 demographic questions, plus one question for optional comments. The study will require around 25 minutes to complete.
 
 ## Risks and Benefits
 

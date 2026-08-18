@@ -2,11 +2,11 @@
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
         "title": "Interactive Data Visualizations",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "authors": [
             "The Interactive Visualization Literacy Team"
         ],
-        "date": "2026-08-12",
+        "date": "2026-08-18",
         "description": "A study on the ability to use interactive data visualizations",
         "organizations": [
             "Aarhus University",
@@ -16,7 +16,7 @@
         ]
     },
     "uiConfig": {
-        "contactEmail": "your@email.com",
+        "contactEmail": "leon@cs.au.dk",
         "helpTextPath": "basic-questionnaire-study/assets/help.md",
         "logoPath": "revisitAssets/revisitLogoSquare.svg",
         "withProgressBar": true,
@@ -649,6 +649,138 @@
                 }
             ]
         },
+        "area-extremum": {
+            "instruction": "Which brand reached its own all-time interest peak in September 2019?",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/waterBottlesTrendsExplorer.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-area-extremum",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["Nalgene", "Klean Kanteen", "Hydro Flask", "Klean Kanteen and Hydro Flask", "Skip"]
+            },
+            {
+                "id": "divider-area-extremum",
+                "type": "divider"
+            },
+            {
+                "id": "wl-area-extremum",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...execute and coordinate a multiple-step analysis?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
+                    "...adapt analytical approaches based on progressive discoveries?",
+                    "...maintain analytical coherence during their investigation of the data?"
+                ]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-extremum",
+                "answer": "Hydro Flask"
+                }
+            ]
+        },
+        "area-comparison": {
+            "instruction": "Which statement about the 1980 income distributions is true?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/incomeMountainsExplorer.html",
+            "style": {
+                "minHeight": "600px"
+            },
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-area-comparison",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": [
+                    "The Americas' population living on less than $8 a day is larger than Africa's",
+                    "Africa's population living on less than $8 a day is larger than Asia's",
+                    "Asia's population living on less than $8 a day is larger than Africa's",
+                    "Asia and Africa have about the same population living on less than $8 a day",
+                    "Skip"
+                ]
+            },
+            {
+                "id": "divider-area-comparison",
+                "type": "divider"
+            },
+            {
+                "id": "wl-area-comparison",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...execute and coordinate a multiple-step analysis?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
+                    "...adapt analytical approaches based on progressive discoveries?",
+                    "...maintain analytical coherence during their investigation of the data?"
+                ]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-comparison",
+                "answer": "Asia's population living on less than $8 a day is larger than Africa's"
+                }
+            ]
+        },
+        "area-value": {
+            "instruction": "What was the malaria incidence in Pakistan in 2015?",
+            "instructionLocation": "sidebar",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/malariaSouthAsiaExplorer.html",
+            "style": {
+                "minHeight": "550px"
+            },
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-area-value",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["2.65", "4.68", "6.44", "14.10", "Skip"]
+            },
+            {
+                "id": "divider-area-value",
+                "type": "divider"
+            },
+            {
+                "id": "wl-area-value",
+                "prompt": "How relevant is this task to assess someone's ability to...",
+                "type": "matrix-radio",
+                "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
+                "withDontKnow": true,
+                "questionOptions": [
+                    "...execute and coordinate a multiple-step analysis?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
+                    "...adapt analytical approaches based on progressive discoveries?",
+                    "...maintain analytical coherence during their investigation of the data?"
+                ]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-area-value",
+                "answer": "4.68"
+                }
+            ]
+        },
         "stackedarea-value": {
             "instruction": "What was the number of Terawatt-hours produced by solar energy in 2020?",
             "instructionLocation": "sidebar",
@@ -1033,6 +1165,7 @@
             "stackedbar-comparison",
             "scatterplot-trend",
             "stackedarea-value",
+            "area-extremum",
             "bar-comparison",
             "line-extremum",
             "stackedbar-value",
@@ -1047,7 +1180,9 @@
             "stackedbar-extremum",
             "scatterplot-value",
             "stackedarea-comparison",
+            "area-value",
             "scatterplot-extremum",
+            "area-comparison",
             "demographics"
         ]
     }
