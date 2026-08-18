@@ -8,6 +8,7 @@
     {
       "width": 600,
       "height": 50,
+      "title": "Film Release Years and Ratings",
       "mark": {
         "type": "bar",
         "width": 4
