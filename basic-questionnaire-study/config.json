@@ -91,9 +91,9 @@
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis?",
-                    "...manage interactions across multiple visualizations in a purposeful way?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
                     "...adapt analytical approaches based on progressive discoveries?",
-                    "...maintain analytical coherence and structure?"
+                    "...maintain analytical coherence during their investigation of the data?"
                 ]
             }
             ],
@@ -137,9 +137,9 @@
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis?",
-                    "...manage interactions across multiple visualizations in a purposeful way?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
                     "...adapt analytical approaches based on progressive discoveries?",
-                    "...maintain analytical coherence and structure?"
+                    "...maintain analytical coherence during their investigation of the data?"
                 ]
             }
             ],
@@ -178,10 +178,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -224,10 +224,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -272,10 +272,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -312,10 +312,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -352,10 +352,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -399,10 +399,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -444,10 +444,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -493,10 +493,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -542,10 +542,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -589,10 +589,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -636,9 +636,9 @@
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis?",
-                    "...manage interactions across multiple visualizations in a purposeful way?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
                     "...adapt analytical approaches based on progressive discoveries?",
-                    "...maintain analytical coherence and structure?"
+                    "...maintain analytical coherence during their investigation of the data?"
                 ]
             }
             ],
@@ -675,10 +675,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -724,10 +724,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -765,9 +765,9 @@
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis?",
-                    "...manage interactions across multiple visualizations in a purposeful way?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
                     "...adapt analytical approaches based on progressive discoveries?",
-                    "...maintain analytical coherence and structure?"
+                    "...maintain analytical coherence during their investigation of the data?"
                 ]
             }
             ],
@@ -805,10 +805,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -846,10 +846,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -893,9 +893,9 @@
                 "withDontKnow": true,
                 "questionOptions": [
                     "...execute and coordinate a multiple-step analysis?",
-                    "...manage interactions across multiple visualizations in a purposeful way?",
+                    "...manage interactions across multiple visualizations in a purposeful way (i.e., with a clear goal)?",
                     "...adapt analytical approaches based on progressive discoveries?",
-                    "...maintain analytical coherence and structure?"
+                    "...maintain analytical coherence during their investigation of the data?"
                 ]
             }
             ],
@@ -938,10 +938,10 @@
                 "answerOptions": ["Not relevant", "Somewhat relevant", "Quite relevant", "Highly relevant"],
                 "withDontKnow": true,
                 "questionOptions": [
-                    "...know about the interaction techniques required to solve the task?",
+                    "...identify the interaction techniques required to solve the task?",
                     "...interact with the visualization?",
                     "...combine the appropriate interaction techniques (if multiple)?",
-                    "...use the interaction techniques in a purposeful way?"
+                    "...use the interaction techniques in a purposeful way (i.e., with a clear goal)?"
                 ]
             }
             ],
@@ -1028,25 +1028,25 @@
         "components": [
             "introduction",
             "consent",
+            "bar-extremum",
             "line-value",
+            "stackedbar-comparison",
+            "scatterplot-trend",
+            "stackedarea-trend",
             "line-extremum",
             "line-trend",
             "line-comparison",
             "bar-value",
-            "bar-extremum",
             "bar-comparison",
             "stackedbar-value",
             "stackedbar-extremum",
-            "stackedbar-comparison",
             "scatterplot-value",
             "scatterplot-extremum",
-            "scatterplot-trend",
             "scatterplot-trend-2",
             "scatterplot-comparison",
             "area-trend",
             "stackedarea-value",
             "stackedarea-extremum",
-            "stackedarea-trend",
             "stackedarea-comparison",
             "demographics"
         ]
