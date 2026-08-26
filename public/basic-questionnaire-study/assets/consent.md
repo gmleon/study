@@ -10,7 +10,8 @@ Anyone who is a fluent speaker of English, 18 years or older, and has normal or 
 
 ## Procedure
 
-You will be presented with 23 tasks. In each task, you will be asked to provide an answer to a question. You can find the answer by using the interactive data visualizations presented. Then you will be presented with 4 demographic questions, plus one question for optional comments. The study will require around 25 minutes to complete.
+You will be presented with 18 tasks. In each task, you will be asked to provide an answer to a question. You can find the answer by using the interactive data visualizations presented. Then, you will be presented with the mini-VLAT test, which consists of 12 questions to assess your visualization literacy.
+Afterwards, we will ask you 4 demographic questions, plus one question for optional comments. The study will require around 25 minutes to complete.
 
 ## Risks and Benefits
 
@@ -112,7 +113,7 @@ If you withdraw your consent, we will stop processing your personal data. Howeve
 - I do not have low vision or impaired vision, including any form of color deficiency.
 - I understand that I will complete an online study lasting approx. 25 minutes.
 - I understand that my participation is voluntary; I may skip any question or withdraw at any time without penalty.
-- I understand that the survey collects general demographics, task answers, and relevance ratings, as well as my free-text reflections.
+- I understand that the survey collects general demographics, interactive task answers, and visualization literacy answers, as well as my free-text reflections.
 - I understand that identifiable data will be kept for up to 10 years after final publication, stored on encrypted devices and EU servers; fully anonymised data may be kept indefinitely for research transparency.
 - I hereby consent to Aarhus University registering and processing my personal data in the research project referred to above. Furthermore, I consent to processing taking place in the following ways:
 - I consent to my personal data being stored in a database for use in other research projects within Computer Science after the end of the project.
