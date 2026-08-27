@@ -2,11 +2,11 @@
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
         "title": "Interactive Data Visualizations",
-        "version": "1.0.3",
+        "version": "1.1.0",
         "authors": [
             "The Interactive Visualization Literacy Team"
         ],
-        "date": "2026-08-18",
+        "date": "2026-08-27",
         "description": "A study on the ability to use interactive data visualizations",
         "organizations": [
             "Aarhus University",
@@ -64,6 +64,12 @@
             "nextButtonText": "I agree",
             "response": []
         },
+        "transition": {
+            "type": "markdown",
+            "path": "basic-questionnaire-study/assets/transition.md",
+            "nextButtonText": "Start the mini-VLAT test",
+            "response": []
+        }
         "line-value": {
             "instruction": "What was the tuberculosis case detection rate in South Asia in 2018?",
             "instructionLocation": "sidebar",
@@ -626,9 +632,12 @@
                     "type": "longText",
                     "placeholder": "Please enter your comments or suggestions"
                 }
-            ]
+            ],
+            "instruction": "# Demographics \n You have now completed the Mini-VLAT test. Please share with us a few details about yourself below.",
+            "instructionLocation": "aboveStimulus"
         }
     },
+    "importedLibraries": ["mini-vlat"],
     "sequence": {
         "order": "fixed",
         "components": [
@@ -652,6 +661,8 @@
             "stackedarea-comparison",
             "area-value",
             "scatterplot-extremum",
+            "transition",
+            "$mini-vlat.sequences.full",
             "demographics"
         ]
     }
