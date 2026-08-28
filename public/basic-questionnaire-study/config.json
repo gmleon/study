@@ -69,7 +69,7 @@
             "path": "basic-questionnaire-study/assets/transition.md",
             "nextButtonText": "Start the mini-VLAT test",
             "response": []
-        }
+        },
         "line-value": {
             "instruction": "What was the tuberculosis case detection rate in South Asia in 2018?",
             "instructionLocation": "sidebar",
@@ -161,10 +161,10 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
-                    "Romania",
-                    "Slovak Republic",
-                    "Hungary",
-                    "Spain",
+                    "Montenegro",
+                    "North Macedonia",
+                    "Algeria",
+                    "Bosnia and Herzegovina",
                     "Skip"
                 ]
             }
@@ -172,9 +172,9 @@
             "correctAnswer": [
                 {
                 "id": "res-bar-extremum",
-                "answer": "Slovak Republic"
+                "answer": "North Macedonia"
                 }
-            ]   
+            ]
         },
         "bar-comparison": {
             "instruction": "Which statement is true?",
