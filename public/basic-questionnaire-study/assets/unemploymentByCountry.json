@@ -896,10 +896,10 @@
     "color": {
       "condition": {
         "param": "hover",
-        "value": "#556E7D",
+        "value": "#41807B",
         "empty": false
       },
-      "value": "#90A6B3"
+      "value": "#72B7B2"
     },
     "tooltip": [
       {
