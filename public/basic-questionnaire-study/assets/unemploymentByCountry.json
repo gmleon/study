@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Unemployment rate (% of total labour force, modeled ILO estimate) by country, 1999. One bar per country, no repeats. Source: World Bank, indicator SL.UEM.TOTL.ZS ('Unemployment, total (% of total labor force) (modeled ILO estimate)').",
+  "description": "Unemployment rate (% of total labour force, modeled ILO estimate) by country, 1999. One bar per country, no repeats. Source: World Bank, indicator SL.UEM.TOTL.ZS ('Unemployment, total (% of total labor force) (modeled ILO estimate)'). Inspired by the question Q9 of the mini-VLAT test.",
   "width": 600,
   "height": 400,
   "title": "Unemployment rate of adults by country",
