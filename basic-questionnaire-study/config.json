@@ -293,7 +293,7 @@
             ]
         },
         "scatterplot-trend": {
-            "instruction": "How does the orange cluster change over time?",
+            "instruction": "How does the group B change over time?",
             "instructionLocation": "sidebar",
             "type": "website",
             "path": "basic-questionnaire-study/assets/gapminderExplorer.html",
@@ -309,10 +309,10 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
-                    "Its life expectancy increases",
-                    "Its life expectancy decreases",
-                    "Its life expectancy remains the same",
-                    "Its fertility increases",
+                    "Its years of schooling increase",
+                    "Its years of schooling decrease",
+                    "Its years of schooling remain the same",
+                    "Its youth percentage increases",
                     "Skip"
                 ]
             }
@@ -320,7 +320,7 @@
             "correctAnswer": [
                 {
                 "id": "res-scatterplot-trend",
-                "answer": "Its life expectancy increases"
+                "answer": "Its years of schooling increase"
                 }
             ]
         },
