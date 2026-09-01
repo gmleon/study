@@ -325,7 +325,7 @@
             ]
         },
         "scatterplot-comparison": {
-            "instruction": "Which of these countries protects the highest percentage of its marine areas?",
+            "instruction": "Which of these countries protects a higher percentage of its marine area than Estonia?",
             "instructionLocation": "sidebar",
             "type": "website",
             "path": "basic-questionnaire-study/assets/marineProtectedAreasExplorer.html",
@@ -339,10 +339,10 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
+                    "Latvia",
+                    "Gabon",
+                    "Sudan",
                     "Greenland",
-                    "Brazil",
-                    "Singapore",
-                    "Jordan",
                     "Skip"
                 ]
             }
@@ -350,7 +350,7 @@
             "correctAnswer": [
                 {
                 "id": "res-scatterplot-comparison",
-                "answer": "Brazil"
+                "answer": "Gabon"
                 }
             ]
         },
