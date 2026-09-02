@@ -261,12 +261,12 @@
             ]
         },
         "scatterplot-extremum": {
-            "instruction": "Which country had the highest fertility in 1995?",
+            "instruction": "Which country had the lowest percentage of internet users in 2008 in Sub-Saharan Africa?",
             "instructionLocation": "sidebar",
             "type": "website",
-            "path": "basic-questionnaire-study/assets/gapminderFertilityExplorer.html",
+            "path": "basic-questionnaire-study/assets/gapminderRegionFilterExplorer.html",
             "style": {
-                "minHeight": "550px"
+                "minHeight": "620px"
             },
             "enumerateQuestions": true,
             "response": [
@@ -277,10 +277,10 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
-                    "Nigeria",
-                    "Japan",
-                    "Afghanistan",
-                    "Rwanda",
+                    "Burundi",
+                    "Burkina Faso",
+                    "Zimbabwe",
+                    "Malawi",
                     "Skip"
                 ]
             }
@@ -288,7 +288,7 @@
             "correctAnswer": [
                 {
                 "id": "res-scatterplot-extremum",
-                "answer": "Afghanistan"
+                "answer": "Malawi"
                 }
             ]
         },
