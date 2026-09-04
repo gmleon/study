@@ -436,10 +436,10 @@
             ]
         },
         "stackedarea-comparison": {
-            "instruction": "What was the ratio of hydropower generated in Africa to the hydropower generated in South America in 2020?",
+            "instruction": "In which year did the sub-sectors Health and Energy receive the same percentage of their sector's total spending?",
             "instructionLocation": "sidebar",
             "type": "vega",
-            "path": "basic-questionnaire-study/assets/electricityBySourceExplorer.json",
+            "path": "basic-questionnaire-study/assets/sectorsODAExplorer.json",
             "enumerateQuestions": true,
             "response": [
             {
@@ -448,13 +448,13 @@
                 "prompt": "Your answer",
                 "required": true,
                 "location": "sidebar",
-                "options": ["1 to 2", "1 to 4", "1 to 6", "1 to 8", "Skip"]
+                "options": ["2015", "2018", "2020", "2021", "Skip"]
             }
             ],
             "correctAnswer": [
                 {
                 "id": "res-stackedarea-comparison",
-                "answer": "1 to 4"
+                "answer": "2020"
                 }
             ]
         },
