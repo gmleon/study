@@ -92,7 +92,24 @@
     <div id="mpa-tooltip"></div>
   </body>
 
-  <script>
+  <script type="module">
+    // Provenance tracking: records country search/selection via Trrack, so
+    // interactions are logged and replayable in reVISit's analysis view.
+    // This chart is plain D3 (no Vega signals), so actions are recorded
+    // directly inside the relevant handlers below.
+    import { Registry, initializeTrrack } from "https://cdn.jsdelivr.net/npm/@trrack/core@1.3.0/+esm";
+
+    const provenanceRegistry = Registry.create();
+    const selectCountryAction = provenanceRegistry.register("select-country", (state, name) => {
+      state.selectedCountry = name || null;
+    });
+    const trrack = Revisit.createTrrack({
+      initializeTrrack,
+      registry: provenanceRegistry,
+      initialState: { selectedCountry: null },
+    });
+    let suppressCapture = false;
+
     // Marine protected areas per country, 2023 (World Bank indicator ER.MRN.PTMR.ZS for % protected;
     // total marine area / EEZ size in km2 from Wikipedia's "Exclusive economic zone" rankings-by-area table;
     // region from World Bank country metadata). ABNJ = areas beyond national jurisdiction (high seas).
@@ -102,10 +119,10 @@
       const countries = DATA.filter((d) => d.iso3c !== "ABNJ");
       const abnj = DATA.find((d) => d.iso3c === "ABNJ");
 
-      const width = 600;
+      const width = 710;
       const margins = { top: 40, right: 50, bottom: 50, left: 60 };
       const innerW = width - margins.left - margins.right;
-      const chartInnerH = 260;
+      const chartInnerH = 340;
 
       const xScale = d3.scaleLog().domain([10, 100000000]).range([0, innerW]);
       const xTicks = [10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000];
@@ -154,23 +171,16 @@
 
       const g = svg.append("g").attr("transform", `translate(${margins.left},${chartTop})`);
 
-      // Scales currently in effect: identical to xScale/yScale until the
-      // user zooms or pans, at which point they track the transformed view.
+      // Scales currently in effect (always xScale/yScale; kept as separate
+      // names since drawing code below is written against "current*").
       let currentXScale = xScale;
       let currentYScale = yScale;
 
-      // Invisible background giving the whole plot area a hit-testable
-      // surface, so panning/zooming works even off of a gridline or mark.
-      g.append("rect")
-        .attr("width", innerW).attr("height", chartInnerH)
-        .attr("fill", "transparent");
-
-      // Everything whose position depends on the (possibly zoomed/panned)
-      // scales is clipped to the plot rectangle, so panning/zooming never
-      // lets marks or gridlines bleed into the title, axis titles, or
-      // legend around the chart. The clip rect is padded slightly beyond
-      // the plot's exact bounds so marks sitting right at 0% or 100% (or
-      // the search/hover ring around them) aren't sliced off at the edge.
+      // Everything is clipped to the plot rectangle so marks or gridlines
+      // never bleed into the title, axis titles, or legend around the
+      // chart. The clip rect is padded slightly beyond the plot's exact
+      // bounds so marks sitting right at 0% or 100% (or the search/hover
+      // ring around them) aren't sliced off at the edge.
       const clipPad = 9;
       svg.append("defs").append("clipPath")
         .attr("id", "plot-clip")
@@ -214,9 +224,8 @@
       // Axes
       const xAxis = g.append("g").attr("transform", `translate(0,${chartInnerH})`);
       const yAxis = g.append("g");
-      // Only ticks within the scale's current (possibly zoomed) domain are
-      // passed in, so a tick for a value that's been zoomed/panned out of
-      // view doesn't get drawn off past the edge of the plot.
+      // Only ticks within the scale's current domain are passed in, so a
+      // tick for an out-of-range value doesn't get drawn past the plot edge.
       function drawXAxis(scale) {
         const [d0, d1] = scale.domain();
         const visible = xTicks.filter((t) => t >= d0 && t <= d1);
@@ -321,6 +330,9 @@
       let selectedMatch = null;
 
       function selectCountry(name) {
+        if (!suppressCapture) {
+          trrack.apply(name ? "Search: " + name : "Clear search", selectCountryAction(name));
+        }
         const match = countries.find((d) => d.country.toLowerCase() === name.toLowerCase());
         selectedMatch = match || null;
         if (!match) {
@@ -332,44 +344,6 @@
         searchRing.attr("cx", cx).attr("cy", cy).attr("r", radius + 3).style("display", null);
         searchLabel.attr("x", cx + 10).attr("y", cy + 4).text(match.country).style("display", null);
       }
-
-      // ── Zoom / pan ──────────────────────────────────────────────────
-      const zoom = d3.zoom()
-        .scaleExtent([1, 10])
-        .translateExtent([[0, 0], [innerW, chartInnerH]])
-        .extent([[0, 0], [innerW, chartInnerH]])
-        .on("zoom", (event) => {
-          currentXScale = event.transform.rescaleX(xScale);
-          currentYScale = event.transform.rescaleY(yScale);
-
-          drawXAxis(currentXScale);
-          drawYAxis(currentYScale);
-          drawXGrid(currentXScale);
-          drawYGrid(currentYScale);
-
-          dotsSel
-            .attr("cx", (d) => currentXScale(d.totalmarinearea))
-            .attr("cy", (d) => currentYScale(d.PAmarinecover));
-          if (abnjDot) {
-            abnjDot
-              .attr("cx", currentXScale(abnj.totalmarinearea))
-              .attr("cy", currentYScale(abnj.PAmarinecover));
-          }
-          refLine.attr("y1", currentYScale(0)).attr("y2", currentYScale(0));
-
-          if (hoveredDatum) {
-            hoverRing
-              .attr("cx", currentXScale(hoveredDatum.totalmarinearea))
-              .attr("cy", currentYScale(hoveredDatum.PAmarinecover));
-          }
-          if (selectedMatch) {
-            const cx = currentXScale(selectedMatch.totalmarinearea), cy = currentYScale(selectedMatch.PAmarinecover);
-            searchRing.attr("cx", cx).attr("cy", cy);
-            searchLabel.attr("x", cx + 10).attr("y", cy + 4);
-          }
-        });
-
-      g.call(zoom);
 
       // Custom filtered suggestions list: only shows matches for what's been
       // typed so far, with no default "show everything" dropdown button.
@@ -411,6 +385,16 @@
         suggestionsList.style.display = "none";
         searchInput.focus();
       });
+
+      Revisit.onProvenanceReceive((prov) => {
+        if (!prov) return;
+        suppressCapture = true;
+        searchInput.value = prov.selectedCountry || "";
+        selectCountry(prov.selectedCountry || "");
+        suppressCapture = false;
+      });
+
+      Revisit.postReady();
     });
   </script>
 </html>

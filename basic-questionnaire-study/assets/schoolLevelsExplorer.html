@@ -76,16 +76,104 @@
         "Percentage of school level by province (" + area + ")";
     }
 
+    function describeHighlight(value) {
+      const level = value && value.level && value.level[0];
+      return level ? "Highlight legend: " + level : "Clear legend highlight";
+    }
+  </script>
+
+  <!-- Provenance tracking: records the Rural/Urban toggle and legend clicks via Trrack,
+       so both interactions are logged and replayable in reVISit's analysis view. -->
+  <script type="module">
+    import { Registry, initializeTrrack } from "https://cdn.jsdelivr.net/npm/@trrack/core@1.3.0/+esm";
+
+    const registry = Registry.create();
+    const setAreaAction = registry.register("set-area", (state, area) => {
+      state.selectedArea = area;
+    });
+    const setHighlightAction = registry.register("set-highlight", (state, value) => {
+      state.highlight = value;
+    });
+    const setTooltipAction = registry.register("set-tooltip", (state, value) => {
+      state.tooltip = value;
+    });
+
+    const trrack = Revisit.createTrrack({
+      initializeTrrack,
+      registry,
+      initialState: { selectedArea: "Rural", highlight: {}, tooltip: null },
+    });
+
+    let view;
+    let suppressSignalCapture = false;
+
+    // Pure render: reflects a given state onto the toggle + Vega view. Used both after a
+    // real interaction (via trrack.currentChange) and during replay (via onProvenanceReceive).
+    // Never itself calls trrack.apply, so it can't create a feedback loop.
+    function renderState(state) {
+      setTitle(state.selectedArea);
+      const toggle = document.getElementById("areaToggle");
+      if (toggle) toggle.checked = state.selectedArea === "Urban";
+      if (!view) return;
+      suppressSignalCapture = true;
+      view.signal("selectedArea", state.selectedArea);
+      view.signal("highlight", state.highlight ?? {});
+      view.runAsync().finally(() => {
+        suppressSignalCapture = false;
+      });
+    }
+
+    trrack.currentChange(() => renderState(trrack.getState()));
+
+    // Keep the latest replayed state so it can be re-applied once the async
+    // embed finishes (reVISit posts it right after STUDY_DATA, before the
+    // view exists).
+    let lastReceivedState = null;
+    Revisit.onProvenanceReceive((prov) => {
+      if (!prov) return;
+      lastReceivedState = prov;
+      renderState(prov);
+    });
+
     Revisit.onDataReceive(() => {
-      setTitle("Rural");
+      renderState(trrack.getState());
       vegaEmbed("#vis", SPEC, { renderer: "svg", actions: false }).then((res) => {
-        const view = res.view;
+        view = res.view;
+        renderState(lastReceivedState || trrack.getState());
+
         const toggle = document.getElementById("areaToggle");
         toggle.addEventListener("change", () => {
           const area = toggle.checked ? "Urban" : "Rural";
-          setTitle(area);
-          view.signal("selectedArea", area).runAsync();
+          trrack.apply("Toggle area: " + area, setAreaAction(area));
         });
+
+        view.addSignalListener("highlight", (name, value) => {
+          if (suppressSignalCapture) return;
+          trrack.apply(describeHighlight(value), setHighlightAction(value));
+        });
+
+        // Bar tooltip (Province / School level / Percentage), recorded once per
+        // settled hover (500 ms debounce) and never as a consecutive duplicate.
+        let tooltipTimer = null;
+        let lastTooltip = null;
+        view.addEventListener("pointerover", (_evt, item) => {
+          const d = item && item.datum;
+          if (!d || d.province === undefined || d.level === undefined) return;
+          const content = {
+            Province: d.province,
+            "School level": d.level,
+            "Percentage (%)": Number(d.percentage).toFixed(1),
+          };
+          clearTimeout(tooltipTimer);
+          tooltipTimer = setTimeout(() => {
+            if (suppressSignalCapture) return;
+            const serialized = JSON.stringify(content);
+            if (serialized === lastTooltip) return;
+            lastTooltip = serialized;
+            trrack.apply("Tooltip: " + d.province + " / " + d.level, setTooltipAction(content));
+          }, 500);
+        });
+
         Revisit.postReady();
       });
     });

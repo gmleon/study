@@ -1,1 +1,3838 @@
-{"$schema":"https://vega.github.io/schema/vega-lite/v5.json","description":"Modified recreation of the World Bank SDG Atlas 'Sectors of ODA' chart for Goal 17 (datatopics.worldbank.org/sdgatlas/archive/2023/goal-17-partnerships-for-the-goals), which pairs a treemap of sector/sub-sector ODA commitments with a linked stacked-area trend. Here the stacked area chart (total ODA commitments by top-level sector, 2015-2021, colored with the Tableau10 palette) is on top; the treemap below it is replaced by a thin, tightly-packed, 100%-stacked HORIZONTAL bar chart, one bar per top-level sector, whose segments show each sub-sector's share of that sector's spending in a given year. Clicking a sector's area highlights it and its matching bar (both dim to 35% opacity while one sector is selected, except the clicked one, which stays fully opaque); double-clicking empty chart space clears the selection (Vega-Lite's default point-selection clear trigger - explicitly overriding it to a single click turned out to silently break the whole selection, since 'on' and 'clear' sharing the same event name is a genuine Vega-Lite bug, not just a stricter click). Hovering the area chart (independent of the click selection) updates which year's composition the bar chart shows, mirroring the linked interaction in the original. The click selection is attached to an invisible bar-shaped hit-layer stacked over the area (year on x, cumulative sector sums on y/y2) rather than to the area mark itself, since Vega-Lite's click-based point selections don't register on area marks at all - only on marks with discrete per-datum geometry like bars. Each sub-sector segment reuses its parent sector's exact Tableau10 color at a different lightness (darkest = largest sub-sector) instead of getting its own hue, since the sector-level color legend already carries the categorical meaning and 20+ additional legend entries would be unusable; segment identity is read from its own label (shown when there's room, in black or white - whichever contrasts better with that segment's own color) or its tooltip. Data: OECD Development Assistance Committee, Creditor Reporting System, ODA commitments by DAC5 sector.","vconcat":[{"width":650,"height":220,"title":{"text":"Total spending of foreign aid across sectors","anchor":"start","fontSize":13},"data":{"values":[{"year":2015,"sec":"Social Infrastructure","amount":43680.84,"color":"#59A14F","sec_rank":0},{"year":2015,"sec":"Economic Infrastructure","amount":24719.45,"color":"#EDC948","sec_rank":1},{"year":2015,"sec":"Production Sectors","amount":8233.45,"color":"#F28E2B","sec_rank":2},{"year":2015,"sec":"Multi-Sector / Cross-Cutting","amount":12519.47,"color":"#B07AA1","sec_rank":3},{"year":2015,"sec":"Commodity Aid / Programme Assistance","amount":2799.77,"color":"#4E79A7","sec_rank":4},{"year":2015,"sec":"Action Relating to Debt","amount":459.57,"color":"#76B7B2","sec_rank":5},{"year":2015,"sec":"Humanitarian Aid","amount":14176.59,"color":"#E15759","sec_rank":6},{"year":2015,"sec":"Unallocated / Unspecified","amount":21143.72,"color":"#BAB0AC","sec_rank":7},{"year":2016,"sec":"Social Infrastructure","amount":44946.8,"color":"#59A14F","sec_rank":0},{"year":2016,"sec":"Economic Infrastructure","amount":23318.12,"color":"#EDC948","sec_rank":1},{"year":2016,"sec":"Production Sectors","amount":6501.11,"color":"#F28E2B","sec_rank":2},{"year":2016,"sec":"Multi-Sector / Cross-Cutting","amount":12863.89,"color":"#B07AA1","sec_rank":3},{"year":2016,"sec":"Commodity Aid / Programme Assistance","amount":2514.99,"color":"#4E79A7","sec_rank":4},{"year":2016,"sec":"Action Relating to Debt","amount":2570.24,"color":"#76B7B2","sec_rank":5},{"year":2016,"sec":"Humanitarian Aid","amount":16510.13,"color":"#E15759","sec_rank":6},{"year":2016,"sec":"Unallocated / Unspecified","amount":24519.26,"color":"#BAB0AC","sec_rank":7},{"year":2017,"sec":"Social Infrastructure","amount":45396.16,"color":"#59A14F","sec_rank":0},{"year":2017,"sec":"Economic Infrastructure","amount":23013.34,"color":"#EDC948","sec_rank":1},{"year":2017,"sec":"Production Sectors","amount":9226.6,"color":"#F28E2B","sec_rank":2},{"year":2017,"sec":"Multi-Sector / Cross-Cutting","amount":10541.59,"color":"#B07AA1","sec_rank":3},{"year":2017,"sec":"Commodity Aid / Programme Assistance","amount":3879.27,"color":"#4E79A7","sec_rank":4},{"year":2017,"sec":"Action Relating to Debt","amount":670.36,"color":"#76B7B2","sec_rank":5},{"year":2017,"sec":"Humanitarian Aid","amount":17719.57,"color":"#E15759","sec_rank":6},{"year":2017,"sec":"Unallocated / Unspecified","amount":23316.59,"color":"#BAB0AC","sec_rank":7},{"year":2018,"sec":"Social Infrastructure","amount":46951.62,"color":"#59A14F","sec_rank":0},{"year":2018,"sec":"Economic Infrastructure","amount":22211.05,"color":"#EDC948","sec_rank":1},{"year":2018,"sec":"Production Sectors","amount":8000.5,"color":"#F28E2B","sec_rank":2},{"year":2018,"sec":"Multi-Sector / Cross-Cutting","amount":10218.83,"color":"#B07AA1","sec_rank":3},{"year":2018,"sec":"Commodity Aid / Programme Assistance","amount":2906.0,"color":"#4E79A7","sec_rank":4},{"year":2018,"sec":"Action Relating to Debt","amount":204.43,"color":"#76B7B2","sec_rank":5},{"year":2018,"sec":"Humanitarian Aid","amount":14952.31,"color":"#E15759","sec_rank":6},{"year":2018,"sec":"Unallocated / Unspecified","amount":21008.41,"color":"#BAB0AC","sec_rank":7},{"year":2019,"sec":"Social Infrastructure","amount":47631.41,"color":"#59A14F","sec_rank":0},{"year":2019,"sec":"Economic Infrastructure","amount":22564.04,"color":"#EDC948","sec_rank":1},{"year":2019,"sec":"Production Sectors","amount":9298.27,"color":"#F28E2B","sec_rank":2},{"year":2019,"sec":"Multi-Sector / Cross-Cutting","amount":11680.81,"color":"#B07AA1","sec_rank":3},{"year":2019,"sec":"Commodity Aid / Programme Assistance","amount":2392.53,"color":"#4E79A7","sec_rank":4},{"year":2019,"sec":"Action Relating to Debt","amount":44.75,"color":"#76B7B2","sec_rank":5},{"year":2019,"sec":"Humanitarian Aid","amount":18232.14,"color":"#E15759","sec_rank":6},{"year":2019,"sec":"Unallocated / Unspecified","amount":19083.76,"color":"#BAB0AC","sec_rank":7},{"year":2020,"sec":"Social Infrastructure","amount":55461.42,"color":"#59A14F","sec_rank":0},{"year":2020,"sec":"Economic Infrastructure","amount":24027.06,"color":"#EDC948","sec_rank":1},{"year":2020,"sec":"Production Sectors","amount":8776.64,"color":"#F28E2B","sec_rank":2},{"year":2020,"sec":"Multi-Sector / Cross-Cutting","amount":12109.62,"color":"#B07AA1","sec_rank":3},{"year":2020,"sec":"Commodity Aid / Programme Assistance","amount":3925.67,"color":"#4E79A7","sec_rank":4},{"year":2020,"sec":"Action Relating to Debt","amount":954.78,"color":"#76B7B2","sec_rank":5},{"year":2020,"sec":"Humanitarian Aid","amount":16709.75,"color":"#E15759","sec_rank":6},{"year":2020,"sec":"Unallocated / Unspecified","amount":17916.67,"color":"#BAB0AC","sec_rank":7},{"year":2021,"sec":"Social Infrastructure","amount":58473.48,"color":"#59A14F","sec_rank":0},{"year":2021,"sec":"Economic Infrastructure","amount":19323.8,"color":"#EDC948","sec_rank":1},{"year":2021,"sec":"Production Sectors","amount":8497.45,"color":"#F28E2B","sec_rank":2},{"year":2021,"sec":"Multi-Sector / Cross-Cutting","amount":11872.45,"color":"#B07AA1","sec_rank":3},{"year":2021,"sec":"Commodity Aid / Programme Assistance","amount":3082.8,"color":"#4E79A7","sec_rank":4},{"year":2021,"sec":"Action Relating to Debt","amount":697.55,"color":"#76B7B2","sec_rank":5},{"year":2021,"sec":"Humanitarian Aid","amount":24020.54,"color":"#E15759","sec_rank":6},{"year":2021,"sec":"Unallocated / Unspecified","amount":19869.11,"color":"#BAB0AC","sec_rank":7}]},"layer":[{"mark":{"type":"area","interpolate":"monotone","line":{"strokeWidth":1,"color":"white"},"cursor":"pointer"},"encoding":{"x":{"field":"year","type":"quantitative","title":"Year","axis":{"format":"d","tickCount":7},"scale":{"domain":[2015,2021],"nice":false,"padding":0}},"y":{"field":"amount_b","type":"quantitative","aggregate":"sum","stack":"zero","title":"Spending (billion USD)","axis":{"format":",.0f","grid":true}},"color":{"field":"sec","type":"nominal","title":"Sector","scale":{"domain":["Social Infrastructure","Economic Infrastructure","Production Sectors","Multi-Sector / Cross-Cutting","Commodity Aid / Programme Assistance","Action Relating to Debt","Humanitarian Aid","Unallocated / Unspecified"],"range":["#59A14F","#EDC948","#F28E2B","#B07AA1","#4E79A7","#76B7B2","#E15759","#BAB0AC"]},"sort":null},"order":{"field":"sec_rank","type":"quantitative"},"opacity":{"condition":{"param":"selectSec","value":1},"value":0.35}}},{"params":[{"name":"hoverYear","select":{"type":"point","fields":["year"],"nearest":true,"on":"pointerover","clear":false},"value":[{"year":2015}]}],"mark":{"type":"point","opacity":0},"encoding":{"x":{"field":"year","type":"quantitative"},"y":{"field":"amount_b","type":"quantitative","aggregate":"sum"}}},{"transform":[{"filter":{"param":"hoverYear"}}],"mark":{"type":"rule","color":"#888","strokeDash":[2,2]},"encoding":{"x":{"field":"year","type":"quantitative"}}},{"transform":[{"filter":{"param":"hoverYear"}}],"mark":{"type":"point","filled":true,"size":90,"color":"#333","stroke":"white","strokeWidth":1},"encoding":{"x":{"field":"year","type":"quantitative"},"y":{"field":"amount_b","type":"quantitative","aggregate":"sum"}}},{"transform":[{"filter":{"param":"hoverYear"}}],"encoding":{"x":{"field":"year","type":"quantitative"},"y":{"field":"amount_b","type":"quantitative","aggregate":"sum"},"text":{"field":"amount_b","type":"quantitative","aggregate":"sum","format":",.1f"}},"layer":[{"mark":{"type":"text","stroke":"white","strokeWidth":2.5,"align":"left","dx":8,"dy":-10,"fontSize":12,"fontWeight":"bold"}},{"mark":{"type":"text","align":"left","dx":8,"dy":-10,"fontSize":12,"fontWeight":"bold"},"encoding":{"color":{"value":"#222"}}}]},{"transform":[{"stack":"amount_b","groupby":["year"],"sort":[{"field":"sec_rank","order":"ascending"}],"as":["stack_lo","stack_hi"]}],"params":[{"name":"selectSec","select":{"type":"point","fields":["sec"],"on":"click"},"value":null}],"mark":{"type":"bar","opacity":0.001,"size":95,"cursor":"pointer","clip":true},"encoding":{"x":{"field":"year","type":"quantitative"},"y":{"field":"stack_lo","type":"quantitative"},"y2":{"field":"stack_hi"}}}],"resolve":{"scale":{"color":"independent"}},"transform":[{"calculate":"datum.amount / 1000","as":"amount_b"}]},{"width":650,"height":183,"title":{"text":{"expr":"'Spending by sub-sectors in ' + toString(hoverYear.year[0])"},"anchor":"start","fontSize":13},"data":{"values":[{"year":2015,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":12730.07,"pct":0.2914337276742703,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Social Infrastructure","top":"Education","amount":8622.86,"pct":0.1974060118747854,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2015,"sec":"Social Infrastructure","top":"Health","amount":6523.34,"pct":0.14934098828992526,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2015,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":8454.72,"pct":0.19355671089099183,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2015,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":5605.5,"pct":0.12832857639259818,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2015,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":1744.35,"pct":0.03993398487742906,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2015,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":9951.7,"pct":0.40258582109223284,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Economic Infrastructure","top":"Energy","amount":10256.56,"pct":0.4149186115134127,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2015,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":2853.5,"pct":0.11543541479341253,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2015,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":1295.93,"pct":0.05242552256413828,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2015,"sec":"Economic Infrastructure","top":"Communications","amount":361.76,"pct":0.014634630036803598,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2015,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":5547.54,"pct":0.6737807359005034,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":1977.01,"pct":0.24011926956500615,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2015,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":657.31,"pct":0.0798340914197572,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2015,"sec":"Production Sectors","top":"Tourism","amount":51.59,"pct":0.006265903114733192,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2015,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":8334.67,"pct":0.6657366565614197,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":4184.8,"pct":0.3342633434385803,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2015,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":1263.11,"pct":0.45114777285277,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1339.99,"pct":0.47860717130335706,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2015,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":196.67,"pct":0.07024505584387289,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2015,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":459.57,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Humanitarian Aid","top":"Emergency Response","amount":12878.75,"pct":0.9084518901816984,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2015,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":719.89,"pct":0.05078019530679776,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2015,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":577.95,"pct":0.040767914511503946,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2015,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":21143.72,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":12577.96,"pct":0.279841060273582,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Social Infrastructure","top":"Education","amount":9296.31,"pct":0.20682917858662928,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2016,"sec":"Social Infrastructure","top":"Health","amount":6802.93,"pct":0.15135516412321007,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2016,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":8652.72,"pct":0.19251025246527342,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2016,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":4766.53,"pct":0.10604825846620795,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2016,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":2850.35,"pct":0.06341608608509731,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2016,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":11571.17,"pct":0.49623082821428144,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Economic Infrastructure","top":"Energy","amount":7969.9,"pct":0.34178998564206725,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2016,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":2032.55,"pct":0.08716611802323687,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2016,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":1499.06,"pct":0.06428734820817458,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2016,"sec":"Economic Infrastructure","top":"Communications","amount":245.44,"pct":0.010525719912239924,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2016,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":4936.22,"pct":0.7592888046117281,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":930.05,"pct":0.14306017894749706,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2016,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":577.77,"pct":0.08887251582218603,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2016,"sec":"Production Sectors","top":"Tourism","amount":57.07,"pct":0.008778500618588961,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2016,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":9367.67,"pct":0.72821440270567,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":3496.22,"pct":0.27178559729433005,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2016,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":882.07,"pct":0.35072504122093745,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1458.56,"pct":0.579946654342907,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2016,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":174.36,"pct":0.06932830443615541,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2016,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":2570.24,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Humanitarian Aid","top":"Emergency Response","amount":14693.62,"pct":0.8899760339742643,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2016,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":1188.41,"pct":0.07198065681127969,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2016,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":628.1,"pct":0.03804330921445598,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2016,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":24519.26,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":13217.89,"pct":0.29116757829039375,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Social Infrastructure","top":"Education","amount":9548.17,"pct":0.21032990188965345,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2017,"sec":"Social Infrastructure","top":"Health","amount":6341.3,"pct":0.13968802176288034,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2017,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":8237.66,"pct":0.1814616078067801,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2017,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":5609.41,"pct":0.12356574185224975,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2017,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":2441.73,"pct":0.05378714839804259,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2017,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":11168.84,"pct":0.48532025781208876,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Economic Infrastructure","top":"Energy","amount":7943.13,"pct":0.34515328815731183,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2017,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":2283.16,"pct":0.09921028068216779,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2017,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":1436.42,"pct":0.062416842279631596,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2017,"sec":"Economic Infrastructure","top":"Communications","amount":181.79,"pct":0.007899331068800076,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2017,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":6899.53,"pct":0.7477868282528088,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":1435.51,"pct":0.15558385874718442,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2017,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":844.06,"pct":0.09148115430345206,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2017,"sec":"Production Sectors","top":"Tourism","amount":47.5,"pct":0.005148158696554716,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2017,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":6680.02,"pct":0.6336823891492422,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":3861.57,"pct":0.36631761085075765,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2017,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":2528.56,"pct":0.6518133656122579,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1188.01,"pct":0.3062457548392931,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2017,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":162.7,"pct":0.04194087954844908,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2017,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":670.36,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Humanitarian Aid","top":"Emergency Response","amount":15784.98,"pct":0.8908218422395002,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2017,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":1068.45,"pct":0.060297738567980076,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2017,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":866.14,"pct":0.04888041919251967,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2017,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":23316.59,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":15864.65,"pct":0.3378935557719462,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Social Infrastructure","top":"Education","amount":9854.16,"pct":0.20987902217347323,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2018,"sec":"Social Infrastructure","top":"Health","amount":6867.58,"pct":0.14626928797910183,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2018,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":7407.02,"pct":0.15775855915345885,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2018,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":5057.47,"pct":0.10771662716093047,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2018,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":1900.74,"pct":0.04048294776108953,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2018,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":11446.65,"pct":0.5153583510492151,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Economic Infrastructure","top":"Energy","amount":7095.51,"pct":0.319458551661975,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2018,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":1878.98,"pct":0.08459663171796589,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2018,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":1454.54,"pct":0.06548722429139751,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2018,"sec":"Economic Infrastructure","top":"Communications","amount":335.37,"pct":0.015099241279446413,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2018,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":5815.64,"pct":0.7269095715654076,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":1139.8,"pct":0.1424660940882933,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2018,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":1002.81,"pct":0.12534341446980296,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2018,"sec":"Production Sectors","top":"Tourism","amount":42.25,"pct":0.005280919876496221,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2018,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":6801.03,"pct":0.6655390033015327,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":3417.8,"pct":0.3344609966984674,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2018,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":1108.05,"pct":0.3812973160293522,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1751.15,"pct":0.6025980731598756,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2018,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":46.8,"pct":0.016104610810772406,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2018,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":204.43,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Humanitarian Aid","top":"Emergency Response","amount":13291.77,"pct":0.888944249491253,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2018,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":1161.75,"pct":0.07769702468869558,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2018,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":498.79,"pct":0.033358725820051394,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2018,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":21008.41,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":16364.91,"pct":0.34357391477598503,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Social Infrastructure","top":"Education","amount":10365.97,"pct":0.21762887136870399,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2019,"sec":"Social Infrastructure","top":"Health","amount":6824.5,"pct":0.1432773037791659,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2019,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":6102.32,"pct":0.12811545574653366,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2019,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":5381.47,"pct":0.11298154306160578,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2019,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":2592.24,"pct":0.05442291126800571,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2019,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":7821.76,"pct":0.34664713887498033,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Economic Infrastructure","top":"Energy","amount":9715.04,"pct":0.43055410881525524,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2019,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":2244.99,"pct":0.09949415223706333,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2019,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":2105.64,"pct":0.09331839196033606,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2019,"sec":"Economic Infrastructure","top":"Communications","amount":676.61,"pct":0.029986208112364826,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2019,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":5884.21,"pct":0.6328284718487818,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":2776.7,"pct":0.2986254429706813,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2019,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":581.01,"pct":0.06248581827588502,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2019,"sec":"Production Sectors","top":"Tourism","amount":56.35,"pct":0.006060266904651926,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2019,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":7396.62,"pct":0.6332283548829233,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":4284.19,"pct":0.3667716451170766,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2019,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":1249.62,"pct":0.5223006608067611,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1136.45,"pct":0.4749992685567162,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2019,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":6.46,"pct":0.002700070636522844,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2019,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":44.75,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Humanitarian Aid","top":"Emergency Response","amount":17147.01,"pct":0.9404825748258582,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2019,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":455.67,"pct":0.02499267827310561,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2019,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":629.46,"pct":0.03452474690103617,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2019,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":19083.76,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":16365.92,"pct":0.29508656435347985,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Social Infrastructure","top":"Education","amount":9274.15,"pct":0.16721804694349302,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2020,"sec":"Social Infrastructure","top":"Health","amount":11652.79,"pct":0.2101062308891029,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2020,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":8393.45,"pct":0.15133853658028565,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2020,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":5515.44,"pct":0.09944642348179025,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2020,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":4259.67,"pct":0.07680419775184842,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2020,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":11170.53,"pct":0.46491455496498907,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Economic Infrastructure","top":"Energy","amount":5040.37,"pct":0.2097788933828867,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2020,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":5721.22,"pct":0.23811569756669607,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2020,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":1774.44,"pct":0.07385172739526412,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2020,"sec":"Economic Infrastructure","top":"Communications","amount":320.5,"pct":0.013339126690164118,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2020,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":6020.44,"pct":0.6859618239229841,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":1963.9,"pct":0.22376445050175625,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2020,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":753.73,"pct":0.08587910525047085,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2020,"sec":"Production Sectors","top":"Tourism","amount":38.57,"pct":0.004394620324788807,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2020,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":8310.95,"pct":0.6863097381560301,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":3798.67,"pct":0.3136902618439698,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2020,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":2708.88,"pct":0.6900427109268663,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1198.96,"pct":0.30541538910339866,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2020,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":17.83,"pct":0.0045418999697351015,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2020,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":954.78,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Humanitarian Aid","top":"Emergency Response","amount":15641.71,"pct":0.9360828253348596,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2020,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":502.42,"pct":0.030067476156096007,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2020,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":565.62,"pct":0.033849698509044304,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2020,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":17916.67,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Social Infrastructure","top":"Government & Civil Society","amount":13856.72,"pct":0.23697443655316147,"color":"#75b76c","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Social Infrastructure","top":"Education","amount":10632.66,"pct":0.1818373043953647,"color":"#87c07f","rank":1,"text_color":"#000000"},{"year":2021,"sec":"Social Infrastructure","top":"Health","amount":16937.52,"pct":0.2896615691597942,"color":"#99ca92","rank":2,"text_color":"#000000"},{"year":2021,"sec":"Social Infrastructure","top":"Population Policies/Programmes & Reproductive Health","amount":7899.22,"pct":0.1350906459901298,"color":"#abd3a5","rank":3,"text_color":"#000000"},{"year":2021,"sec":"Social Infrastructure","top":"Water Supply & Sanitation","amount":5032.6,"pct":0.0860663687434605,"color":"#bddcb9","rank":4,"text_color":"#000000"},{"year":2021,"sec":"Social Infrastructure","top":"Other Social Infrastructure & Services","amount":4114.76,"pct":0.07036967515808931,"color":"#cfe6cc","rank":5,"text_color":"#000000"},{"year":2021,"sec":"Economic Infrastructure","top":"Transport & Storage","amount":6160.85,"pct":0.31882187085965563,"color":"#c9a214","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Economic Infrastructure","top":"Energy","amount":7123.96,"pct":0.36866247648670314,"color":"#e9bc1b","rank":1,"text_color":"#000000"},{"year":2021,"sec":"Economic Infrastructure","top":"Banking & Financial Services","amount":3348.21,"pct":0.17326871436638389,"color":"#ecc63d","rank":2,"text_color":"#000000"},{"year":2021,"sec":"Economic Infrastructure","top":"Business & Other Services","amount":2142.03,"pct":0.11084931477841155,"color":"#efd060","rank":3,"text_color":"#000000"},{"year":2021,"sec":"Economic Infrastructure","top":"Communications","amount":548.75,"pct":0.02839762350884597,"color":"#f3da83","rank":4,"text_color":"#000000"},{"year":2021,"sec":"Production Sectors","top":"Agriculture, Forestry, Fishing","amount":5189.13,"pct":0.6106690851077046,"color":"#f1861d","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Production Sectors","top":"Industry, Mining, Construction","amount":2637.64,"pct":0.31040370459343825,"color":"#f4a04d","rank":1,"text_color":"#000000"},{"year":2021,"sec":"Production Sectors","top":"Trade Policies & Regulations","amount":625.01,"pct":0.0735526568702505,"color":"#f7ba7d","rank":2,"text_color":"#000000"},{"year":2021,"sec":"Production Sectors","top":"Tourism","amount":45.67,"pct":0.005374553428606731,"color":"#fad3ad","rank":3,"text_color":"#000000"},{"year":2021,"sec":"Multi-Sector / Cross-Cutting","top":"Other Multisector","amount":7589.98,"pct":0.6392934796222602,"color":"#b989ac","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Multi-Sector / Cross-Cutting","top":"General Environment Protection","amount":4282.47,"pct":0.3607065203777397,"color":"#e2cfdd","rank":1,"text_color":"#000000"},{"year":2021,"sec":"Commodity Aid / Programme Assistance","top":"General Budget Support","amount":1836.19,"pct":0.595624094834713,"color":"#81a1c4","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Commodity Aid / Programme Assistance","top":"Development Food Assistance","amount":1246.0,"pct":0.40417803309126815,"color":"#a6bdd5","rank":1,"text_color":"#000000"},{"year":2021,"sec":"Commodity Aid / Programme Assistance","top":"Other Commodity Assistance","amount":0.61,"pct":0.00019787207401882336,"color":"#cbd8e7","rank":2,"text_color":"#000000"},{"year":2021,"sec":"Action Relating to Debt","top":"Action Relating to Debt","amount":697.55,"pct":1.0,"color":"#76b7b2","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Humanitarian Aid","top":"Emergency Response","amount":22784.87,"pct":0.9485577734335778,"color":"#e87c7e","rank":0,"text_color":"#000000"},{"year":2021,"sec":"Humanitarian Aid","top":"Reconstruction Relief & Rehabilitation","amount":273.16,"pct":0.01137193465501672,"color":"#ee9d9e","rank":1,"text_color":"#000000"},{"year":2021,"sec":"Humanitarian Aid","top":"Disaster Prevention & Preparedness","amount":962.51,"pct":0.04007029191140536,"color":"#f3bebf","rank":2,"text_color":"#000000"},{"year":2021,"sec":"Unallocated / Unspecified","top":"Unallocated / Unspecified","amount":19869.11,"pct":1.0,"color":"#bab0ac","rank":0,"text_color":"#000000"}]},"transform":[{"filter":{"param":"hoverYear"}},{"stack":"pct","groupby":["sec"],"sort":[{"field":"rank","order":"ascending"}],"as":["stack_start","stack_end"]},{"calculate":"(datum.stack_start + datum.stack_end) / 2","as":"stack_mid"},{"calculate":"datum.amount / 1000","as":"amount_b"}],"layer":[{"mark":{"type":"bar","size":24,"stroke":"white","strokeWidth":1.5},"encoding":{"y":{"field":"sec","type":"nominal","sort":["Social Infrastructure","Economic Infrastructure","Production Sectors","Multi-Sector / Cross-Cutting","Commodity Aid / Programme Assistance","Action Relating to Debt","Humanitarian Aid","Unallocated / Unspecified"],"title":"Sub-sectors","axis":{"title":"Sub-sectors","labels":false,"ticks":false,"domain":false,"grid":false},"scale":{"paddingInner":0,"paddingOuter":0.02}},"x":{"field":"stack_start","type":"quantitative","title":"Percentage of sector spending","axis":{"format":".0%","grid":true},"scale":{"domain":[0,1]}},"x2":{"field":"stack_end"},"color":{"field":"color","type":"nominal","scale":null},"opacity":{"condition":{"param":"selectSec","value":1},"value":0.35},"tooltip":[{"field":"sec","type":"nominal","title":"Sector"},{"field":"top","type":"nominal","title":"Sub-sector"},{"field":"amount_b","type":"quantitative","title":"Spending (billion USD)","format":",.2f"},{"field":"pct","type":"quantitative","title":"Percentage of total spending","format":".1%"}]}},{"mark":{"type":"text","fontSize":9,"baseline":"middle"},"encoding":{"y":{"field":"sec","type":"nominal","sort":["Social Infrastructure","Economic Infrastructure","Production Sectors","Multi-Sector / Cross-Cutting","Commodity Aid / Programme Assistance","Action Relating to Debt","Humanitarian Aid","Unallocated / Unspecified"],"scale":{"paddingInner":0,"paddingOuter":0.02}},"x":{"field":"stack_mid","type":"quantitative"},"text":{"field":"top","type":"nominal"},"color":{"field":"text_color","type":"nominal","scale":null},"opacity":{"condition":[{"test":"!((scale('concat_1_x', datum.stack_end) - scale('concat_1_x', datum.stack_start)) > (length(datum.top) * 5 + 8))","value":0},{"param":"selectSec","value":1}],"value":0.35}}}]}],"resolve":{"scale":{"color":"independent"}},"config":{"view":{"stroke":null},"axis":{"domainColor":"#888","tickColor":"#888"}}}
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Modified recreation of the World Bank SDG Atlas 'Sectors of ODA' chart for Goal 17 (datatopics.worldbank.org/sdgatlas/archive/2023/goal-17-partnerships-for-the-goals), which pairs a treemap of sector/sub-sector ODA commitments with a linked stacked-area trend. Here the stacked area chart (total ODA commitments by top-level sector, 2015-2021, colored with the Tableau10 palette) is on top; the treemap below it is replaced by a thin, tightly-packed, 100%-stacked HORIZONTAL bar chart, one bar per top-level sector, whose segments show each sub-sector's share of that sector's spending in a given year. Clicking a sector's area highlights it and its matching bar (both dim to 35% opacity while one sector is selected, except the clicked one, which stays fully opaque); double-clicking empty chart space clears the selection (Vega-Lite's default point-selection clear trigger - explicitly overriding it to a single click turned out to silently break the whole selection, since 'on' and 'clear' sharing the same event name is a genuine Vega-Lite bug, not just a stricter click). Hovering the area chart (independent of the click selection) updates which year's composition the bar chart shows, mirroring the linked interaction in the original. The click selection is attached to an invisible bar-shaped hit-layer stacked over the area (year on x, cumulative sector sums on y/y2) rather than to the area mark itself, since Vega-Lite's click-based point selections don't register on area marks at all - only on marks with discrete per-datum geometry like bars. Each sub-sector segment reuses its parent sector's exact Tableau10 color at a different lightness (darkest = largest sub-sector) instead of getting its own hue, since the sector-level color legend already carries the categorical meaning and 20+ additional legend entries would be unusable; segment identity is read from its own label (shown when there's room, in black or white - whichever contrasts better with that segment's own color) or its tooltip. Data: OECD Development Assistance Committee, Creditor Reporting System, ODA commitments by DAC5 sector. Written directly in Vega (not Vega-Lite) so tracked signals (hoverYear, selectSec) are backed by real signal values rather than Vega-Lite's internal `_store` datasets, which reVISit's replay mechanism cannot repopulate. revisitAnswer rides on the existing hover interaction (responseId \"stackedarea-comparison-hover\", with no matching \"response\" entry in config.json).",
+  "width": 730,
+  "height": 448,
+  "padding": {
+    "left": 10,
+    "top": 10,
+    "right": 20,
+    "bottom": 10
+  },
+  "data": [
+    {
+      "name": "areaData",
+      "values": [
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "amount": 43680.84,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 43.680839999999996,
+          "stack_lo": 0,
+          "stack_hi": 43.680839999999996
+        },
+        {
+          "year": 2015,
+          "sec": "Economic Infrastructure",
+          "amount": 24719.45,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 24.719450000000002,
+          "stack_lo": 43.680839999999996,
+          "stack_hi": 68.40029
+        },
+        {
+          "year": 2015,
+          "sec": "Production Sectors",
+          "amount": 8233.45,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 8.233450000000001,
+          "stack_lo": 68.40029,
+          "stack_hi": 76.63374
+        },
+        {
+          "year": 2015,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 12519.47,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 12.51947,
+          "stack_lo": 76.63374,
+          "stack_hi": 89.15321
+        },
+        {
+          "year": 2015,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 2799.77,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 2.79977,
+          "stack_lo": 89.15321,
+          "stack_hi": 91.95298
+        },
+        {
+          "year": 2015,
+          "sec": "Action Relating to Debt",
+          "amount": 459.57,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 0.45957,
+          "stack_lo": 91.95298,
+          "stack_hi": 92.41255
+        },
+        {
+          "year": 2015,
+          "sec": "Humanitarian Aid",
+          "amount": 14176.59,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 14.176590000000001,
+          "stack_lo": 92.41255,
+          "stack_hi": 106.58914
+        },
+        {
+          "year": 2015,
+          "sec": "Unallocated / Unspecified",
+          "amount": 21143.72,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 21.143720000000002,
+          "stack_lo": 106.58914,
+          "stack_hi": 127.73286
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "amount": 44946.8,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 44.9468,
+          "stack_lo": 0,
+          "stack_hi": 44.9468
+        },
+        {
+          "year": 2016,
+          "sec": "Economic Infrastructure",
+          "amount": 23318.12,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 23.31812,
+          "stack_lo": 44.9468,
+          "stack_hi": 68.26492
+        },
+        {
+          "year": 2016,
+          "sec": "Production Sectors",
+          "amount": 6501.11,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 6.50111,
+          "stack_lo": 68.26492,
+          "stack_hi": 74.76603
+        },
+        {
+          "year": 2016,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 12863.89,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 12.86389,
+          "stack_lo": 74.76603,
+          "stack_hi": 87.62992
+        },
+        {
+          "year": 2016,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 2514.99,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 2.5149899999999996,
+          "stack_lo": 87.62992,
+          "stack_hi": 90.14491
+        },
+        {
+          "year": 2016,
+          "sec": "Action Relating to Debt",
+          "amount": 2570.24,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 2.5702399999999996,
+          "stack_lo": 90.14491,
+          "stack_hi": 92.71515
+        },
+        {
+          "year": 2016,
+          "sec": "Humanitarian Aid",
+          "amount": 16510.13,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 16.51013,
+          "stack_lo": 92.71515,
+          "stack_hi": 109.22528
+        },
+        {
+          "year": 2016,
+          "sec": "Unallocated / Unspecified",
+          "amount": 24519.26,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 24.51926,
+          "stack_lo": 109.22528,
+          "stack_hi": 133.74454
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "amount": 45396.16,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 45.39616,
+          "stack_lo": 0,
+          "stack_hi": 45.39616
+        },
+        {
+          "year": 2017,
+          "sec": "Economic Infrastructure",
+          "amount": 23013.34,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 23.01334,
+          "stack_lo": 45.39616,
+          "stack_hi": 68.40950000000001
+        },
+        {
+          "year": 2017,
+          "sec": "Production Sectors",
+          "amount": 9226.6,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 9.226600000000001,
+          "stack_lo": 68.40950000000001,
+          "stack_hi": 77.63610000000001
+        },
+        {
+          "year": 2017,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 10541.59,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 10.54159,
+          "stack_lo": 77.63610000000001,
+          "stack_hi": 88.17769000000001
+        },
+        {
+          "year": 2017,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 3879.27,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 3.87927,
+          "stack_lo": 88.17769000000001,
+          "stack_hi": 92.05696000000002
+        },
+        {
+          "year": 2017,
+          "sec": "Action Relating to Debt",
+          "amount": 670.36,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 0.6703600000000001,
+          "stack_lo": 92.05696000000002,
+          "stack_hi": 92.72732000000002
+        },
+        {
+          "year": 2017,
+          "sec": "Humanitarian Aid",
+          "amount": 17719.57,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 17.71957,
+          "stack_lo": 92.72732000000002,
+          "stack_hi": 110.44689000000002
+        },
+        {
+          "year": 2017,
+          "sec": "Unallocated / Unspecified",
+          "amount": 23316.59,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 23.31659,
+          "stack_lo": 110.44689000000002,
+          "stack_hi": 133.76348000000002
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "amount": 46951.62,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 46.951620000000005,
+          "stack_lo": 0,
+          "stack_hi": 46.951620000000005
+        },
+        {
+          "year": 2018,
+          "sec": "Economic Infrastructure",
+          "amount": 22211.05,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 22.21105,
+          "stack_lo": 46.951620000000005,
+          "stack_hi": 69.16267
+        },
+        {
+          "year": 2018,
+          "sec": "Production Sectors",
+          "amount": 8000.5,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 8.0005,
+          "stack_lo": 69.16267,
+          "stack_hi": 77.16317000000001
+        },
+        {
+          "year": 2018,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 10218.83,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 10.21883,
+          "stack_lo": 77.16317000000001,
+          "stack_hi": 87.382
+        },
+        {
+          "year": 2018,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 2906.0,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 2.906,
+          "stack_lo": 87.382,
+          "stack_hi": 90.28800000000001
+        },
+        {
+          "year": 2018,
+          "sec": "Action Relating to Debt",
+          "amount": 204.43,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 0.20443,
+          "stack_lo": 90.28800000000001,
+          "stack_hi": 90.49243000000001
+        },
+        {
+          "year": 2018,
+          "sec": "Humanitarian Aid",
+          "amount": 14952.31,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 14.952309999999999,
+          "stack_lo": 90.49243000000001,
+          "stack_hi": 105.44474000000001
+        },
+        {
+          "year": 2018,
+          "sec": "Unallocated / Unspecified",
+          "amount": 21008.41,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 21.00841,
+          "stack_lo": 105.44474000000001,
+          "stack_hi": 126.45315000000001
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "amount": 47631.41,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 47.63141,
+          "stack_lo": 0,
+          "stack_hi": 47.63141
+        },
+        {
+          "year": 2019,
+          "sec": "Economic Infrastructure",
+          "amount": 22564.04,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 22.564040000000002,
+          "stack_lo": 47.63141,
+          "stack_hi": 70.19545000000001
+        },
+        {
+          "year": 2019,
+          "sec": "Production Sectors",
+          "amount": 9298.27,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 9.29827,
+          "stack_lo": 70.19545000000001,
+          "stack_hi": 79.49372000000001
+        },
+        {
+          "year": 2019,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 11680.81,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 11.68081,
+          "stack_lo": 79.49372000000001,
+          "stack_hi": 91.17453
+        },
+        {
+          "year": 2019,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 2392.53,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 2.3925300000000003,
+          "stack_lo": 91.17453,
+          "stack_hi": 93.56706
+        },
+        {
+          "year": 2019,
+          "sec": "Action Relating to Debt",
+          "amount": 44.75,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 0.04475,
+          "stack_lo": 93.56706,
+          "stack_hi": 93.61180999999999
+        },
+        {
+          "year": 2019,
+          "sec": "Humanitarian Aid",
+          "amount": 18232.14,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 18.23214,
+          "stack_lo": 93.61180999999999,
+          "stack_hi": 111.84394999999999
+        },
+        {
+          "year": 2019,
+          "sec": "Unallocated / Unspecified",
+          "amount": 19083.76,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 19.083759999999998,
+          "stack_lo": 111.84394999999999,
+          "stack_hi": 130.92771
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "amount": 55461.42,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 55.46142,
+          "stack_lo": 0,
+          "stack_hi": 55.46142
+        },
+        {
+          "year": 2020,
+          "sec": "Economic Infrastructure",
+          "amount": 24027.06,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 24.027060000000002,
+          "stack_lo": 55.46142,
+          "stack_hi": 79.48848
+        },
+        {
+          "year": 2020,
+          "sec": "Production Sectors",
+          "amount": 8776.64,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 8.776639999999999,
+          "stack_lo": 79.48848,
+          "stack_hi": 88.26512
+        },
+        {
+          "year": 2020,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 12109.62,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 12.109620000000001,
+          "stack_lo": 88.26512,
+          "stack_hi": 100.37474
+        },
+        {
+          "year": 2020,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 3925.67,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 3.92567,
+          "stack_lo": 100.37474,
+          "stack_hi": 104.30041
+        },
+        {
+          "year": 2020,
+          "sec": "Action Relating to Debt",
+          "amount": 954.78,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 0.95478,
+          "stack_lo": 104.30041,
+          "stack_hi": 105.25519
+        },
+        {
+          "year": 2020,
+          "sec": "Humanitarian Aid",
+          "amount": 16709.75,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 16.70975,
+          "stack_lo": 105.25519,
+          "stack_hi": 121.96494
+        },
+        {
+          "year": 2020,
+          "sec": "Unallocated / Unspecified",
+          "amount": 17916.67,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 17.91667,
+          "stack_lo": 121.96494,
+          "stack_hi": 139.88161
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "amount": 58473.48,
+          "color": "#59A14F",
+          "sec_rank": 0,
+          "amount_b": 58.47348,
+          "stack_lo": 0,
+          "stack_hi": 58.47348
+        },
+        {
+          "year": 2021,
+          "sec": "Economic Infrastructure",
+          "amount": 19323.8,
+          "color": "#EDC948",
+          "sec_rank": 1,
+          "amount_b": 19.3238,
+          "stack_lo": 58.47348,
+          "stack_hi": 77.79728
+        },
+        {
+          "year": 2021,
+          "sec": "Production Sectors",
+          "amount": 8497.45,
+          "color": "#F28E2B",
+          "sec_rank": 2,
+          "amount_b": 8.49745,
+          "stack_lo": 77.79728,
+          "stack_hi": 86.29473
+        },
+        {
+          "year": 2021,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "amount": 11872.45,
+          "color": "#B07AA1",
+          "sec_rank": 3,
+          "amount_b": 11.87245,
+          "stack_lo": 86.29473,
+          "stack_hi": 98.16718
+        },
+        {
+          "year": 2021,
+          "sec": "Commodity Aid / Programme Assistance",
+          "amount": 3082.8,
+          "color": "#4E79A7",
+          "sec_rank": 4,
+          "amount_b": 3.0828,
+          "stack_lo": 98.16718,
+          "stack_hi": 101.24998000000001
+        },
+        {
+          "year": 2021,
+          "sec": "Action Relating to Debt",
+          "amount": 697.55,
+          "color": "#76B7B2",
+          "sec_rank": 5,
+          "amount_b": 0.69755,
+          "stack_lo": 101.24998000000001,
+          "stack_hi": 101.94753000000001
+        },
+        {
+          "year": 2021,
+          "sec": "Humanitarian Aid",
+          "amount": 24020.54,
+          "color": "#E15759",
+          "sec_rank": 6,
+          "amount_b": 24.02054,
+          "stack_lo": 101.94753000000001,
+          "stack_hi": 125.96807000000001
+        },
+        {
+          "year": 2021,
+          "sec": "Unallocated / Unspecified",
+          "amount": 19869.11,
+          "color": "#BAB0AC",
+          "sec_rank": 7,
+          "amount_b": 19.86911,
+          "stack_lo": 125.96807000000001,
+          "stack_hi": 145.83718000000002
+        }
+      ]
+    },
+    {
+      "name": "barDataAll",
+      "values": [
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 12730.07,
+          "pct": 0.2914337276742703,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 12.73007,
+          "stack_start": 0,
+          "stack_end": 0.2914337276742703,
+          "stack_mid": 0.14571686383713514
+        },
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 8622.86,
+          "pct": 0.1974060118747854,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 8.622860000000001,
+          "stack_start": 0.2914337276742703,
+          "stack_end": 0.4888397395490557,
+          "stack_mid": 0.390136733611663
+        },
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 6523.34,
+          "pct": 0.14934098828992526,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 6.52334,
+          "stack_start": 0.4888397395490557,
+          "stack_end": 0.6381807278389809,
+          "stack_mid": 0.5635102336940183
+        },
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 8454.72,
+          "pct": 0.19355671089099183,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 8.45472,
+          "stack_start": 0.6381807278389809,
+          "stack_end": 0.8317374387299727,
+          "stack_mid": 0.7349590832844768
+        },
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 5605.5,
+          "pct": 0.12832857639259818,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 5.6055,
+          "stack_start": 0.8317374387299727,
+          "stack_end": 0.960066015122571,
+          "stack_mid": 0.8959017269262719
+        },
+        {
+          "year": 2015,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 1744.35,
+          "pct": 0.03993398487742906,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 1.7443499999999998,
+          "stack_start": 0.960066015122571,
+          "stack_end": 1.0,
+          "stack_mid": 0.9800330075612855
+        },
+        {
+          "year": 2015,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 9951.7,
+          "pct": 0.40258582109223284,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 9.9517,
+          "stack_start": 0,
+          "stack_end": 0.40258582109223284,
+          "stack_mid": 0.20129291054611642
+        },
+        {
+          "year": 2015,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 10256.56,
+          "pct": 0.4149186115134127,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 10.25656,
+          "stack_start": 0.40258582109223284,
+          "stack_end": 0.8175044326056455,
+          "stack_mid": 0.6100451268489392
+        },
+        {
+          "year": 2015,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 2853.5,
+          "pct": 0.11543541479341253,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 2.8535,
+          "stack_start": 0.8175044326056455,
+          "stack_end": 0.9329398473990581,
+          "stack_mid": 0.8752221400023519
+        },
+        {
+          "year": 2015,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 1295.93,
+          "pct": 0.05242552256413828,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 1.29593,
+          "stack_start": 0.9329398473990581,
+          "stack_end": 0.9853653699631963,
+          "stack_mid": 0.9591526086811273
+        },
+        {
+          "year": 2015,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 361.76,
+          "pct": 0.014634630036803598,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.36175999999999997,
+          "stack_start": 0.9853653699631963,
+          "stack_end": 1.0,
+          "stack_mid": 0.9926826849815982
+        },
+        {
+          "year": 2015,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 5547.54,
+          "pct": 0.6737807359005034,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 5.54754,
+          "stack_start": 0,
+          "stack_end": 0.6737807359005034,
+          "stack_mid": 0.3368903679502517
+        },
+        {
+          "year": 2015,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 1977.01,
+          "pct": 0.24011926956500615,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.97701,
+          "stack_start": 0.6737807359005034,
+          "stack_end": 0.9139000054655095,
+          "stack_mid": 0.7938403706830064
+        },
+        {
+          "year": 2015,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 657.31,
+          "pct": 0.0798340914197572,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.65731,
+          "stack_start": 0.9139000054655095,
+          "stack_end": 0.9937340968852667,
+          "stack_mid": 0.9538170511753881
+        },
+        {
+          "year": 2015,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 51.59,
+          "pct": 0.006265903114733192,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.051590000000000004,
+          "stack_start": 0.9937340968852667,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9968670484426333
+        },
+        {
+          "year": 2015,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 8334.67,
+          "pct": 0.6657366565614197,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 8.334670000000001,
+          "stack_start": 0,
+          "stack_end": 0.6657366565614197,
+          "stack_mid": 0.33286832828070984
+        },
+        {
+          "year": 2015,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 4184.8,
+          "pct": 0.3342633434385803,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 4.1848,
+          "stack_start": 0.6657366565614197,
+          "stack_end": 1.0,
+          "stack_mid": 0.8328683282807099
+        },
+        {
+          "year": 2015,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 1263.11,
+          "pct": 0.45114777285277,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 1.26311,
+          "stack_start": 0,
+          "stack_end": 0.45114777285277,
+          "stack_mid": 0.225573886426385
+        },
+        {
+          "year": 2015,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1339.99,
+          "pct": 0.47860717130335706,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.33999,
+          "stack_start": 0.45114777285277,
+          "stack_end": 0.929754944156127,
+          "stack_mid": 0.6904513585044485
+        },
+        {
+          "year": 2015,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 196.67,
+          "pct": 0.07024505584387289,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.19666999999999998,
+          "stack_start": 0.929754944156127,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9648774720780635
+        },
+        {
+          "year": 2015,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 459.57,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.45957,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2015,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 12878.75,
+          "pct": 0.9084518901816984,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 12.87875,
+          "stack_start": 0,
+          "stack_end": 0.9084518901816984,
+          "stack_mid": 0.4542259450908492
+        },
+        {
+          "year": 2015,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 719.89,
+          "pct": 0.05078019530679776,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 0.71989,
+          "stack_start": 0.9084518901816984,
+          "stack_end": 0.9592320854884961,
+          "stack_mid": 0.9338419878350972
+        },
+        {
+          "year": 2015,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 577.95,
+          "pct": 0.040767914511503946,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.5779500000000001,
+          "stack_start": 0.9592320854884961,
+          "stack_end": 1.0,
+          "stack_mid": 0.9796160427442481
+        },
+        {
+          "year": 2015,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 21143.72,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 21.143720000000002,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 12577.96,
+          "pct": 0.279841060273582,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 12.57796,
+          "stack_start": 0,
+          "stack_end": 0.279841060273582,
+          "stack_mid": 0.139920530136791
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 9296.31,
+          "pct": 0.20682917858662928,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 9.29631,
+          "stack_start": 0.279841060273582,
+          "stack_end": 0.4866702388602113,
+          "stack_mid": 0.3832556495668967
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 6802.93,
+          "pct": 0.15135516412321007,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 6.80293,
+          "stack_start": 0.4866702388602113,
+          "stack_end": 0.6380254029834214,
+          "stack_mid": 0.5623478209218163
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 8652.72,
+          "pct": 0.19251025246527342,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 8.652719999999999,
+          "stack_start": 0.6380254029834214,
+          "stack_end": 0.8305356554486948,
+          "stack_mid": 0.7342805292160581
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 4766.53,
+          "pct": 0.10604825846620795,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 4.7665299999999995,
+          "stack_start": 0.8305356554486948,
+          "stack_end": 0.9365839139149027,
+          "stack_mid": 0.8835597846817987
+        },
+        {
+          "year": 2016,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 2850.35,
+          "pct": 0.06341608608509731,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 2.8503499999999997,
+          "stack_start": 0.9365839139149027,
+          "stack_end": 1.0,
+          "stack_mid": 0.9682919569574513
+        },
+        {
+          "year": 2016,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 11571.17,
+          "pct": 0.49623082821428144,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 11.57117,
+          "stack_start": 0,
+          "stack_end": 0.49623082821428144,
+          "stack_mid": 0.24811541410714072
+        },
+        {
+          "year": 2016,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 7969.9,
+          "pct": 0.34178998564206725,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 7.9699,
+          "stack_start": 0.49623082821428144,
+          "stack_end": 0.8380208138563487,
+          "stack_mid": 0.667125821035315
+        },
+        {
+          "year": 2016,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 2032.55,
+          "pct": 0.08716611802323687,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 2.03255,
+          "stack_start": 0.8380208138563487,
+          "stack_end": 0.9251869318795856,
+          "stack_mid": 0.8816038728679672
+        },
+        {
+          "year": 2016,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 1499.06,
+          "pct": 0.06428734820817458,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 1.4990599999999998,
+          "stack_start": 0.9251869318795856,
+          "stack_end": 0.9894742800877602,
+          "stack_mid": 0.9573306059836728
+        },
+        {
+          "year": 2016,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 245.44,
+          "pct": 0.010525719912239924,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.24544,
+          "stack_start": 0.9894742800877602,
+          "stack_end": 1.0,
+          "stack_mid": 0.99473714004388
+        },
+        {
+          "year": 2016,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 4936.22,
+          "pct": 0.7592888046117281,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 4.9362200000000005,
+          "stack_start": 0,
+          "stack_end": 0.7592888046117281,
+          "stack_mid": 0.37964440230586405
+        },
+        {
+          "year": 2016,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 930.05,
+          "pct": 0.14306017894749706,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 0.9300499999999999,
+          "stack_start": 0.7592888046117281,
+          "stack_end": 0.9023489835592251,
+          "stack_mid": 0.8308188940854766
+        },
+        {
+          "year": 2016,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 577.77,
+          "pct": 0.08887251582218603,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.57777,
+          "stack_start": 0.9023489835592251,
+          "stack_end": 0.9912214993814111,
+          "stack_mid": 0.9467852414703182
+        },
+        {
+          "year": 2016,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 57.07,
+          "pct": 0.008778500618588961,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.05707,
+          "stack_start": 0.9912214993814111,
+          "stack_end": 1.0,
+          "stack_mid": 0.9956107496907056
+        },
+        {
+          "year": 2016,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 9367.67,
+          "pct": 0.72821440270567,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 9.36767,
+          "stack_start": 0,
+          "stack_end": 0.72821440270567,
+          "stack_mid": 0.364107201352835
+        },
+        {
+          "year": 2016,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 3496.22,
+          "pct": 0.27178559729433005,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 3.4962199999999997,
+          "stack_start": 0.72821440270567,
+          "stack_end": 1.0,
+          "stack_mid": 0.864107201352835
+        },
+        {
+          "year": 2016,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 882.07,
+          "pct": 0.35072504122093745,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.88207,
+          "stack_start": 0,
+          "stack_end": 0.35072504122093745,
+          "stack_mid": 0.17536252061046873
+        },
+        {
+          "year": 2016,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1458.56,
+          "pct": 0.579946654342907,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.4585599999999999,
+          "stack_start": 0.35072504122093745,
+          "stack_end": 0.9306716955638445,
+          "stack_mid": 0.640698368392391
+        },
+        {
+          "year": 2016,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 174.36,
+          "pct": 0.06932830443615541,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.17436000000000001,
+          "stack_start": 0.9306716955638445,
+          "stack_end": 1.0,
+          "stack_mid": 0.9653358477819223
+        },
+        {
+          "year": 2016,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 2570.24,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 2.5702399999999996,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2016,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 14693.62,
+          "pct": 0.8899760339742643,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 14.693620000000001,
+          "stack_start": 0,
+          "stack_end": 0.8899760339742643,
+          "stack_mid": 0.44498801698713214
+        },
+        {
+          "year": 2016,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 1188.41,
+          "pct": 0.07198065681127969,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.1884100000000002,
+          "stack_start": 0.8899760339742643,
+          "stack_end": 0.9619566907855439,
+          "stack_mid": 0.9259663623799042
+        },
+        {
+          "year": 2016,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 628.1,
+          "pct": 0.03804330921445598,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.6281,
+          "stack_start": 0.9619566907855439,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9809783453927718
+        },
+        {
+          "year": 2016,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 24519.26,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 24.51926,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 13217.89,
+          "pct": 0.29116757829039375,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 13.217889999999999,
+          "stack_start": 0,
+          "stack_end": 0.29116757829039375,
+          "stack_mid": 0.14558378914519687
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 9548.17,
+          "pct": 0.21032990188965345,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 9.54817,
+          "stack_start": 0.29116757829039375,
+          "stack_end": 0.5014974801800471,
+          "stack_mid": 0.39633252923522044
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 6341.3,
+          "pct": 0.13968802176288034,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 6.3413,
+          "stack_start": 0.5014974801800471,
+          "stack_end": 0.6411855019429274,
+          "stack_mid": 0.5713414910614873
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 8237.66,
+          "pct": 0.1814616078067801,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 8.23766,
+          "stack_start": 0.6411855019429274,
+          "stack_end": 0.8226471097497076,
+          "stack_mid": 0.7319163058463175
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 5609.41,
+          "pct": 0.12356574185224975,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 5.60941,
+          "stack_start": 0.8226471097497076,
+          "stack_end": 0.9462128516019573,
+          "stack_mid": 0.8844299806758325
+        },
+        {
+          "year": 2017,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 2441.73,
+          "pct": 0.05378714839804259,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 2.44173,
+          "stack_start": 0.9462128516019573,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9731064258009786
+        },
+        {
+          "year": 2017,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 11168.84,
+          "pct": 0.48532025781208876,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 11.16884,
+          "stack_start": 0,
+          "stack_end": 0.48532025781208876,
+          "stack_mid": 0.24266012890604438
+        },
+        {
+          "year": 2017,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 7943.13,
+          "pct": 0.34515328815731183,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 7.94313,
+          "stack_start": 0.48532025781208876,
+          "stack_end": 0.8304735459694006,
+          "stack_mid": 0.6578969018907447
+        },
+        {
+          "year": 2017,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 2283.16,
+          "pct": 0.09921028068216779,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 2.2831599999999996,
+          "stack_start": 0.8304735459694006,
+          "stack_end": 0.9296838266515683,
+          "stack_mid": 0.8800786863104845
+        },
+        {
+          "year": 2017,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 1436.42,
+          "pct": 0.062416842279631596,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 1.43642,
+          "stack_start": 0.9296838266515683,
+          "stack_end": 0.9921006689312,
+          "stack_mid": 0.9608922477913842
+        },
+        {
+          "year": 2017,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 181.79,
+          "pct": 0.007899331068800076,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.18178999999999998,
+          "stack_start": 0.9921006689312,
+          "stack_end": 1.0,
+          "stack_mid": 0.9960503344656
+        },
+        {
+          "year": 2017,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 6899.53,
+          "pct": 0.7477868282528088,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 6.8995299999999995,
+          "stack_start": 0,
+          "stack_end": 0.7477868282528088,
+          "stack_mid": 0.3738934141264044
+        },
+        {
+          "year": 2017,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 1435.51,
+          "pct": 0.15558385874718442,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.43551,
+          "stack_start": 0.7477868282528088,
+          "stack_end": 0.9033706869999932,
+          "stack_mid": 0.8255787576264011
+        },
+        {
+          "year": 2017,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 844.06,
+          "pct": 0.09148115430345206,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.8440599999999999,
+          "stack_start": 0.9033706869999932,
+          "stack_end": 0.9948518413034453,
+          "stack_mid": 0.9491112641517192
+        },
+        {
+          "year": 2017,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 47.5,
+          "pct": 0.005148158696554716,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.0475,
+          "stack_start": 0.9948518413034453,
+          "stack_end": 1.0,
+          "stack_mid": 0.9974259206517226
+        },
+        {
+          "year": 2017,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 6680.02,
+          "pct": 0.6336823891492422,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 6.680020000000001,
+          "stack_start": 0,
+          "stack_end": 0.6336823891492422,
+          "stack_mid": 0.3168411945746211
+        },
+        {
+          "year": 2017,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 3861.57,
+          "pct": 0.36631761085075765,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 3.86157,
+          "stack_start": 0.6336823891492422,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.816841194574621
+        },
+        {
+          "year": 2017,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 2528.56,
+          "pct": 0.6518133656122579,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 2.52856,
+          "stack_start": 0,
+          "stack_end": 0.6518133656122579,
+          "stack_mid": 0.32590668280612894
+        },
+        {
+          "year": 2017,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1188.01,
+          "pct": 0.3062457548392931,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.18801,
+          "stack_start": 0.6518133656122579,
+          "stack_end": 0.958059120451551,
+          "stack_mid": 0.8049362430319045
+        },
+        {
+          "year": 2017,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 162.7,
+          "pct": 0.04194087954844908,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.16269999999999998,
+          "stack_start": 0.958059120451551,
+          "stack_end": 1.0,
+          "stack_mid": 0.9790295602257755
+        },
+        {
+          "year": 2017,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 670.36,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.6703600000000001,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2017,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 15784.98,
+          "pct": 0.8908218422395002,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 15.78498,
+          "stack_start": 0,
+          "stack_end": 0.8908218422395002,
+          "stack_mid": 0.4454109211197501
+        },
+        {
+          "year": 2017,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 1068.45,
+          "pct": 0.060297738567980076,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.0684500000000001,
+          "stack_start": 0.8908218422395002,
+          "stack_end": 0.9511195808074803,
+          "stack_mid": 0.9209707115234902
+        },
+        {
+          "year": 2017,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 866.14,
+          "pct": 0.04888041919251967,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.86614,
+          "stack_start": 0.9511195808074803,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9755597904037401
+        },
+        {
+          "year": 2017,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 23316.59,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 23.31659,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 15864.65,
+          "pct": 0.3378935557719462,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 15.86465,
+          "stack_start": 0,
+          "stack_end": 0.3378935557719462,
+          "stack_mid": 0.1689467778859731
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 9854.16,
+          "pct": 0.20987902217347323,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 9.85416,
+          "stack_start": 0.3378935557719462,
+          "stack_end": 0.5477725779454194,
+          "stack_mid": 0.44283306685868284
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 6867.58,
+          "pct": 0.14626928797910183,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 6.86758,
+          "stack_start": 0.5477725779454194,
+          "stack_end": 0.6940418659245213,
+          "stack_mid": 0.6209072219349704
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 7407.02,
+          "pct": 0.15775855915345885,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 7.40702,
+          "stack_start": 0.6940418659245213,
+          "stack_end": 0.8518004250779802,
+          "stack_mid": 0.7729211455012508
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 5057.47,
+          "pct": 0.10771662716093047,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 5.05747,
+          "stack_start": 0.8518004250779802,
+          "stack_end": 0.9595170522389106,
+          "stack_mid": 0.9056587386584454
+        },
+        {
+          "year": 2018,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 1900.74,
+          "pct": 0.04048294776108953,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 1.90074,
+          "stack_start": 0.9595170522389106,
+          "stack_end": 1.0000000000000002,
+          "stack_mid": 0.9797585261194555
+        },
+        {
+          "year": 2018,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 11446.65,
+          "pct": 0.5153583510492151,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 11.44665,
+          "stack_start": 0,
+          "stack_end": 0.5153583510492151,
+          "stack_mid": 0.25767917552460756
+        },
+        {
+          "year": 2018,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 7095.51,
+          "pct": 0.319458551661975,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 7.09551,
+          "stack_start": 0.5153583510492151,
+          "stack_end": 0.8348169027111901,
+          "stack_mid": 0.6750876268802026
+        },
+        {
+          "year": 2018,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 1878.98,
+          "pct": 0.08459663171796589,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 1.87898,
+          "stack_start": 0.8348169027111901,
+          "stack_end": 0.9194135344291561,
+          "stack_mid": 0.8771152185701732
+        },
+        {
+          "year": 2018,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 1454.54,
+          "pct": 0.06548722429139751,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 1.45454,
+          "stack_start": 0.9194135344291561,
+          "stack_end": 0.9849007587205536,
+          "stack_mid": 0.9521571465748548
+        },
+        {
+          "year": 2018,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 335.37,
+          "pct": 0.015099241279446413,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.33537,
+          "stack_start": 0.9849007587205536,
+          "stack_end": 1.0,
+          "stack_mid": 0.9924503793602768
+        },
+        {
+          "year": 2018,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 5815.64,
+          "pct": 0.7269095715654076,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 5.81564,
+          "stack_start": 0,
+          "stack_end": 0.7269095715654076,
+          "stack_mid": 0.3634547857827038
+        },
+        {
+          "year": 2018,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 1139.8,
+          "pct": 0.1424660940882933,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.1398,
+          "stack_start": 0.7269095715654076,
+          "stack_end": 0.8693756656537008,
+          "stack_mid": 0.7981426186095542
+        },
+        {
+          "year": 2018,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 1002.81,
+          "pct": 0.12534341446980296,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 1.00281,
+          "stack_start": 0.8693756656537008,
+          "stack_end": 0.9947190801235037,
+          "stack_mid": 0.9320473728886023
+        },
+        {
+          "year": 2018,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 42.25,
+          "pct": 0.005280919876496221,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.04225,
+          "stack_start": 0.9947190801235037,
+          "stack_end": 1.0,
+          "stack_mid": 0.9973595400617519
+        },
+        {
+          "year": 2018,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 6801.03,
+          "pct": 0.6655390033015327,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 6.80103,
+          "stack_start": 0,
+          "stack_end": 0.6655390033015327,
+          "stack_mid": 0.33276950165076635
+        },
+        {
+          "year": 2018,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 3417.8,
+          "pct": 0.3344609966984674,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 3.4178,
+          "stack_start": 0.6655390033015327,
+          "stack_end": 1.0,
+          "stack_mid": 0.8327695016507664
+        },
+        {
+          "year": 2018,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 1108.05,
+          "pct": 0.3812973160293522,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 1.10805,
+          "stack_start": 0,
+          "stack_end": 0.3812973160293522,
+          "stack_mid": 0.1906486580146761
+        },
+        {
+          "year": 2018,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1751.15,
+          "pct": 0.6025980731598756,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.75115,
+          "stack_start": 0.3812973160293522,
+          "stack_end": 0.9838953891892277,
+          "stack_mid": 0.68259635260929
+        },
+        {
+          "year": 2018,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 46.8,
+          "pct": 0.016104610810772406,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.046799999999999994,
+          "stack_start": 0.9838953891892277,
+          "stack_end": 1.0,
+          "stack_mid": 0.9919476945946138
+        },
+        {
+          "year": 2018,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 204.43,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.20443,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2018,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 13291.77,
+          "pct": 0.888944249491253,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 13.29177,
+          "stack_start": 0,
+          "stack_end": 0.888944249491253,
+          "stack_mid": 0.4444721247456265
+        },
+        {
+          "year": 2018,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 1161.75,
+          "pct": 0.07769702468869558,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.16175,
+          "stack_start": 0.888944249491253,
+          "stack_end": 0.9666412741799485,
+          "stack_mid": 0.9277927618356008
+        },
+        {
+          "year": 2018,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 498.79,
+          "pct": 0.033358725820051394,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.49879,
+          "stack_start": 0.9666412741799485,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9833206370899742
+        },
+        {
+          "year": 2018,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 21008.41,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 21.00841,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 16364.91,
+          "pct": 0.34357391477598503,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 16.36491,
+          "stack_start": 0,
+          "stack_end": 0.34357391477598503,
+          "stack_mid": 0.17178695738799252
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 10365.97,
+          "pct": 0.21762887136870399,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 10.365969999999999,
+          "stack_start": 0.34357391477598503,
+          "stack_end": 0.561202786144689,
+          "stack_mid": 0.452388350460337
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 6824.5,
+          "pct": 0.1432773037791659,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 6.8245,
+          "stack_start": 0.561202786144689,
+          "stack_end": 0.7044800899238549,
+          "stack_mid": 0.632841438034272
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 6102.32,
+          "pct": 0.12811545574653366,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 6.10232,
+          "stack_start": 0.7044800899238549,
+          "stack_end": 0.8325955456703886,
+          "stack_mid": 0.7685378177971218
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 5381.47,
+          "pct": 0.11298154306160578,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 5.38147,
+          "stack_start": 0.8325955456703886,
+          "stack_end": 0.9455770887319944,
+          "stack_mid": 0.8890863172011916
+        },
+        {
+          "year": 2019,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 2592.24,
+          "pct": 0.05442291126800571,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 2.59224,
+          "stack_start": 0.9455770887319944,
+          "stack_end": 1.0000000000000002,
+          "stack_mid": 0.9727885443659974
+        },
+        {
+          "year": 2019,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 7821.76,
+          "pct": 0.34664713887498033,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 7.82176,
+          "stack_start": 0,
+          "stack_end": 0.34664713887498033,
+          "stack_mid": 0.17332356943749017
+        },
+        {
+          "year": 2019,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 9715.04,
+          "pct": 0.43055410881525524,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 9.71504,
+          "stack_start": 0.34664713887498033,
+          "stack_end": 0.7772012476902356,
+          "stack_mid": 0.561924193282608
+        },
+        {
+          "year": 2019,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 2244.99,
+          "pct": 0.09949415223706333,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 2.2449899999999996,
+          "stack_start": 0.7772012476902356,
+          "stack_end": 0.876695399927299,
+          "stack_mid": 0.8269483238087673
+        },
+        {
+          "year": 2019,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 2105.64,
+          "pct": 0.09331839196033606,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 2.1056399999999997,
+          "stack_start": 0.876695399927299,
+          "stack_end": 0.970013791887635,
+          "stack_mid": 0.9233545959074669
+        },
+        {
+          "year": 2019,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 676.61,
+          "pct": 0.029986208112364826,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.67661,
+          "stack_start": 0.970013791887635,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9850068959438174
+        },
+        {
+          "year": 2019,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 5884.21,
+          "pct": 0.6328284718487818,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 5.88421,
+          "stack_start": 0,
+          "stack_end": 0.6328284718487818,
+          "stack_mid": 0.3164142359243909
+        },
+        {
+          "year": 2019,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 2776.7,
+          "pct": 0.2986254429706813,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 2.7767,
+          "stack_start": 0.6328284718487818,
+          "stack_end": 0.931453914819463,
+          "stack_mid": 0.7821411933341225
+        },
+        {
+          "year": 2019,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 581.01,
+          "pct": 0.06248581827588502,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.58101,
+          "stack_start": 0.931453914819463,
+          "stack_end": 0.9939397330953481,
+          "stack_mid": 0.9626968239574056
+        },
+        {
+          "year": 2019,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 56.35,
+          "pct": 0.006060266904651926,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.056350000000000004,
+          "stack_start": 0.9939397330953481,
+          "stack_end": 1.0,
+          "stack_mid": 0.996969866547674
+        },
+        {
+          "year": 2019,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 7396.62,
+          "pct": 0.6332283548829233,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 7.3966199999999995,
+          "stack_start": 0,
+          "stack_end": 0.6332283548829233,
+          "stack_mid": 0.31661417744146164
+        },
+        {
+          "year": 2019,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 4284.19,
+          "pct": 0.3667716451170766,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 4.28419,
+          "stack_start": 0.6332283548829233,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.8166141774414616
+        },
+        {
+          "year": 2019,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 1249.62,
+          "pct": 0.5223006608067611,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 1.24962,
+          "stack_start": 0,
+          "stack_end": 0.5223006608067611,
+          "stack_mid": 0.26115033040338054
+        },
+        {
+          "year": 2019,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1136.45,
+          "pct": 0.4749992685567162,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.13645,
+          "stack_start": 0.5223006608067611,
+          "stack_end": 0.9972999293634772,
+          "stack_mid": 0.7598002950851191
+        },
+        {
+          "year": 2019,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 6.46,
+          "pct": 0.002700070636522844,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.00646,
+          "stack_start": 0.9972999293634772,
+          "stack_end": 1.0,
+          "stack_mid": 0.9986499646817386
+        },
+        {
+          "year": 2019,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 44.75,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.04475,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2019,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 17147.01,
+          "pct": 0.9404825748258582,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 17.147009999999998,
+          "stack_start": 0,
+          "stack_end": 0.9404825748258582,
+          "stack_mid": 0.4702412874129291
+        },
+        {
+          "year": 2019,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 455.67,
+          "pct": 0.02499267827310561,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 0.45567,
+          "stack_start": 0.9404825748258582,
+          "stack_end": 0.9654752530989638,
+          "stack_mid": 0.952978913962411
+        },
+        {
+          "year": 2019,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 629.46,
+          "pct": 0.03452474690103617,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.62946,
+          "stack_start": 0.9654752530989638,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9827376265494818
+        },
+        {
+          "year": 2019,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 19083.76,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 19.083759999999998,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 16365.92,
+          "pct": 0.29508656435347985,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 16.36592,
+          "stack_start": 0,
+          "stack_end": 0.29508656435347985,
+          "stack_mid": 0.14754328217673993
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 9274.15,
+          "pct": 0.16721804694349302,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 9.274149999999999,
+          "stack_start": 0.29508656435347985,
+          "stack_end": 0.46230461129697287,
+          "stack_mid": 0.3786955878252264
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 11652.79,
+          "pct": 0.2101062308891029,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 11.652790000000001,
+          "stack_start": 0.46230461129697287,
+          "stack_end": 0.6724108421860757,
+          "stack_mid": 0.5673577267415243
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 8393.45,
+          "pct": 0.15133853658028565,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 8.393450000000001,
+          "stack_start": 0.6724108421860757,
+          "stack_end": 0.8237493787663613,
+          "stack_mid": 0.7480801104762185
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 5515.44,
+          "pct": 0.09944642348179025,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 5.51544,
+          "stack_start": 0.8237493787663613,
+          "stack_end": 0.9231958022481516,
+          "stack_mid": 0.8734725905072565
+        },
+        {
+          "year": 2020,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 4259.67,
+          "pct": 0.07680419775184842,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 4.25967,
+          "stack_start": 0.9231958022481516,
+          "stack_end": 1.0,
+          "stack_mid": 0.9615979011240758
+        },
+        {
+          "year": 2020,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 11170.53,
+          "pct": 0.46491455496498907,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 11.170530000000001,
+          "stack_start": 0,
+          "stack_end": 0.46491455496498907,
+          "stack_mid": 0.23245727748249453
+        },
+        {
+          "year": 2020,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 5040.37,
+          "pct": 0.2097788933828867,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 5.04037,
+          "stack_start": 0.46491455496498907,
+          "stack_end": 0.6746934483478757,
+          "stack_mid": 0.5698040016564324
+        },
+        {
+          "year": 2020,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 5721.22,
+          "pct": 0.23811569756669607,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 5.721220000000001,
+          "stack_start": 0.6746934483478757,
+          "stack_end": 0.9128091459145717,
+          "stack_mid": 0.7937512971312237
+        },
+        {
+          "year": 2020,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 1774.44,
+          "pct": 0.07385172739526412,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 1.77444,
+          "stack_start": 0.9128091459145717,
+          "stack_end": 0.9866608733098359,
+          "stack_mid": 0.9497350096122038
+        },
+        {
+          "year": 2020,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 320.5,
+          "pct": 0.013339126690164118,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.3205,
+          "stack_start": 0.9866608733098359,
+          "stack_end": 1.0,
+          "stack_mid": 0.9933304366549179
+        },
+        {
+          "year": 2020,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 6020.44,
+          "pct": 0.6859618239229841,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 6.02044,
+          "stack_start": 0,
+          "stack_end": 0.6859618239229841,
+          "stack_mid": 0.34298091196149205
+        },
+        {
+          "year": 2020,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 1963.9,
+          "pct": 0.22376445050175625,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.9639000000000002,
+          "stack_start": 0.6859618239229841,
+          "stack_end": 0.9097262744247403,
+          "stack_mid": 0.7978440491738622
+        },
+        {
+          "year": 2020,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 753.73,
+          "pct": 0.08587910525047085,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.75373,
+          "stack_start": 0.9097262744247403,
+          "stack_end": 0.9956053796752111,
+          "stack_mid": 0.9526658270499757
+        },
+        {
+          "year": 2020,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 38.57,
+          "pct": 0.004394620324788807,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.03857,
+          "stack_start": 0.9956053796752111,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9978026898376056
+        },
+        {
+          "year": 2020,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 8310.95,
+          "pct": 0.6863097381560301,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 8.31095,
+          "stack_start": 0,
+          "stack_end": 0.6863097381560301,
+          "stack_mid": 0.34315486907801507
+        },
+        {
+          "year": 2020,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 3798.67,
+          "pct": 0.3136902618439698,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 3.79867,
+          "stack_start": 0.6863097381560301,
+          "stack_end": 1.0,
+          "stack_mid": 0.8431548690780151
+        },
+        {
+          "year": 2020,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 2708.88,
+          "pct": 0.6900427109268663,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 2.70888,
+          "stack_start": 0,
+          "stack_end": 0.6900427109268663,
+          "stack_mid": 0.34502135546343315
+        },
+        {
+          "year": 2020,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1198.96,
+          "pct": 0.30541538910339866,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.19896,
+          "stack_start": 0.6900427109268663,
+          "stack_end": 0.9954581000302649,
+          "stack_mid": 0.8427504054785656
+        },
+        {
+          "year": 2020,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 17.83,
+          "pct": 0.0045418999697351015,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.01783,
+          "stack_start": 0.9954581000302649,
+          "stack_end": 1.0,
+          "stack_mid": 0.9977290500151325
+        },
+        {
+          "year": 2020,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 954.78,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.95478,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2020,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 15641.71,
+          "pct": 0.9360828253348596,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 15.64171,
+          "stack_start": 0,
+          "stack_end": 0.9360828253348596,
+          "stack_mid": 0.4680414126674298
+        },
+        {
+          "year": 2020,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 502.42,
+          "pct": 0.030067476156096007,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 0.50242,
+          "stack_start": 0.9360828253348596,
+          "stack_end": 0.9661503014909556,
+          "stack_mid": 0.9511165634129076
+        },
+        {
+          "year": 2020,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 565.62,
+          "pct": 0.033849698509044304,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.56562,
+          "stack_start": 0.9661503014909556,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9830751507454778
+        },
+        {
+          "year": 2020,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 17916.67,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 17.91667,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "top": "Government & Civil Society",
+          "amount": 13856.72,
+          "pct": 0.23697443655316147,
+          "color": "#75b76c",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 13.85672,
+          "stack_start": 0,
+          "stack_end": 0.23697443655316147,
+          "stack_mid": 0.11848721827658074
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "top": "Education",
+          "amount": 10632.66,
+          "pct": 0.1818373043953647,
+          "color": "#87c07f",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 10.63266,
+          "stack_start": 0.23697443655316147,
+          "stack_end": 0.41881174094852613,
+          "stack_mid": 0.3278930887508438
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "top": "Health",
+          "amount": 16937.52,
+          "pct": 0.2896615691597942,
+          "color": "#99ca92",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 16.93752,
+          "stack_start": 0.41881174094852613,
+          "stack_end": 0.7084733101083203,
+          "stack_mid": 0.5636425255284232
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "top": "Population Policies/Programmes & Reproductive Health",
+          "amount": 7899.22,
+          "pct": 0.1350906459901298,
+          "color": "#abd3a5",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 7.899220000000001,
+          "stack_start": 0.7084733101083203,
+          "stack_end": 0.84356395609845,
+          "stack_mid": 0.7760186331033851
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "top": "Water Supply & Sanitation",
+          "amount": 5032.6,
+          "pct": 0.0860663687434605,
+          "color": "#bddcb9",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 5.0326,
+          "stack_start": 0.84356395609845,
+          "stack_end": 0.9296303248419105,
+          "stack_mid": 0.8865971404701802
+        },
+        {
+          "year": 2021,
+          "sec": "Social Infrastructure",
+          "top": "Other Social Infrastructure & Services",
+          "amount": 4114.76,
+          "pct": 0.07036967515808931,
+          "color": "#cfe6cc",
+          "rank": 5,
+          "text_color": "#000000",
+          "amount_b": 4.11476,
+          "stack_start": 0.9296303248419105,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9648151624209552
+        },
+        {
+          "year": 2021,
+          "sec": "Economic Infrastructure",
+          "top": "Transport & Storage",
+          "amount": 6160.85,
+          "pct": 0.31882187085965563,
+          "color": "#c9a214",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 6.16085,
+          "stack_start": 0,
+          "stack_end": 0.31882187085965563,
+          "stack_mid": 0.15941093542982782
+        },
+        {
+          "year": 2021,
+          "sec": "Economic Infrastructure",
+          "top": "Energy",
+          "amount": 7123.96,
+          "pct": 0.36866247648670314,
+          "color": "#e9bc1b",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 7.12396,
+          "stack_start": 0.31882187085965563,
+          "stack_end": 0.6874843473463588,
+          "stack_mid": 0.5031531091030073
+        },
+        {
+          "year": 2021,
+          "sec": "Economic Infrastructure",
+          "top": "Banking & Financial Services",
+          "amount": 3348.21,
+          "pct": 0.17326871436638389,
+          "color": "#ecc63d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 3.34821,
+          "stack_start": 0.6874843473463588,
+          "stack_end": 0.8607530617127427,
+          "stack_mid": 0.7741187045295508
+        },
+        {
+          "year": 2021,
+          "sec": "Economic Infrastructure",
+          "top": "Business & Other Services",
+          "amount": 2142.03,
+          "pct": 0.11084931477841155,
+          "color": "#efd060",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 2.14203,
+          "stack_start": 0.8607530617127427,
+          "stack_end": 0.9716023764911542,
+          "stack_mid": 0.9161777191019485
+        },
+        {
+          "year": 2021,
+          "sec": "Economic Infrastructure",
+          "top": "Communications",
+          "amount": 548.75,
+          "pct": 0.02839762350884597,
+          "color": "#f3da83",
+          "rank": 4,
+          "text_color": "#000000",
+          "amount_b": 0.54875,
+          "stack_start": 0.9716023764911542,
+          "stack_end": 1.0000000000000002,
+          "stack_mid": 0.9858011882455773
+        },
+        {
+          "year": 2021,
+          "sec": "Production Sectors",
+          "top": "Agriculture, Forestry, Fishing",
+          "amount": 5189.13,
+          "pct": 0.6106690851077046,
+          "color": "#f1861d",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 5.1891300000000005,
+          "stack_start": 0,
+          "stack_end": 0.6106690851077046,
+          "stack_mid": 0.3053345425538523
+        },
+        {
+          "year": 2021,
+          "sec": "Production Sectors",
+          "top": "Industry, Mining, Construction",
+          "amount": 2637.64,
+          "pct": 0.31040370459343825,
+          "color": "#f4a04d",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 2.6376399999999998,
+          "stack_start": 0.6106690851077046,
+          "stack_end": 0.9210727897011428,
+          "stack_mid": 0.7658709374044237
+        },
+        {
+          "year": 2021,
+          "sec": "Production Sectors",
+          "top": "Trade Policies & Regulations",
+          "amount": 625.01,
+          "pct": 0.0735526568702505,
+          "color": "#f7ba7d",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.62501,
+          "stack_start": 0.9210727897011428,
+          "stack_end": 0.9946254465713933,
+          "stack_mid": 0.957849118136268
+        },
+        {
+          "year": 2021,
+          "sec": "Production Sectors",
+          "top": "Tourism",
+          "amount": 45.67,
+          "pct": 0.005374553428606731,
+          "color": "#fad3ad",
+          "rank": 3,
+          "text_color": "#000000",
+          "amount_b": 0.04567,
+          "stack_start": 0.9946254465713933,
+          "stack_end": 1.0,
+          "stack_mid": 0.9973127232856966
+        },
+        {
+          "year": 2021,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "Other Multisector",
+          "amount": 7589.98,
+          "pct": 0.6392934796222602,
+          "color": "#b989ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 7.58998,
+          "stack_start": 0,
+          "stack_end": 0.6392934796222602,
+          "stack_mid": 0.3196467398111301
+        },
+        {
+          "year": 2021,
+          "sec": "Multi-Sector / Cross-Cutting",
+          "top": "General Environment Protection",
+          "amount": 4282.47,
+          "pct": 0.3607065203777397,
+          "color": "#e2cfdd",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 4.28247,
+          "stack_start": 0.6392934796222602,
+          "stack_end": 1.0,
+          "stack_mid": 0.8196467398111301
+        },
+        {
+          "year": 2021,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "General Budget Support",
+          "amount": 1836.19,
+          "pct": 0.595624094834713,
+          "color": "#81a1c4",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 1.83619,
+          "stack_start": 0,
+          "stack_end": 0.595624094834713,
+          "stack_mid": 0.2978120474173565
+        },
+        {
+          "year": 2021,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Development Food Assistance",
+          "amount": 1246.0,
+          "pct": 0.40417803309126815,
+          "color": "#a6bdd5",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 1.246,
+          "stack_start": 0.595624094834713,
+          "stack_end": 0.9998021279259812,
+          "stack_mid": 0.7977131113803471
+        },
+        {
+          "year": 2021,
+          "sec": "Commodity Aid / Programme Assistance",
+          "top": "Other Commodity Assistance",
+          "amount": 0.61,
+          "pct": 0.00019787207401882336,
+          "color": "#cbd8e7",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.00061,
+          "stack_start": 0.9998021279259812,
+          "stack_end": 1.0,
+          "stack_mid": 0.9999010639629906
+        },
+        {
+          "year": 2021,
+          "sec": "Action Relating to Debt",
+          "top": "Action Relating to Debt",
+          "amount": 697.55,
+          "pct": 1.0,
+          "color": "#76b7b2",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 0.69755,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        },
+        {
+          "year": 2021,
+          "sec": "Humanitarian Aid",
+          "top": "Emergency Response",
+          "amount": 22784.87,
+          "pct": 0.9485577734335778,
+          "color": "#e87c7e",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 22.784869999999998,
+          "stack_start": 0,
+          "stack_end": 0.9485577734335778,
+          "stack_mid": 0.4742788867167889
+        },
+        {
+          "year": 2021,
+          "sec": "Humanitarian Aid",
+          "top": "Reconstruction Relief & Rehabilitation",
+          "amount": 273.16,
+          "pct": 0.01137193465501672,
+          "color": "#ee9d9e",
+          "rank": 1,
+          "text_color": "#000000",
+          "amount_b": 0.27316,
+          "stack_start": 0.9485577734335778,
+          "stack_end": 0.9599297080885946,
+          "stack_mid": 0.9542437407610862
+        },
+        {
+          "year": 2021,
+          "sec": "Humanitarian Aid",
+          "top": "Disaster Prevention & Preparedness",
+          "amount": 962.51,
+          "pct": 0.04007029191140536,
+          "color": "#f3bebf",
+          "rank": 2,
+          "text_color": "#000000",
+          "amount_b": 0.96251,
+          "stack_start": 0.9599297080885946,
+          "stack_end": 0.9999999999999999,
+          "stack_mid": 0.9799648540442972
+        },
+        {
+          "year": 2021,
+          "sec": "Unallocated / Unspecified",
+          "top": "Unallocated / Unspecified",
+          "amount": 19869.11,
+          "pct": 1.0,
+          "color": "#bab0ac",
+          "rank": 0,
+          "text_color": "#000000",
+          "amount_b": 19.86911,
+          "stack_start": 0,
+          "stack_end": 1.0,
+          "stack_mid": 0.5
+        }
+      ]
+    },
+    {
+      "name": "years",
+      "values": [
+        {
+          "year": 2015
+        },
+        {
+          "year": 2016
+        },
+        {
+          "year": 2017
+        },
+        {
+          "year": 2018
+        },
+        {
+          "year": 2019
+        },
+        {
+          "year": 2020
+        },
+        {
+          "year": 2021
+        }
+      ]
+    },
+    {
+      "name": "yearTotals",
+      "source": "areaData",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "year"
+          ],
+          "fields": [
+            "amount_b"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "as": [
+            "total_b"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "areaStacked",
+      "source": "areaData",
+      "transform": []
+    },
+    {
+      "name": "totalAtHover",
+      "source": "yearTotals",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.year === hoverYear"
+        }
+      ]
+    },
+    {
+      "name": "barData",
+      "source": "barDataAll",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.year === hoverYear"
+        }
+      ]
+    },
+    {
+      "name": "sectorLegend",
+      "values": [
+        {
+          "sec": "Social Infrastructure",
+          "label": "Social Infra.",
+          "color": "#59A14F",
+          "i": 0
+        },
+        {
+          "sec": "Economic Infrastructure",
+          "label": "Economic Infra.",
+          "color": "#EDC948",
+          "i": 1
+        },
+        {
+          "sec": "Production Sectors",
+          "label": "Production",
+          "color": "#F28E2B",
+          "i": 2
+        },
+        {
+          "sec": "Multi-Sector / Cross-Cutting",
+          "label": "Multi-Sector",
+          "color": "#B07AA1",
+          "i": 3
+        },
+        {
+          "sec": "Commodity Aid / Programme Assistance",
+          "label": "Commodity Aid",
+          "color": "#4E79A7",
+          "i": 4
+        },
+        {
+          "sec": "Action Relating to Debt",
+          "label": "Debt Relief",
+          "color": "#76B7B2",
+          "i": 5
+        },
+        {
+          "sec": "Humanitarian Aid",
+          "label": "Humanitarian",
+          "color": "#E15759",
+          "i": 6
+        },
+        {
+          "sec": "Unallocated / Unspecified",
+          "label": "Unallocated",
+          "color": "#BAB0AC",
+          "i": 7
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x_year",
+      "type": "linear",
+      "domain": [
+        2015,
+        2021
+      ],
+      "range": [
+        0,
+        590
+      ],
+      "zero": false,
+      "nice": false
+    },
+    {
+      "name": "y_amount",
+      "type": "linear",
+      "domain": {
+        "data": "areaStacked",
+        "field": "stack_hi"
+      },
+      "range": [
+        220,
+        0
+      ],
+      "nice": true
+    },
+    {
+      "name": "color_sec",
+      "type": "ordinal",
+      "domain": [
+        "Social Infrastructure",
+        "Economic Infrastructure",
+        "Production Sectors",
+        "Multi-Sector / Cross-Cutting",
+        "Commodity Aid / Programme Assistance",
+        "Action Relating to Debt",
+        "Humanitarian Aid",
+        "Unallocated / Unspecified"
+      ],
+      "range": [
+        "#59A14F",
+        "#EDC948",
+        "#F28E2B",
+        "#B07AA1",
+        "#4E79A7",
+        "#76B7B2",
+        "#E15759",
+        "#BAB0AC"
+      ]
+    },
+    {
+      "name": "x_pct",
+      "type": "linear",
+      "domain": [
+        0,
+        1
+      ],
+      "range": [
+        0,
+        590
+      ],
+      "zero": true,
+      "nice": false
+    },
+    {
+      "name": "y_sec",
+      "type": "band",
+      "domain": [
+        "Social Infrastructure",
+        "Economic Infrastructure",
+        "Production Sectors",
+        "Multi-Sector / Cross-Cutting",
+        "Commodity Aid / Programme Assistance",
+        "Action Relating to Debt",
+        "Humanitarian Aid",
+        "Unallocated / Unspecified"
+      ],
+      "range": [
+        265,
+        448
+      ],
+      "paddingInner": 0.02,
+      "paddingOuter": 0.02
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "scale": "y_amount",
+      "format": ",.0f",
+      "title": "Spending (billion USD)",
+      "grid": true,
+      "gridColor": "#e6e6e6",
+      "gridScale": "x_year"
+    },
+    {
+      "orient": "bottom",
+      "scale": "x_pct",
+      "format": ".0%",
+      "title": "Percentage of sector spending",
+      "grid": true,
+      "gridColor": "#e6e6e6",
+      "gridScale": "y_sec"
+    }
+  ],
+  "marks": [
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": -14
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "text": {
+            "value": "Total spending of foreign aid across sectors"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 251
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "text": {
+            "signal": "'Spending by sub-sectors in ' + hoverYear"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 605
+          },
+          "y": {
+            "value": -8
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "text": {
+            "value": "Sector"
+          }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {
+        "data": "sectorLegend"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 610
+          },
+          "y": {
+            "signal": "datum.i * 27"
+          },
+          "shape": {
+            "value": "circle"
+          },
+          "size": {
+            "value": 80
+          },
+          "fill": {
+            "field": "color"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "sectorLegend"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 620
+          },
+          "y": {
+            "signal": "datum.i * 27"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "text": {
+            "field": "label"
+          }
+        }
+      },
+      "interactive": false
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "years"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_year",
+            "field": "year"
+          },
+          "y": {
+            "value": 220
+          },
+          "y2": {
+            "value": 225
+          },
+          "stroke": {
+            "value": "#888"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "years"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_year",
+            "field": "year"
+          },
+          "y": {
+            "value": 236
+          },
+          "align": {
+            "value": "center"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fill": {
+            "value": "#333"
+          },
+          "text": {
+            "signal": "format(datum.year, 'd')"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "years"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_year",
+            "field": "year"
+          },
+          "y": {
+            "value": 0
+          },
+          "y2": {
+            "value": 220
+          },
+          "stroke": {
+            "value": "#e6e6e6"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 325
+          },
+          "y": {
+            "value": 252
+          },
+          "align": {
+            "value": "center"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#333"
+          },
+          "text": {
+            "value": "Year"
+          }
+        }
+      }
+    },
+    {
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "series",
+          "data": "areaStacked",
+          "groupby": "sec"
+        }
+      },
+      "marks": [
+        {
+          "type": "area",
+          "from": {
+            "data": "series"
+          },
+          "encode": {
+            "enter": {
+              "x": {
+                "scale": "x_year",
+                "field": "year"
+              },
+              "y": {
+                "scale": "y_amount",
+                "field": "stack_lo"
+              },
+              "y2": {
+                "scale": "y_amount",
+                "field": "stack_hi"
+              },
+              "fill": {
+                "scale": "color_sec",
+                "field": "sec"
+              },
+              "interpolate": {
+                "value": "monotone"
+              },
+              "stroke": {
+                "value": "white"
+              },
+              "strokeWidth": {
+                "value": 1
+              }
+            },
+            "update": {
+              "opacity": {
+                "signal": "!selectSec || selectSec === datum.sec ? 1 : 0.35"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x_year",
+            "signal": "hoverYear"
+          },
+          "y": {
+            "value": 0
+          },
+          "y2": {
+            "value": 220
+          },
+          "stroke": {
+            "value": "#888"
+          },
+          "strokeDash": {
+            "value": [
+              2,
+              2
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {
+        "data": "totalAtHover"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_year",
+            "field": "year"
+          },
+          "y": {
+            "scale": "y_amount",
+            "field": "total_b"
+          },
+          "size": {
+            "value": 90
+          },
+          "fill": {
+            "value": "#333"
+          },
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "totalAtHover"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_year",
+            "field": "year",
+            "offset": 8
+          },
+          "y": {
+            "scale": "y_amount",
+            "field": "total_b",
+            "offset": -10
+          },
+          "align": {
+            "value": "left"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "text": {
+            "signal": "format(datum.total_b, ',.1f')"
+          },
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 2.5
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "totalAtHover"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_year",
+            "field": "year",
+            "offset": 8
+          },
+          "y": {
+            "scale": "y_amount",
+            "field": "total_b",
+            "offset": -10
+          },
+          "align": {
+            "value": "left"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "text": {
+            "signal": "format(datum.total_b, ',.1f')"
+          },
+          "fill": {
+            "value": "#222"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "hitLayer",
+      "from": {
+        "data": "areaStacked"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "max(scale('x_year', 2015), scale('x_year', datum.year) - (scale('x_year', 2016) - scale('x_year', 2015)) / 2)"
+          },
+          "x2": {
+            "signal": "min(scale('x_year', 2021), scale('x_year', datum.year) + (scale('x_year', 2016) - scale('x_year', 2015)) / 2)"
+          },
+          "y": {
+            "scale": "y_amount",
+            "field": "stack_lo"
+          },
+          "y2": {
+            "scale": "y_amount",
+            "field": "stack_hi"
+          },
+          "fill": {
+            "value": "white"
+          },
+          "fillOpacity": {
+            "value": 0.001
+          },
+          "cursor": {
+            "value": "pointer"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "bars",
+      "from": {
+        "data": "barData"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_pct",
+            "field": "stack_start"
+          },
+          "x2": {
+            "scale": "x_pct",
+            "field": "stack_end"
+          },
+          "y": {
+            "scale": "y_sec",
+            "field": "sec"
+          },
+          "height": {
+            "scale": "y_sec",
+            "band": 1
+          },
+          "fill": {
+            "field": "color"
+          },
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "tooltip": {
+            "signal": "{'Sector': datum.sec, 'Sub-sector': datum.top, 'Spending (billion USD)': format(datum.amount_b, ',.2f'), 'Percentage of total spending': format(datum.pct, '.1%')}"
+          }
+        },
+        "update": {
+          "opacity": {
+            "signal": "!selectSec || selectSec === datum.sec ? 1 : 0.35"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "barData"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x_pct",
+            "field": "stack_mid"
+          },
+          "y": {
+            "scale": "y_sec",
+            "field": "sec",
+            "band": 0.5
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 9
+          },
+          "fill": {
+            "field": "text_color"
+          },
+          "text": {
+            "field": "top"
+          }
+        },
+        "update": {
+          "opacity": {
+            "signal": "(scale('x_pct', datum.stack_end) - scale('x_pct', datum.stack_start)) > (length(datum.top) * 5 + 8) ? (!selectSec || selectSec === datum.sec ? 1 : 0.35) : 0"
+          }
+        }
+      },
+      "interactive": false
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domainColor": "#888",
+      "tickColor": "#888"
+    },
+    "signals": [
+      {
+        "name": "hoverYear",
+        "value": 2015,
+        "on": [
+          {
+            "events": "@hitLayer:pointerover",
+            "update": "datum.year"
+          }
+        ]
+      },
+      {
+        "name": "selectSec",
+        "value": null,
+        "on": [
+          {
+            "events": "@hitLayer:mousedown",
+            "update": "datum.sec === selectSec ? null : datum.sec"
+          },
+          {
+            "events": "dblclick",
+            "update": "null"
+          }
+        ]
+      },
+      {
+        "name": "revisitAnswer",
+        "value": {},
+        "on": [
+          {
+            "events": {
+              "signal": "hoverYear"
+            },
+            "update": "{responseId: 'stackedarea-comparison-hover', response: 'interacted'}"
+          },
+          {
+            "events": {
+              "signal": "selectSec"
+            },
+            "update": "{responseId: 'stackedarea-comparison-select', response: selectSec === null ? 'cleared' : selectSec}"
+          }
+        ]
+      }
+    ]
+  }
+}
