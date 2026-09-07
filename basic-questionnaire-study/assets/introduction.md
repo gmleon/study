@@ -20,6 +20,7 @@ You can participate in this study only if:
 - You are 18 years old or older
 - You are a fluent English speaker
 - You do not have low vision or impaired vision, including any form of color deficiency
+- You are using a desktop device with a screen of a minimum size of 1280 x 720
 
 This survey is conducted by
 - Gabriela Molina León (Aarhus University)

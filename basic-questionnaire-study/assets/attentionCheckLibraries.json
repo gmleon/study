@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Attention check 2 (instructional manipulation check, Prolific-compliant). A plain, non-interactive horizontal bar chart of the number of public libraries in five towns; the response prompt explicitly tells the participant to select 'Skip' regardless of the chart. Values are illustrative and are not the basis of any answer.",
+  "width": 715,
+  "height": 440,
+  "padding": { "left": 10, "top": 10, "right": 20, "bottom": 10 },
+  "title": { "text": "Public libraries per town", "fontSize": 14, "anchor": "start" },
+  "data": {
+    "values": [
+      { "town": "Millbrook", "libraries": 4 },
+      { "town": "Ashford", "libraries": 7 },
+      { "town": "Greenvale", "libraries": 3 },
+      { "town": "Riverton", "libraries": 6 },
+      { "town": "Oakhurst", "libraries": 5 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#4C78A8" },
+  "encoding": {
+    "y": { "field": "town", "type": "nominal", "title": "Town", "sort": null },
+    "x": { "field": "libraries", "type": "quantitative", "title": "Number of public libraries" }
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "domainColor": "#888", "tickColor": "#888" }
+  }
+}

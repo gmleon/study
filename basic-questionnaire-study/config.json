@@ -6,7 +6,7 @@
         "authors": [
             "The Interactive Visualization Literacy Team"
         ],
-        "date": "2026-08-27",
+        "date": "2026-09-07",
         "description": "A study on the ability to use interactive data visualizations",
         "organizations": [
             "Aarhus University",
@@ -22,13 +22,15 @@
         "withProgressBar": true,
         "autoDownloadStudy": false,
         "withSidebar": true,
-        "sidebarWidth": 250
+        "sidebarWidth": 250,
+        "urlParticipantIdParam": "PROLIFIC_PID",
+        "studyEndMsg": "Thank you for completing the study! Return to Prolific: [https://app.prolific.com/submissions/complete?cc=C1NXXHJ9](https://app.prolific.com/submissions/complete?cc=C1NXXHJ9)"
     },
     "studyRules": {
         "display": {
         "minHeight": 720,
         "minWidth": 1280,
-        "blockedMessage": "This study requires a screen size of at least 1280x720."
+        "blockedMessage": "This study requires a screen size of at least 1280x720. Please return your submission on Prolific: [https://app.prolific.com/submissions/complete?cc=CLCIWYU4](https://app.prolific.com/submissions/complete?cc=CLCIWYU4)"
         },
         "browsers": {
         "allowed": [
@@ -58,7 +60,17 @@
         "introduction": {
             "type": "markdown",
             "path": "basic-questionnaire-study/assets/introduction.md",
-            "response": []
+            "response": [
+                {
+                    "id": "prolificId",
+                    "prompt": "Please enter your Prolific ID",
+                    "required": true,
+                    "location": "belowStimulus",
+                    "type": "shortText",
+                    "placeholder": "Prolific ID",
+                    "paramCapture": "PROLIFIC_PID"
+                }
+            ]
         },
         "consent": {
             "type": "markdown",
@@ -109,10 +121,10 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
+                    "One stock was rising, while the other one was constant",
                     "The stock prices were rising",
                     "The stock prices were falling",
                     "One stock was rising, while the other one was falling",
-                    "One stock was rising, while the other one was constant",
                     "Skip"
                 ]
             }
@@ -164,9 +176,9 @@
                 "location": "sidebar",
                 "options": [
                     "Montenegro",
-                    "North Macedonia",
                     "Algeria",
                     "Bosnia and Herzegovina",
+                    "North Macedonia",
                     "Skip"
                 ]
             }
@@ -311,9 +323,9 @@
                 "required": true,
                 "location": "sidebar",
                 "options": [
-                    "Its years of schooling increase",
                     "Its years of schooling decrease",
                     "Its years of schooling remain the same",
+                    "Its years of schooling increase",
                     "Its youth percentage increases",
                     "Skip"
                 ]
@@ -498,7 +510,7 @@
                 "prompt": "Your answer",
                 "required": true,
                 "location": "sidebar",
-                "options": ["Nigeria", "India", "Brazil", "Indonesia", "Skip"]
+                "options": ["Nigeria", "India", "Indonesia", "Brazil", "Skip"]
             }
             ],
             "correctAnswer": [
@@ -637,6 +649,61 @@
             ],
             "instruction": "# Demographics \n You have now completed the Mini-VLAT test. Please share with us a few details about yourself below.",
             "instructionLocation": "aboveStimulus"
+        },
+        "attention-check-1": {
+            "description": "Instructional manipulation check 1 (Prolific policy): explicit instruction in the question itself, participant told it is an attention check, single unambiguous correct answer ('Skip'), no memory recall, no timing. Presented like a puzzle (static chart + sidebar question).",
+            "instruction": "This chart is not interactive because this is an attention check. Regardless of what the chart shows, please select 'Skip' as your answer.",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/attentionCheckRainfall.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-attention-check-1",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["Lisbon", "Oslo", "Prague", "Dublin", "Skip"]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-attention-check-1",
+                "answer": "Skip"
+                }
+            ]
+        },
+        "attention-check-2": {
+            "description": "Instructional manipulation check 2 (Prolific policy), same design as attention-check-1 with a different chart. Appears in both branches after check 1; in the branch for participants who failed check 1, failing this one too sends them to attention-fail.",
+            "instruction": "Regardless of what the chart shows, please select 'Skip' as your answer. This is an attention check.",
+            "instructionLocation": "sidebar",
+            "type": "vega",
+            "path": "basic-questionnaire-study/assets/attentionCheckLibraries.json",
+            "enumerateQuestions": true,
+            "response": [
+            {
+                "id": "res-attention-check-2",
+                "type": "radio",
+                "prompt": "Your answer",
+                "required": true,
+                "location": "sidebar",
+                "options": ["Millbrook", "Ashford", "Greenvale", "Riverton", "Skip"]
+            }
+            ],
+            "correctAnswer": [
+                {
+                "id": "res-attention-check-2",
+                "answer": "Skip"
+                }
+            ]
+        },
+        "attention-fail": {
+            "description": "Screen-out page for participants who failed both attention checks. Reached only via the skip condition in the attention-branch-fail block; the demographics block always skips to 'end', so regular participants never see it. Its stylesheet hides the Next button so the study end screen (with the Prolific completion link) cannot be reached from here.",
+            "type": "markdown",
+            "path": "basic-questionnaire-study/assets/attentionFail.md",
+            "stylesheetPath": "basic-questionnaire-study/assets/attentionFail.css",
+            "response": []
         }
     },
     "importedLibraries": ["mini-vlat"],
@@ -645,27 +712,82 @@
         "components": [
             "introduction",
             "consent",
-            "bar-extremum",
+            {
+                "id": "attention-block",
+                "order": "fixed",
+                "components": ["bar-extremum", "attention-check-1"],
+                "skip": [
+                    {
+                        "name": "attention-check-1",
+                        "check": "response",
+                        "responseId": "res-attention-check-1",
+                        "comparison": "notEqual",
+                        "value": "Skip",
+                        "to": "attention-branch-fail"
+                    }
+                ]
+            },
+            {
+                "id": "attention-branch-pass",
+                "order": "fixed",
+                "components": ["line-trend", "stackedbar-value", "attention-check-2"],
+                "skip": [
+                    {
+                        "name": "attention-check-2",
+                        "check": "response",
+                        "responseId": "res-attention-check-2",
+                        "comparison": "notEqual",
+                        "value": "__always-true__",
+                        "to": "scatterplot-comparison"
+                    }
+                ]
+            },
+            {
+                "id": "attention-branch-fail",
+                "order": "fixed",
+                "components": ["line-trend", "stackedbar-value", "attention-check-2"],
+                "skip": [
+                    {
+                        "name": "attention-check-2",
+                        "check": "response",
+                        "responseId": "res-attention-check-2",
+                        "comparison": "notEqual",
+                        "value": "Skip",
+                        "to": "attention-fail"
+                    }
+                ]
+            },
+            "scatterplot-comparison",
+            "stackedarea-value",
+            "bar-comparison",
             "line-value",
             "stackedbar-comparison",
             "scatterplot-trend",
-            "stackedarea-value",
-            "bar-comparison",
-            "line-extremum",
-            "stackedbar-value",
-            "scatterplot-trend-2",
-            "stackedarea-trend",
-            "bar-value",
-            "line-trend",
-            "scatterplot-comparison",
-            "stackedarea-extremum",
-            "line-comparison",
             "stackedarea-comparison",
+            "bar-value",
+            "line-extremum",
             "area-value",
             "scatterplot-extremum",
+            "stackedarea-trend",
+            "line-comparison",
+            "scatterplot-trend-2",
+            "stackedarea-extremum",
             "transition",
             "$mini-vlat.sequences.full",
-            "demographics"
+            {
+                "id": "demographics-block",
+                "order": "fixed",
+                "components": ["demographics"],
+                "skip": [
+                    {
+                        "check": "block",
+                        "condition": "numCorrect",
+                        "value": 1,
+                        "to": "end"
+                    }
+                ]
+            },
+            "attention-fail"
         ]
     }
 }

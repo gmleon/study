@@ -1,0 +1,6 @@
+/* Screen-out page for failed attention checks: hide the Next button so the
+   study end screen (which carries the Prolific completion link) cannot be
+   reached from here. Loaded only while the attention-fail component is shown. */
+main button[type="submit"] {
+  display: none !important;
+}
