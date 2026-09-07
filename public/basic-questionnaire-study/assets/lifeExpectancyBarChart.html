@@ -98,12 +98,67 @@
     </div>
   </body>
 
-  <script>
-    const SPEC = {"$schema":"https://vega.github.io/schema/vega-lite/v5.json","description":"Health-adjusted life expectancy (HALE, years, 2016) for a 14-country subset of the vegaPuzzle1 world choropleth dataset, with checkboxes to control which countries are shown (10 shown by default, including Mexico but not Brazil). Same underlying data and comprehension question as vegaPuzzle1 (basic-questionnaire-study/assets/world-choropleth.json), shown as a bar chart instead of a map.","title":"Life expectancy per country","width":600,"height":400,"data":{"values":[{"name":"Mexico","hale":67.7},{"name":"Brazil","hale":66},{"name":"Norway","hale":73},{"name":"China","hale":68.7},{"name":"India","hale":59.3},{"name":"Egypt","hale":61.1},{"name":"South Africa","hale":55.7},{"name":"Russia","hale":63.5},{"name":"Australia","hale":73},{"name":"Germany","hale":71.6}]},"params":[{"name":"country_Australia","value":true},{"name":"country_Brazil","value":false},{"name":"country_China","value":false},{"name":"country_Egypt","value":false},{"name":"country_Germany","value":true},{"name":"country_India","value":true},{"name":"country_Mexico","value":true},{"name":"country_Norway","value":false},{"name":"country_Russia","value":true},{"name":"country_SouthAfrica","value":true}],"transform":[{"filter":"(datum.name === \"Mexico\" && country_Mexico) || (datum.name === \"Brazil\" && country_Brazil) || (datum.name === \"Norway\" && country_Norway) || (datum.name === \"China\" && country_China) || (datum.name === \"India\" && country_India) || (datum.name === \"Egypt\" && country_Egypt) || (datum.name === \"South Africa\" && country_SouthAfrica) || (datum.name === \"Russia\" && country_Russia) || (datum.name === \"Australia\" && country_Australia) || (datum.name === \"Germany\" && country_Germany)"}],"mark":"bar","encoding":{"x":{"field":"hale","type":"quantitative","title":"Life expectancy (years)","scale":{"domain":[0,80]}},"y":{"field":"name","type":"nominal","sort":"-x","title":"Country"}}};
+  <script type="module">
+    const SPEC = {"$schema":"https://vega.github.io/schema/vega-lite/v5.json","description":"Health-adjusted life expectancy (HALE, years, 2016) for a 14-country subset of the vegaPuzzle1 world choropleth dataset, with checkboxes to control which countries are shown (10 shown by default, including Mexico but not Brazil). Same underlying data and comprehension question as vegaPuzzle1 (basic-questionnaire-study/assets/world-choropleth.json), shown as a bar chart instead of a map.","title":"Life expectancy per country","width":540,"height":380,"data":{"values":[{"name":"Mexico","hale":67.7},{"name":"Brazil","hale":66},{"name":"Norway","hale":73},{"name":"China","hale":68.7},{"name":"India","hale":59.3},{"name":"Egypt","hale":61.1},{"name":"South Africa","hale":55.7},{"name":"Russia","hale":63.5},{"name":"Australia","hale":73},{"name":"Germany","hale":71.6}]},"params":[{"name":"country_Australia","value":true},{"name":"country_Brazil","value":false},{"name":"country_China","value":false},{"name":"country_Egypt","value":false},{"name":"country_Germany","value":true},{"name":"country_India","value":true},{"name":"country_Mexico","value":true},{"name":"country_Norway","value":false},{"name":"country_Russia","value":true},{"name":"country_SouthAfrica","value":true}],"transform":[{"filter":"(datum.name === \"Mexico\" && country_Mexico) || (datum.name === \"Brazil\" && country_Brazil) || (datum.name === \"Norway\" && country_Norway) || (datum.name === \"China\" && country_China) || (datum.name === \"India\" && country_India) || (datum.name === \"Egypt\" && country_Egypt) || (datum.name === \"South Africa\" && country_SouthAfrica) || (datum.name === \"Russia\" && country_Russia) || (datum.name === \"Australia\" && country_Australia) || (datum.name === \"Germany\" && country_Germany)"}],"mark":"bar","encoding":{"x":{"field":"hale","type":"quantitative","title":"Life expectancy (years)","scale":{"domain":[0,80]}},"y":{"field":"name","type":"nominal","sort":"-x","title":"Country"}}};
+
+    // Provenance tracking: records every checkbox toggle via Trrack, so
+    // interactions are logged and replayable in reVISit's analysis view.
+    import { Registry, initializeTrrack } from "https://cdn.jsdelivr.net/npm/@trrack/core@1.3.0/+esm";
+
+    const provenanceRegistry = Registry.create();
+    const setSignalAction = provenanceRegistry.register("set-signal", (state, { key, value }) => {
+      state.signals = { ...state.signals, [key]: value };
+    });
+    const trrack = Revisit.createTrrack({
+      initializeTrrack,
+      registry: provenanceRegistry,
+      initialState: { signals: {} },
+    });
+
+    let currentView;
+    let suppressSignalCapture = false;
+    const lastTracked = {};
+
+    // Attaches a Trrack-recording listener to each named Vega signal. Skips
+    // no-op repeats and anything set programmatically during replay.
+    function wireProvenance(view, signalNames) {
+      signalNames.forEach((name) => {
+        view.addSignalListener(name, (signalName, value) => {
+          if (suppressSignalCapture) return;
+          const serialized = JSON.stringify(value);
+          if (lastTracked[signalName] === serialized) return;
+          lastTracked[signalName] = serialized;
+          trrack.apply(signalName + ": " + serialized, setSignalAction({ key: signalName, value }));
+        });
+      });
+    }
+
+    // Replay state can arrive before the async embed finishes (reVISit posts
+    // STUDY_DATA and PROVENANCE back-to-back on window load), so keep the
+    // latest one and apply it once the view exists.
+    let pendingProvenance = null;
+    function applyProvenance(prov) {
+      if (!prov || !prov.signals) return;
+      if (!currentView) { pendingProvenance = prov; return; }
+      suppressSignalCapture = true;
+      Object.entries(prov.signals).forEach(([key, value]) => {
+        currentView.signal(key, value);
+      });
+      currentView.runAsync().finally(() => {
+        suppressSignalCapture = false;
+      });
+    }
+    Revisit.onProvenanceReceive(applyProvenance);
 
     Revisit.onDataReceive(() => {
       vegaEmbed("#vis", SPEC, { renderer: "svg", actions: false }).then((res) => {
         const view = res.view;
+        currentView = view;
+        wireProvenance(view, [
+          "country_Australia", "country_Brazil", "country_China", "country_Egypt",
+          "country_Germany", "country_India", "country_Mexico", "country_Norway",
+          "country_Russia", "country_SouthAfrica",
+        ]);
 
         document.querySelectorAll("#country-panel input[type=checkbox]").forEach((cb) => {
           cb.addEventListener("change", () => {
@@ -111,6 +166,11 @@
           });
         });
 
+        if (pendingProvenance) {
+          const pending = pendingProvenance;
+          pendingProvenance = null;
+          applyProvenance(pending);
+        }
         Revisit.postReady();
       });
     });
