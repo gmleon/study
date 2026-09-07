@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Attention check 1 (instructional manipulation check, Prolific-compliant). A plain, non-interactive bar chart of average annual rainfall in five European cities; the response prompt explicitly tells the participant to select 'Skip' regardless of the chart. Values are illustrative and are not the basis of any answer.",
+  "width": 715,
+  "height": 440,
+  "padding": { "left": 10, "top": 10, "right": 20, "bottom": 10 },
+  "title": { "text": "Average annual rainfall by city", "fontSize": 14, "anchor": "start" },
+  "data": {
+    "values": [
+      { "city": "Lisbon", "rainfall": 774 },
+      { "city": "Oslo", "rainfall": 763 },
+      { "city": "Prague", "rainfall": 526 },
+      { "city": "Dublin", "rainfall": 758 },
+      { "city": "Athens", "rainfall": 433 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#72B7B2" },
+  "encoding": {
+    "x": { "field": "city", "type": "nominal", "title": "City", "sort": null, "axis": { "labelAngle": 0 } },
+    "y": { "field": "rainfall", "type": "quantitative", "title": "Average annual rainfall (mm)" }
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "domainColor": "#888", "tickColor": "#888" }
+  }
+}
