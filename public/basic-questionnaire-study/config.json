@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
         "title": "Interactive Data Visualizations",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "authors": [
             "The Interactive Visualization Literacy Team"
         ],
