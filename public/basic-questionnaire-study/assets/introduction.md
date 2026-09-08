@@ -6,9 +6,9 @@ Our goal is to design and evaluate interactive data visualizations for assessing
 
 ## Procedure
 
-The study consists of solving 18 tasks. Each task consists of answering a question about the data being visualized in one or more interactive data visualizations. The way you can interact with the visualizations may change across tasks.
+The study consists of solving 18 tasks. Each task consists of answering a question about the data being visualized in one or more interactive data visualizations.
 
-The tasks work as puzzles. Sometimes the solution may not be obvious, so you should consider different ways of solving the task. If you don't know where to start, try to use the mouse on the visualization to see what happens. Please do not use external sources for looking things up, use the visualizations only. 
+The tasks work as puzzles. **The way you can interact with the visualization components may change across tasks.** Sometimes the solution may not be obvious, so you should consider different ways of solving the task. If you don't know where to start, try to use the mouse on the visualization to see what happens. Please do not use external sources for looking things up, use the visualizations only. 
 
 There is no time limit. There is always one correct answer. If you are unsure about a question, avoid guessing. Try to answer as best as you can or skip.
 
