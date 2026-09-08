@@ -143,6 +143,12 @@
       suppressSignalCapture = true;
       Object.entries(prov.signals).forEach(([key, value]) => {
         currentView.signal(key, value);
+        // Keep the visible checkbox in sync with the replayed signal value.
+        if (key.startsWith("country_")) {
+          const country = key.slice("country_".length);
+          const cb = document.querySelector('#country-panel input[data-country="' + country + '"]');
+          if (cb) cb.checked = !!value;
+        }
       });
       currentView.runAsync().finally(() => {
         suppressSignalCapture = false;
