@@ -103,12 +103,34 @@
     const selectCountryAction = provenanceRegistry.register("select-country", (state, name) => {
       state.selectedCountry = name || null;
     });
+    const hoverCountryAction = provenanceRegistry.register("hover-country", (state, name) => {
+      state.hoveredCountry = name || null;
+    });
     const trrack = Revisit.createTrrack({
       initializeTrrack,
       registry: provenanceRegistry,
-      initialState: { selectedCountry: null },
+      initialState: { selectedCountry: null, hoveredCountry: null },
     });
     let suppressCapture = false;
+
+    // Hover tracking: one provenance node per *settled* hover (the pointer
+    // rests on a dot for 500 ms), never a consecutive duplicate, and nothing
+    // for quick passes over dots. Keeps the provenance small.
+    const HOVER_DEBOUNCE_MS = 500;
+    let hoverTimer = null;
+    let lastRecordedHover = null;
+    function scheduleHoverRecord(name) {
+      clearTimeout(hoverTimer);
+      if (suppressCapture) return;
+      hoverTimer = setTimeout(() => {
+        if (suppressCapture || name === lastRecordedHover) return;
+        lastRecordedHover = name;
+        trrack.apply("Hover: " + name, hoverCountryAction(name));
+      }, HOVER_DEBOUNCE_MS);
+    }
+    function cancelHoverRecord() {
+      clearTimeout(hoverTimer);
+    }
 
     // Marine protected areas per country, 2023 (World Bank indicator ER.MRN.PTMR.ZS for % protected;
     // total marine area / EEZ size in km2 from Wikipedia's "Exclusive economic zone" rankings-by-area table;
@@ -286,9 +308,9 @@
         .attr("stroke", "white")
         .attr("stroke-width", 1)
         .attr("opacity", 0.85)
-        .on("mouseover", (evt, d) => { showTooltip(evt, d); highlightHover(d); })
+        .on("mouseover", (evt, d) => { showTooltip(evt, d); highlightHover(d); scheduleHoverRecord(d.country); })
         .on("mousemove", (evt, d) => showTooltip(evt, d))
-        .on("mouseout", (evt, d) => { hideTooltip(); highlightHover(null); })
+        .on("mouseout", (evt, d) => { hideTooltip(); highlightHover(null); cancelHoverRecord(); })
         .on("click", (evt, d) => {
           searchInput.value = d.country;
           selectCountry(d.country);
@@ -307,12 +329,15 @@
           .attr("stroke", "white")
           .attr("stroke-width", 1)
           .attr("opacity", 0.85)
-          .on("mouseover", (evt) => { showTooltip(evt, abnj); })
+          .on("mouseover", (evt) => { showTooltip(evt, abnj); scheduleHoverRecord(abnj.country); })
           .on("mousemove", (evt) => showTooltip(evt, abnj))
-          .on("mouseout", hideTooltip);
+          .on("mouseout", () => { hideTooltip(); cancelHoverRecord(); });
       }
 
       const hoverRing = plotArea.append("circle").attr("class", "dot-outline").attr("r", radius + 2).style("display", "none");
+      // Country name shown next to the hovered dot during replay (same look as
+      // the search result label; live hovers use the pointer tooltip instead).
+      const hoverLabel = plotArea.append("text").attr("class", "country-label").style("display", "none");
       let hoveredDatum = null;
       function highlightHover(d) {
         hoveredDatum = d;
@@ -386,11 +411,25 @@
         searchInput.focus();
       });
 
+      // Replay: restore the search selection and the hovered country. There is
+      // no pointer during replay, so the hovered dot gets the hover ring plus
+      // its country name next to it, matching how a search result is shown.
+      function replayHover(name) {
+        cancelHoverRecord();
+        hideTooltip();
+        const d = name ? [...countries, ...(abnj ? [abnj] : [])].find((c) => c.country === name) : null;
+        if (!d) { highlightHover(null); hoverLabel.style("display", "none"); return; }
+        const cx = currentXScale(d.totalmarinearea), cy = currentYScale(d.PAmarinecover);
+        hoverRing.attr("cx", cx).attr("cy", cy).style("display", null);
+        hoverLabel.attr("x", cx + 10).attr("y", cy + 4).text(d.country).style("display", null);
+      }
+
       Revisit.onProvenanceReceive((prov) => {
         if (!prov) return;
         suppressCapture = true;
         searchInput.value = prov.selectedCountry || "";
         selectCountry(prov.selectedCountry || "");
+        replayHover(prov.hoveredCountry || null);
         suppressCapture = false;
       });
 

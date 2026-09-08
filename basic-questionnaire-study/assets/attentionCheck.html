@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Attention check</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- Load revisit-communicate to be able to receive data from reVISit -->
+    <script src="../../revisitUtilities/revisit-communicate.js"></script>
+    <style>
+      body { font-family: sans-serif; }
+    </style>
+  </head>
+
+  <body>
+    <div id="vis"></div>
+  </body>
+
+  <script>
+    // Attention-check stimulus (instructional manipulation check, Prolific
+    // policy). The same reVISit component ("attention-check") is shown twice
+    // in the study so that reVISit's "repeatedComponent" skip condition can
+    // count two failures. The two instances must nevertheless show different
+    // charts: the component's parameters list the chart specs, and the
+    // instance picks its chart from how many attention-check instances have
+    // already been answered in the answers reVISit posts to this iframe
+    // (available in the study and during replay). Both charts use the same
+    // five cities, so the sidebar options are shared.
+    let charts = [];
+    let answeredInstances = 0;
+    let renderedIndex = -1;
+    let renderTimer = null;
+    let readyPosted = false;
+
+    function countAnsweredInstances(answers) {
+      return Object.entries(answers || {}).filter(([key, value]) =>
+        /^attention-check_\d+$/.test(key) && value && value.endTime > -1
+      ).length;
+    }
+
+    function render() {
+      if (!charts.length) return;
+      const index = Math.min(answeredInstances, charts.length - 1);
+      if (index === renderedIndex) return;
+      renderedIndex = index;
+      const spec = charts[index];
+      const source = typeof spec === "string" ? "../../" + spec : spec;
+      vegaEmbed("#vis", source, { renderer: "svg", actions: false }).then(() => {
+        if (!readyPosted) {
+          readyPosted = true;
+          Revisit.postReady();
+        }
+      });
+    }
+
+    // reVISit posts STUDY_DATA (the parameters) and ANSWERS back-to-back on
+    // load; defer the first render slightly so both have arrived and the
+    // second instance does not flash the first chart.
+    function scheduleRender() {
+      clearTimeout(renderTimer);
+      renderTimer = setTimeout(render, 60);
+    }
+
+    Revisit.onDataReceive((parameters) => {
+      charts = (parameters && parameters.charts) || [];
+      scheduleRender();
+    });
+
+    Revisit.onAnswersReceive((answers) => {
+      answeredInstances = countAnsweredInstances(answers);
+      scheduleRender();
+    });
+  </script>
+</html>

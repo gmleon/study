@@ -1,22 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Attention check 2 (instructional manipulation check, Prolific-compliant). A plain, non-interactive horizontal bar chart of the number of public libraries in five towns; the response prompt explicitly tells the participant to select 'Skip' regardless of the chart. Values are illustrative and are not the basis of any answer.",
+  "description": "Second chart of the attention check (instructional manipulation check, Prolific-compliant). A plain, non-interactive horizontal bar chart of the number of public libraries in the same five cities as the first chart, so both instances share the sidebar options; the response prompt explicitly tells the participant to select 'Skip' regardless of the chart. Values are illustrative and are not the basis of any answer.",
   "width": 715,
-  "height": 440,
+  "height": 370,
   "padding": { "left": 10, "top": 10, "right": 20, "bottom": 10 },
-  "title": { "text": "Public libraries per town", "fontSize": 14, "anchor": "start" },
+  "title": { "text": "Public libraries per city", "fontSize": 14, "anchor": "start" },
   "data": {
     "values": [
-      { "town": "Millbrook", "libraries": 4 },
-      { "town": "Ashford", "libraries": 7 },
-      { "town": "Greenvale", "libraries": 3 },
-      { "town": "Riverton", "libraries": 6 },
-      { "town": "Oakhurst", "libraries": 5 }
+      { "city": "Lisbon", "libraries": 17 },
+      { "city": "Oslo", "libraries": 22 },
+      { "city": "Prague", "libraries": 41 },
+      { "city": "Dublin", "libraries": 21 },
+      { "city": "Athens", "libraries": 12 }
     ]
   },
   "mark": { "type": "bar", "color": "#4C78A8" },
   "encoding": {
-    "y": { "field": "town", "type": "nominal", "title": "Town", "sort": null },
+    "y": { "field": "city", "type": "nominal", "title": "City", "sort": null },
     "x": { "field": "libraries", "type": "quantitative", "title": "Number of public libraries" }
   },
   "config": {

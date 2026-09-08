@@ -1,12 +1,12 @@
 {
     "$schema": "https://raw.githubusercontent.com/revisit-studies/study/main/src/parser/StudyConfigSchema.json",
     "studyMetadata": {
-        "title": "Interactive Data Visualizations",
-        "version": "1.2.0",
+        "title": "Interactive Visualization Puzzles",
+        "version": "1.3.0",
         "authors": [
             "The Interactive Visualization Literacy Team"
         ],
-        "date": "2026-09-07",
+        "date": "2026-09-08",
         "description": "A study on the ability to use interactive data visualizations",
         "organizations": [
             "Aarhus University",
@@ -650,16 +650,23 @@
             "instruction": "# Demographics \n You have now completed the Mini-VLAT test. Please share with us a few details about yourself below.",
             "instructionLocation": "aboveStimulus"
         },
-        "attention-check-1": {
-            "description": "Instructional manipulation check 1 (Prolific policy): explicit instruction in the question itself, participant told it is an attention check, single unambiguous correct answer ('Skip'), no memory recall, no timing. Presented like a puzzle (static chart + sidebar question).",
+        "attention-check": {
+            "description": "Instructional manipulation check (Prolific policy): explicit instruction in the question itself, participant told it is an attention check, single unambiguous correct answer (Skip), no memory recall, no timing. Shown twice (interruptions in the puzzles block) so the repeatedComponent skip condition can count two failures; parameters.charts lists one chart per instance and the page picks its chart from how many instances were already answered. Both charts use the same five cities, so the options are shared.",
             "instruction": "This chart is not interactive because this is an attention check. Regardless of what the chart shows, please select 'Skip' as your answer.",
             "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/attentionCheckRainfall.json",
+            "type": "website",
+            "path": "basic-questionnaire-study/assets/attentionCheck.html",
+            "style": { "height": "500px" },
+            "parameters": {
+                "charts": [
+                    "basic-questionnaire-study/assets/attentionCheckRainfall.json",
+                    "basic-questionnaire-study/assets/attentionCheckLibraries.json"
+                ]
+            },
             "enumerateQuestions": true,
             "response": [
             {
-                "id": "res-attention-check-1",
+                "id": "res-attention-check",
                 "type": "radio",
                 "prompt": "Your answer",
                 "required": true,
@@ -669,31 +676,7 @@
             ],
             "correctAnswer": [
                 {
-                "id": "res-attention-check-1",
-                "answer": "Skip"
-                }
-            ]
-        },
-        "attention-check-2": {
-            "description": "Instructional manipulation check 2 (Prolific policy), same design as attention-check-1 with a different chart. Appears in both branches after check 1; in the branch for participants who failed check 1, failing this one too sends them to attention-fail.",
-            "instruction": "Regardless of what the chart shows, please select 'Skip' as your answer. This is an attention check.",
-            "instructionLocation": "sidebar",
-            "type": "vega",
-            "path": "basic-questionnaire-study/assets/attentionCheckLibraries.json",
-            "enumerateQuestions": true,
-            "response": [
-            {
-                "id": "res-attention-check-2",
-                "type": "radio",
-                "prompt": "Your answer",
-                "required": true,
-                "location": "sidebar",
-                "options": ["Millbrook", "Ashford", "Greenvale", "Riverton", "Skip"]
-            }
-            ],
-            "correctAnswer": [
-                {
-                "id": "res-attention-check-2",
+                "id": "res-attention-check",
                 "answer": "Skip"
                 }
             ]
@@ -713,65 +696,42 @@
             "introduction",
             "consent",
             {
-                "id": "attention-block",
-                "order": "fixed",
-                "components": ["bar-extremum", "attention-check-1"],
+                "id": "puzzles",
+                "order": "random",
+                "components": [
+                    "bar-extremum",
+                    "line-trend",
+                    "stackedbar-value",
+                    "scatterplot-comparison",
+                    "stackedarea-value",
+                    "bar-comparison",
+                    "line-value",
+                    "stackedbar-comparison",
+                    "scatterplot-trend",
+                    "stackedarea-comparison",
+                    "bar-value",
+                    "line-extremum",
+                    "area-value",
+                    "scatterplot-extremum",
+                    "stackedarea-trend",
+                    "line-comparison",
+                    "scatterplot-trend-2",
+                    "stackedarea-extremum"
+                ],
+                "interruptions": [
+                    { "firstLocation": 1, "spacing": 99999, "components": ["attention-check"] },
+                    { "firstLocation": 4, "spacing": 99999, "components": ["attention-check"] }
+                ],
                 "skip": [
                     {
-                        "name": "attention-check-1",
-                        "check": "response",
-                        "responseId": "res-attention-check-1",
-                        "comparison": "notEqual",
-                        "value": "Skip",
-                        "to": "attention-branch-fail"
-                    }
-                ]
-            },
-            {
-                "id": "attention-branch-pass",
-                "order": "fixed",
-                "components": ["line-trend", "stackedbar-value", "attention-check-2"],
-                "skip": [
-                    {
-                        "name": "attention-check-2",
-                        "check": "response",
-                        "responseId": "res-attention-check-2",
-                        "comparison": "notEqual",
-                        "value": "__always-true__",
-                        "to": "scatterplot-comparison"
-                    }
-                ]
-            },
-            {
-                "id": "attention-branch-fail",
-                "order": "fixed",
-                "components": ["line-trend", "stackedbar-value", "attention-check-2"],
-                "skip": [
-                    {
-                        "name": "attention-check-2",
-                        "check": "response",
-                        "responseId": "res-attention-check-2",
-                        "comparison": "notEqual",
-                        "value": "Skip",
+                        "name": "attention-check",
+                        "check": "repeatedComponent",
+                        "condition": "numIncorrect",
+                        "value": 2,
                         "to": "attention-fail"
                     }
                 ]
             },
-            "scatterplot-comparison",
-            "stackedarea-value",
-            "bar-comparison",
-            "line-value",
-            "stackedbar-comparison",
-            "scatterplot-trend",
-            "stackedarea-comparison",
-            "bar-value",
-            "line-extremum",
-            "area-value",
-            "scatterplot-extremum",
-            "stackedarea-trend",
-            "line-comparison",
-            "scatterplot-trend-2",
-            "stackedarea-extremum",
             "transition",
             "$mini-vlat.sequences.full",
             {

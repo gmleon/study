@@ -3771,8 +3771,7 @@
       "range": [
         0,
         650
-      ],
-      "clamp": true
+      ]
     },
     {
       "name": "y_nvda",
