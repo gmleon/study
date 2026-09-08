@@ -3260,7 +3260,18 @@
       "title": "Percentage of sector spending",
       "grid": true,
       "gridColor": "#e6e6e6",
-      "gridScale": "y_sec"
+      "encode": {
+        "grid": {
+          "update": {
+            "y": {
+              "value": -183
+            },
+            "y2": {
+              "value": 0
+            }
+          }
+        }
+      }
     }
   ],
   "marks": [
